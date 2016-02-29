@@ -16,6 +16,14 @@
 		4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB911C839D0200B2C5B7 /* LaunchScreen.storyboard */; };
 		4415EB9E1C839D0300B2C5B7 /* FoodExTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9D1C839D0300B2C5B7 /* FoodExTests.m */; };
 		4415EBA91C839D0300B2C5B7 /* FoodExUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */; };
+		44D3D7E61C83B36200098C57 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E51C83B36200098C57 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		44D3D7E91C83B3D100098C57 /* FoodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E81C83B3D100098C57 /* FoodRequest.m */; settings = {ASSET_TAGS = (); }; };
+		44D3D7EC1C83B80200098C57 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EB1C83B80200098C57 /* Order.m */; settings = {ASSET_TAGS = (); }; };
+		44D3D7EF1C83B80D00098C57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EE1C83B80D00098C57 /* Item.m */; settings = {ASSET_TAGS = (); }; };
+		44D3D7F11C83B9D300098C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F01C83B9D300098C57 /* Foundation.framework */; };
+		44D3D7F31C83B9DD00098C57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F21C83B9DD00098C57 /* MapKit.framework */; };
+		44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F41C83B9E500098C57 /* UIKit.framework */; };
+		44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7F81C83BC2000098C57 /* FoodRequests.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +62,19 @@
 		4415EBA41C839D0300B2C5B7 /* FoodExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodExUITests.m; sourceTree = "<group>"; };
 		4415EBAA1C839D0300B2C5B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D3D7E41C83B36200098C57 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		44D3D7E51C83B36200098C57 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		44D3D7E71C83B3D100098C57 /* FoodRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequest.h; sourceTree = "<group>"; };
+		44D3D7E81C83B3D100098C57 /* FoodRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodRequest.m; sourceTree = "<group>"; };
+		44D3D7EA1C83B80200098C57 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		44D3D7EB1C83B80200098C57 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		44D3D7ED1C83B80D00098C57 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		44D3D7EE1C83B80D00098C57 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		44D3D7F01C83B9D300098C57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		44D3D7F21C83B9DD00098C57 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		44D3D7F41C83B9E500098C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		44D3D7F71C83BC2000098C57 /* FoodRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequests.h; sourceTree = "<group>"; };
+		44D3D7F81C83BC2000098C57 /* FoodRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodRequests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */,
+				44D3D7F31C83B9DD00098C57 /* MapKit.framework in Frameworks */,
+				44D3D7F11C83B9D300098C57 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +112,7 @@
 				4415EB9C1C839D0300B2C5B7 /* FoodExTests */,
 				4415EBA71C839D0300B2C5B7 /* FoodExUITests */,
 				4415EB7E1C839D0200B2C5B7 /* Products */,
+				44D3D7F61C83B9E900098C57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +129,7 @@
 		4415EB7F1C839D0200B2C5B7 /* FoodEx */ = {
 			isa = PBXGroup;
 			children = (
+				44D3D7E01C83B23200098C57 /* Models */,
 				4415EB831C839D0200B2C5B7 /* AppDelegate.h */,
 				4415EB841C839D0200B2C5B7 /* AppDelegate.m */,
 				4415EB861C839D0200B2C5B7 /* FirstViewController.h */,
@@ -143,6 +169,33 @@
 				4415EBAA1C839D0300B2C5B7 /* Info.plist */,
 			);
 			path = FoodExUITests;
+			sourceTree = "<group>";
+		};
+		44D3D7E01C83B23200098C57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44D3D7E41C83B36200098C57 /* User.h */,
+				44D3D7E51C83B36200098C57 /* User.m */,
+				44D3D7E71C83B3D100098C57 /* FoodRequest.h */,
+				44D3D7E81C83B3D100098C57 /* FoodRequest.m */,
+				44D3D7EA1C83B80200098C57 /* Order.h */,
+				44D3D7EB1C83B80200098C57 /* Order.m */,
+				44D3D7ED1C83B80D00098C57 /* Item.h */,
+				44D3D7EE1C83B80D00098C57 /* Item.m */,
+				44D3D7F71C83BC2000098C57 /* FoodRequests.h */,
+				44D3D7F81C83BC2000098C57 /* FoodRequests.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		44D3D7F61C83B9E900098C57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44D3D7F41C83B9E500098C57 /* UIKit.framework */,
+				44D3D7F21C83B9DD00098C57 /* MapKit.framework */,
+				44D3D7F01C83B9D300098C57 /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +328,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D3D7EF1C83B80D00098C57 /* Item.m in Sources */,
+				44D3D7E61C83B36200098C57 /* User.m in Sources */,
 				4415EB8B1C839D0200B2C5B7 /* SecondViewController.m in Sources */,
 				4415EB851C839D0200B2C5B7 /* AppDelegate.m in Sources */,
+				44D3D7E91C83B3D100098C57 /* FoodRequest.m in Sources */,
+				44D3D7EC1C83B80200098C57 /* Order.m in Sources */,
 				4415EB881C839D0200B2C5B7 /* FirstViewController.m in Sources */,
 				4415EB821C839D0200B2C5B7 /* main.m in Sources */,
+				44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +560,7 @@
 				4415EBAF1C839D0300B2C5B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4415EBB01C839D0300B2C5B7 /* Build configuration list for PBXNativeTarget "FoodExTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +569,7 @@
 				4415EBB21C839D0300B2C5B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4415EBB31C839D0300B2C5B7 /* Build configuration list for PBXNativeTarget "FoodExUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +578,7 @@
 				4415EBB51C839D0300B2C5B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
