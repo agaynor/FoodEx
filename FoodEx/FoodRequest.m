@@ -24,7 +24,6 @@
 {
     self = [super init];
     if (self) {
-        _order = [[Order alloc] initWithDictionary:[[NSMutableDictionary alloc] init]];
     }
     return self;
 }

@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "FoodRequest.h"
+#import "FoodRequests.h"
+#import "Order.h"
+#import "Item.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +21,39 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    FoodRequest *request = [[FoodRequest alloc] init];
+    [request setCreated_at:[NSDate date]];
+    [request setPickup_at:[NSDate date]];
+    [request setPickup_location:@"Olin Library"];
+    [request setBuyer_id:@"Adam"];
+    [request setDeliverer_id:@"Julie"];
+    
+    Order *order = [[Order alloc] init];
+    [order setDining_location:@"Starbucks"];
+    
+    Item *item = [[Item alloc] init];
+    [item setName:@"Vanilla Latte"];
+    [item setComment:@"HOT"];
+    [item setQuantity:@1];
+    [item setUnit_price:[NSNumber numberWithFloat:3.5f]];
+    
+    Item *item2 = [[Item alloc] init];
+    [item setName:@"Banana Bread"];
+    [item setComment:@"None"];
+    [item setQuantity:@1];
+    [item setUnit_price:[NSNumber numberWithFloat:2.99f]];
+    
+    [order addItem:item];
+    [order addItem:item2];
+    
+    [request setOrder:order];
+    
+    FoodRequests *requests = [[FoodRequests alloc] init];
+    [requests persist:request];
+    
+    
     NSLog(@"launch");
+    
     return YES;
 }
 
