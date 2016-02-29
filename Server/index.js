@@ -41,10 +41,11 @@ mongoClient.open(function(err, mongoClient) {
 	userDriver = new UserDriver(db);
 
 	//TEST CODE FOR USER LOGIN
-	userDriver.loginUser('users', {'username':'adam', 'password':'adampass'}, function(error, obj){
+/*	userDriver.loginUser('users', {'username':'adam', 'password':'adampass'}, function(error, obj){
 		if(error) console.log(error);
 		else console.log(obj);
 	});
+*/
 });
 
 
@@ -133,6 +134,7 @@ app.get('/:collection/:entity', function(req, res){
 
 //Route to POST a new object and save into collection
 app.post('/:collection', function(req, res) {
+
 	//Get the body of the request and collection to be saved into
 	var object = req.body;
 	var collection = req.params.collection;
