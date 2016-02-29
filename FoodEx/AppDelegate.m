@@ -21,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    FoodRequest *request = [[FoodRequest alloc] init];
+  /*  FoodRequest *request = [[FoodRequest alloc] init];
     [request setCreated_at:[NSDate date]];
     [request setPickup_at:[NSDate date]];
     [request setPickup_location:@"Olin Library"];
@@ -47,12 +47,11 @@
     [order addItem:item2];
     
     [request setOrder:order];
+   */
     
     FoodRequests *requests = [[FoodRequests alloc] init];
-    [requests persist:request];
+    [requests import];
     
-    
-    NSLog(@"launch");
     
     return YES;
 }

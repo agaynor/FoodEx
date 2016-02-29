@@ -28,6 +28,7 @@ static NSString* const kRequests = @"requests";
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray
 {
     for(NSDictionary *item in requests){
+        NSLog(@"%@", item[@"order"][@"items"][0][@"name"]);
         FoodRequest *request = [[FoodRequest alloc] initWithDictionary:item];
         [destinationArray addObject:request];
     }
@@ -84,6 +85,7 @@ static NSString* const kRequests = @"requests";
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSLog(@"here");
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
