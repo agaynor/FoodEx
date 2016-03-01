@@ -80,7 +80,7 @@ app.post('/login', function(req, res)
 		}
 		else {
 			console.log(obj);
-			req.session.user = doc;
+			req.session.user = obj;
 			res.send(200, "Login Success");
 		}
 	});

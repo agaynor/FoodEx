@@ -21,6 +21,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    /*
     FoodRequest *request = [[FoodRequest alloc] init];
     [request setCreated_at:[NSDate date]];
     [request setPickup_at:[NSDate date]];
@@ -51,8 +53,41 @@
     
     FoodRequests *requests = [[FoodRequests alloc] init];
     [requests queryUndeliveredRequests];
+     */
     
-  
+    
+    
+    NSMutableDictionary *loginInfo = [[NSMutableDictionary alloc] init];
+    loginInfo[@"username"] = @"adam";
+    loginInfo[@"password"] = @"adampass";
+    
+    NSString *requestString = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/login";
+    NSURL *url = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    request.HTTPMethod = @"POST";
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:loginInfo options:0 error:NULL];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            /*
+            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            [self parseAndAddLocations:responseArray toArray:self.requests];
+             */
+            NSLog(@"here");
+            
+        }
+    }];
+    [dataTask resume];
+    
     
     
     return YES;
