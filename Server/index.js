@@ -79,7 +79,6 @@ app.post('/login', function(req, res)
 			console.log(error);
 		}
 		else {
-			console.log(obj);
 			req.session.user = obj;
 			res.send(200, "Login Success");
 		}
@@ -90,11 +89,9 @@ app.get('/isLoggedIn', function(req, res)
 {
 	if(req.session && req.session.user)
 	{
-		console.log("logged in");
 		res.send(200, "logged in");
 	}
 	else{
-		console.log("not logged in");
 		res.send(200, "not logged in");
 	}
 });

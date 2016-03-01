@@ -56,7 +56,7 @@
      */
     
     
-    
+    /*
     NSMutableDictionary *loginInfo = [[NSMutableDictionary alloc] init];
     loginInfo[@"username"] = @"adam";
     loginInfo[@"password"] = @"adampass";
@@ -78,17 +78,50 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
-            /*
-            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
-            [self parseAndAddLocations:responseArray toArray:self.requests];
-             */
-            NSLog(@"here");
+            
+            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            
+            NSURL *url = [NSURL URLWithString:@"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/logout"];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+            request.HTTPMethod = @"GET";
+            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+            
+            NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+            
+            NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+                if (error == nil) {
+                    
+                    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                    
+                    NSURL *url = [NSURL URLWithString:@"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/isLoggedIn"];
+                    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+                    request.HTTPMethod = @"GET";
+                    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+                    
+                    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+                    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+                    
+                    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+                        if (error == nil) {
+                            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                            
+                            
+                        }
+                    }];
+                    
+                    [dataTask resume];
+                    
+                }
+            }];
+            
+            [dataTask resume];
             
         }
     }];
     [dataTask resume];
     
-    
+    */
     
     return YES;
 }
