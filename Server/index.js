@@ -5,7 +5,8 @@ var http = require('http'),
     Server = require('mongodb').Server,
     CollectionDriver = require('./collectionDriver').CollectionDriver,
     FileDriver = require('./fileDriver').FileDriver,
-    UserDriver = require('./userDriver').UserDriver;
+    UserDriver = require('./userDriver').UserDriver,
+    session = require('client-sessions');
 
 
 //Start running express
@@ -40,18 +41,20 @@ mongoClient.open(function(err, mongoClient) {
 	collectionDriver = new CollectionDriver(db);
 	userDriver = new UserDriver(db);
 
-	//TEST CODE FOR USER LOGIN
-/*	userDriver.loginUser('users', {'username':'adam', 'password':'adampass'}, function(error, obj){
-		if(error) console.log(error);
-		else console.log(obj);
-	});
-*/
 });
 
 
 
 //Use bodyparser to get post requests and parse the json into objects
 app.use(express.bodyParser());
+
+//session handler with basic configurations
+app.use(session({
+	cookieName:'session',
+	secret: 'idofjwerj0932j90jiapoaodaoijw0r93j289',
+	duration: 30*60*1000,
+	activeDuration: 5*60*1000,
+}));
 
 //Allows our site to serve up files in public directory if necessary
 app.use(express.static(path.join(__dirname, 'public')));
@@ -68,6 +71,40 @@ app.get('/files/:id', function(req, res) {
 	fileDriver.handleGet(req,res);
 });
 
+app.post('/login', function(req, res)
+{
+	userDriver.loginUser('users', req.body, function(error, obj){
+		if(error) {
+			res.send(400, error);
+			console.log(error);
+		}
+		else {
+			console.log(obj);
+			req.session.user = doc;
+			res.send(200, "Login Success");
+		}
+	});
+});
+
+app.get('/isLoggedIn', function(req, res)
+{
+	if(req.session && req.session.user)
+	{
+		console.log("logged in");
+		res.send(200, "logged in");
+	}
+	else{
+		console.log("not logged in");
+		res.send(200, "not logged in");
+	}
+});
+
+app.get('/logout', function(req, res)
+{
+	req.session.reset();
+	console.log("logged out");
+	res.send(200, "logged out");
+});
 
 //Route for recieving a GET request for any collection (other than files since those were received above)
 app.get('/:collection', function(req, res, next) {
