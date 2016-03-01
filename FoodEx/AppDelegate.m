@@ -21,12 +21,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-  /*  FoodRequest *request = [[FoodRequest alloc] init];
+    FoodRequest *request = [[FoodRequest alloc] init];
     [request setCreated_at:[NSDate date]];
     [request setPickup_at:[NSDate date]];
     [request setPickup_location:@"Olin Library"];
     [request setBuyer_id:@"Adam"];
-    [request setDeliverer_id:@"Julie"];
+   // [request setDeliverer_id:@"Julie"];
     
     Order *order = [[Order alloc] init];
     [order setDining_location:@"Starbucks"];
@@ -38,19 +38,21 @@
     [item setUnit_price:[NSNumber numberWithFloat:3.5f]];
     
     Item *item2 = [[Item alloc] init];
-    [item setName:@"Banana Bread"];
-    [item setComment:@"None"];
-    [item setQuantity:@1];
-    [item setUnit_price:[NSNumber numberWithFloat:2.99f]];
+    [item2 setName:@"Banana Bread"];
+    [item2 setComment:@"None"];
+    [item2 setQuantity:@1];
+    [item2 setUnit_price:[NSNumber numberWithFloat:2.99f]];
     
     [order addItem:item];
     [order addItem:item2];
     
     [request setOrder:order];
-   */
+   
     
     FoodRequests *requests = [[FoodRequests alloc] init];
-    [requests import];
+    [requests queryUndeliveredRequests];
+    
+  
     
     
     return YES;

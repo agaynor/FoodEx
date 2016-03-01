@@ -85,7 +85,6 @@ static NSString* const kRequests = @"requests";
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSLog(@"here");
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
@@ -124,7 +123,18 @@ static NSString* const kRequests = @"requests";
 
 
 
+-(void) queryUndeliveredRequests {
+    NSString *queryParam = [NSString stringWithFormat:@"{\"$exists\":false}"];
+    NSString *doesntExist = [NSString stringWithFormat:@"{\"deliverer_id\":%@}", queryParam];
+    NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                             (CFStringRef) doesntExist,
+                                                                                             NULL,
+                                                                                             (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
+                                                                                             kCFStringEncodingUTF8));
+    NSString *query = [NSString stringWithFormat:@"?query=%@", escQuery];
+    [self runQuery:query];
 
+}
 
 
 /*
