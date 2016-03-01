@@ -17,6 +17,7 @@
 -(void) persist:(FoodRequest *)request;
 -(void) addRequest:(FoodRequest *)request;
 -(void) runQuery:(NSString *)queryString;
+-(void) queryUndeliveredRequests;
 
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
 

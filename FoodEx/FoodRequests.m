@@ -28,6 +28,7 @@ static NSString* const kRequests = @"requests";
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray
 {
     for(NSDictionary *item in requests){
+        NSLog(@"%@", item[@"order"][@"items"][0][@"name"]);
         FoodRequest *request = [[FoodRequest alloc] initWithDictionary:item];
         [destinationArray addObject:request];
     }
@@ -122,7 +123,18 @@ static NSString* const kRequests = @"requests";
 
 
 
+-(void) queryUndeliveredRequests {
+    NSString *queryParam = [NSString stringWithFormat:@"{\"$exists\":false}"];
+    NSString *doesntExist = [NSString stringWithFormat:@"{\"deliverer_id\":%@}", queryParam];
+    NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                             (CFStringRef) doesntExist,
+                                                                                             NULL,
+                                                                                             (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
+                                                                                             kCFStringEncodingUTF8));
+    NSString *query = [NSString stringWithFormat:@"?query=%@", escQuery];
+    [self runQuery:query];
 
+}
 
 
 /*
