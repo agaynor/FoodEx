@@ -6,6 +6,7 @@
     "express": "3.3.4",
     "jade": "1.1.5",
     "mongodb": "1.4.34",
-    "bcrypt-nodejs" : "latest"
+    "bcrypt-nodejs" : "latest",
+    "client-sessions" : "latest"
   }
 }
