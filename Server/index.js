@@ -71,22 +71,27 @@ app.get('/files/:id', function(req, res) {
 	fileDriver.handleGet(req,res);
 });
 
+//If login comes with post request
 app.post('/login', function(req, res)
 {
+	//Pass userDriver username/login combo to verify login
 	userDriver.loginUser('users', req.body, function(error, obj){
 		if(error) {
+			//Error could be username taken, incorrect password, or db errors
 			res.send(400, error);
-			console.log(error);
 		}
 		else {
+			//Set the session user to the returned object and send a success back to client
 			req.session.user = obj;
 			res.send(200, "Login Success");
 		}
 	});
 });
 
+//Tests whether user is logged in, only used for testing
 app.get('/isLoggedIn', function(req, res)
 {
+	//If session and session user are not null, user is logged in
 	if(req.session && req.session.user)
 	{
 		res.send(200, "logged in");
@@ -96,10 +101,11 @@ app.get('/isLoggedIn', function(req, res)
 	}
 });
 
+//Get route to logout currently logged in user
 app.get('/logout', function(req, res)
 {
+	//Resets the request's session and responds with logout message
 	req.session.reset();
-	console.log("logged out");
 	res.send(200, "logged out");
 });
 
