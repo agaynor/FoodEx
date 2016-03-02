@@ -14,6 +14,8 @@
 		4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB911C839D0200B2C5B7 /* LaunchScreen.storyboard */; };
 		4415EB9E1C839D0300B2C5B7 /* FoodExTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9D1C839D0300B2C5B7 /* FoodExTests.m */; };
 		4415EBA91C839D0300B2C5B7 /* FoodExUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */; };
+		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD65D1C864F4D00325DAA /* OrderViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		449CD6631C864F6800325DAA /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6611C864F6800325DAA /* DeliveryViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -66,6 +68,9 @@
 		4415EBA41C839D0300B2C5B7 /* FoodExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodExUITests.m; sourceTree = "<group>"; };
 		4415EBAA1C839D0300B2C5B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		446588B31C87563E002CA7ED /* OrderContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderContentsViewController.h; path = ../OrderContentsViewController.h; sourceTree = "<group>"; };
+		446588B41C87563E002CA7ED /* OrderContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderContentsViewController.m; path = ../OrderContentsViewController.m; sourceTree = "<group>"; };
+		446588B51C87563E002CA7ED /* OrderContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderContentsViewController.xib; path = ../OrderContentsViewController.xib; sourceTree = "<group>"; };
 		449CD65B1C864F4D00325DAA /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		449CD65C1C864F4D00325DAA /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		449CD65D1C864F4D00325DAA /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
@@ -162,6 +167,9 @@
 				449CD6601C864F6800325DAA /* DeliveryViewController.h */,
 				449CD6611C864F6800325DAA /* DeliveryViewController.m */,
 				449CD6621C864F6800325DAA /* DeliveryViewController.xib */,
+				446588B31C87563E002CA7ED /* OrderContentsViewController.h */,
+				446588B41C87563E002CA7ED /* OrderContentsViewController.m */,
+				446588B51C87563E002CA7ED /* OrderContentsViewController.xib */,
 				44BDFDB91C86A5900004D74F /* LoginViewController.h */,
 				44BDFDBA1C86A5900004D74F /* LoginViewController.m */,
 				44BDFDBB1C86A5900004D74F /* LoginViewController.xib */,
@@ -337,6 +345,7 @@
 				4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
+				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
 				4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */,
 				449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */,
 			);
@@ -363,6 +372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */,
 				44D3D7EF1C83B80D00098C57 /* Item.m in Sources */,
 				449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */,
 				44D3D7E61C83B36200098C57 /* User.m in Sources */,

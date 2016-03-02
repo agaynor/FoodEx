@@ -7,6 +7,7 @@
 //
 
 #import "OrderViewController.h"
+#import "CreateOrderViewController.h"
 
 @interface OrderViewController ()
 
@@ -22,6 +23,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)placeOrderPressed:(id)sender {
+    [self.navigationController pushViewController:[[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:nil ] animated:YES];
+    NSLog(@"here");
 }
 
 /*

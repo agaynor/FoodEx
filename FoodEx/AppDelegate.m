@@ -156,11 +156,11 @@
     deliverController.tabBarItem.title = @"Deliveries";
     profileController.tabBarItem.title = @"Profile";
     
-    tab.viewControllers = [[NSArray alloc] initWithObjects:orderController, deliverController, profileController, nil];
+    tab.viewControllers = [[NSArray alloc] initWithObjects:orderNav, deliverController, profileController, nil];
     
     self.window.rootViewController = tab;
     
-    [tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
+    //[tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
     
     
 

@@ -37,6 +37,9 @@
                     <state key="normal" title="Place Order">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="placeOrderPressed:" destination="-1" eventType="touchUpInside" id="788-5W-MeH"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
