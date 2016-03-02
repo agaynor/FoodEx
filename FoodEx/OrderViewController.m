@@ -26,6 +26,7 @@
 }
 
 - (IBAction)placeOrderPressed:(id)sender {
+    [self.tabBarController hidesBottomBarWhenPushed];
     [self.navigationController pushViewController:[[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:nil ] animated:YES];
     NSLog(@"here");
 }

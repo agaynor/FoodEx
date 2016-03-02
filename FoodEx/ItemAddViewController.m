@@ -1,32 +1,27 @@
 //
-//  CreateOrderViewController.m
+//  ItemAddViewController.m
 //  FoodEx
 //
-//  Created by Adam Gaynor on 3/1/16.
+//  Created by Joshua Landman on 3/2/16.
 //  Copyright © 2016 FoodEx. All rights reserved.
 //
 
-#import "CreateOrderViewController.h"
-#import "OrderContentsViewController.h"
-@interface CreateOrderViewController ()
+#import "ItemAddViewController.h"
+
+@interface ItemAddViewController ()
 
 @end
 
-@implementation CreateOrderViewController
+@implementation ItemAddViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tabBarController.tabBar setHidden:YES];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)addItemsPressed:(id)sender {
-    [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];
 }
 
 /*

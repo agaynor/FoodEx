@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033807E11C876D380045D5BB /* ItemAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033807DF1C876D380045D5BB /* ItemAddViewController.m */; };
+		033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033807E01C876D380045D5BB /* ItemAddViewController.xib */; };
 		4415EB821C839D0200B2C5B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB811C839D0200B2C5B7 /* main.m */; };
 		4415EB851C839D0200B2C5B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB841C839D0200B2C5B7 /* AppDelegate.m */; };
 		4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB8C1C839D0200B2C5B7 /* Main.storyboard */; };
@@ -14,26 +16,26 @@
 		4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB911C839D0200B2C5B7 /* LaunchScreen.storyboard */; };
 		4415EB9E1C839D0300B2C5B7 /* FoodExTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9D1C839D0300B2C5B7 /* FoodExTests.m */; };
 		4415EBA91C839D0300B2C5B7 /* FoodExUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */; };
-		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; settings = {ASSET_TAGS = (); }; };
-		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; settings = {ASSET_TAGS = (); }; };
-		449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD65D1C864F4D00325DAA /* OrderViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		449CD6631C864F6800325DAA /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6611C864F6800325DAA /* DeliveryViewController.m */; settings = {ASSET_TAGS = (); }; };
-		449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD6621C864F6800325DAA /* DeliveryViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		449CD6681C864F8400325DAA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6661C864F8400325DAA /* ProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
-		449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD6671C864F8400325DAA /* ProfileViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		449CD6701C86583000325DAA /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD66E1C86583000325DAA /* CreateOrderViewController.m */; settings = {ASSET_TAGS = (); }; };
-		449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD66F1C86583000325DAA /* CreateOrderViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		44BDFDBC1C86A5900004D74F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDFDBA1C86A5900004D74F /* LoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BDFDBB1C86A5900004D74F /* LoginViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		44D3D7E61C83B36200098C57 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E51C83B36200098C57 /* User.m */; settings = {ASSET_TAGS = (); }; };
-		44D3D7E91C83B3D100098C57 /* FoodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E81C83B3D100098C57 /* FoodRequest.m */; settings = {ASSET_TAGS = (); }; };
-		44D3D7EC1C83B80200098C57 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EB1C83B80200098C57 /* Order.m */; settings = {ASSET_TAGS = (); }; };
-		44D3D7EF1C83B80D00098C57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EE1C83B80D00098C57 /* Item.m */; settings = {ASSET_TAGS = (); }; };
+		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; };
+		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; };
+		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; };
+		449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD65D1C864F4D00325DAA /* OrderViewController.xib */; };
+		449CD6631C864F6800325DAA /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6611C864F6800325DAA /* DeliveryViewController.m */; };
+		449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD6621C864F6800325DAA /* DeliveryViewController.xib */; };
+		449CD6681C864F8400325DAA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6661C864F8400325DAA /* ProfileViewController.m */; };
+		449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD6671C864F8400325DAA /* ProfileViewController.xib */; };
+		449CD6701C86583000325DAA /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD66E1C86583000325DAA /* CreateOrderViewController.m */; };
+		449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD66F1C86583000325DAA /* CreateOrderViewController.xib */; };
+		44BDFDBC1C86A5900004D74F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDFDBA1C86A5900004D74F /* LoginViewController.m */; };
+		44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BDFDBB1C86A5900004D74F /* LoginViewController.xib */; };
+		44D3D7E61C83B36200098C57 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E51C83B36200098C57 /* User.m */; };
+		44D3D7E91C83B3D100098C57 /* FoodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E81C83B3D100098C57 /* FoodRequest.m */; };
+		44D3D7EC1C83B80200098C57 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EB1C83B80200098C57 /* Order.m */; };
+		44D3D7EF1C83B80D00098C57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EE1C83B80D00098C57 /* Item.m */; };
 		44D3D7F11C83B9D300098C57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F01C83B9D300098C57 /* Foundation.framework */; };
 		44D3D7F31C83B9DD00098C57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F21C83B9DD00098C57 /* MapKit.framework */; };
 		44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F41C83B9E500098C57 /* UIKit.framework */; };
-		44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7F81C83BC2000098C57 /* FoodRequests.m */; settings = {ASSET_TAGS = (); }; };
+		44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7F81C83BC2000098C57 /* FoodRequests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		033807DE1C876D380045D5BB /* ItemAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemAddViewController.h; sourceTree = "<group>"; };
+		033807DF1C876D380045D5BB /* ItemAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemAddViewController.m; sourceTree = "<group>"; };
+		033807E01C876D380045D5BB /* ItemAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemAddViewController.xib; sourceTree = "<group>"; };
 		4415EB7D1C839D0200B2C5B7 /* FoodEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB811C839D0200B2C5B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4415EB831C839D0200B2C5B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,6 +181,9 @@
 				449CD65B1C864F4D00325DAA /* OrderViewController.h */,
 				449CD65C1C864F4D00325DAA /* OrderViewController.m */,
 				449CD65D1C864F4D00325DAA /* OrderViewController.xib */,
+				033807DE1C876D380045D5BB /* ItemAddViewController.h */,
+				033807DF1C876D380045D5BB /* ItemAddViewController.m */,
+				033807E01C876D380045D5BB /* ItemAddViewController.xib */,
 				449CD6651C864F8400325DAA /* ProfileViewController.h */,
 				449CD6661C864F8400325DAA /* ProfileViewController.m */,
 				449CD6671C864F8400325DAA /* ProfileViewController.xib */,
@@ -342,6 +350,7 @@
 				44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */,
 				449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */,
 				449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */,
+				033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */,
 				4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
@@ -383,6 +392,7 @@
 				4415EB821C839D0200B2C5B7 /* main.m in Sources */,
 				44BDFDBC1C86A5900004D74F /* LoginViewController.m in Sources */,
 				449CD6681C864F8400325DAA /* ProfileViewController.m in Sources */,
+				033807E11C876D380045D5BB /* ItemAddViewController.m in Sources */,
 				449CD6701C86583000325DAA /* CreateOrderViewController.m in Sources */,
 				44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */,
 			);

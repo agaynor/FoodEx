@@ -113,7 +113,7 @@ static NSString* const kRequests = @"requests";
         if (error == nil) {
             [self.requests removeAllObjects];
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            NSLog(@"received %d items", responseArray.count);
+            NSLog(@"received %lu items", (unsigned long)responseArray.count);
             [self parseAndAddLocations:responseArray toArray:self.requests];
         }
     }];
