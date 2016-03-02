@@ -11,6 +11,11 @@
 #import "FoodRequests.h"
 #import "Order.h"
 #import "Item.h"
+#import "OrderViewController.h"
+#import "CreateOrderViewController.h"
+#import "DeliveryViewController.h"
+#import "ProfileViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -122,6 +127,43 @@
     [dataTask resume];
     
     */
+    
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    
+    OrderViewController *orderController = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
+    
+    DeliveryViewController *deliverController = [[DeliveryViewController alloc] initWithNibName:@"DeliveryViewController" bundle:nil];
+    
+    ProfileViewController *profileController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    
+    
+    UINavigationController *orderNav = [[UINavigationController alloc] init];
+    
+    [orderNav pushViewController:orderController animated:NO];
+    [orderController.navigationController setNavigationBarHidden:YES];
+    
+    
+    UITabBarController *tab = [[UITabBarController alloc]init];
+    
+    
+    orderController.tabBarItem.title = @"My Orders";
+    deliverController.tabBarItem.title = @"Deliveries";
+    profileController.tabBarItem.title = @"Profile";
+    
+    tab.viewControllers = [[NSArray alloc] initWithObjects:orderController, deliverController, profileController, nil];
+    
+    self.window.rootViewController = tab;
+    
+    [tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
+    
+    
+
     
     return YES;
 }
