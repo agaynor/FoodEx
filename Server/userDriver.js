@@ -18,31 +18,48 @@ UserDriver.prototype.getCollection = function(collectionName, callback){
 
 //Function to save a user to a given collection
 UserDriver.prototype.save = function(collectionName, user, callback) {
+		//get user collection
         this.getCollection(collectionName, function(error, the_collection) {
                 if(error) callback(error);
                 else{
-                	//generate salt to be used to encrypt with pass
-					bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
-					if(err) callback(err);
-					else {
-					//use bcrypt to hash password with salt
-						bcrypt.hash(user.password, salt,null ,function(err, hash){
-							if(err) callback(err);
-							else{
-								//insert user/hashpass into collection
-								user.password = hash;
-								the_collection.insert(user, function(){
-									callback(null, user);
-								});	
-							}
-						});
-					}
-				});
+           			//see if user already exists
+                	the_collection.find({"user":user.username}).toArray(function(error, results) {
+                         	if(error) callback(error);
+                            else
+                            {	
+                            	//If user doesn't exist
+                            	if(results.length == 0)
+                            	{
+                            		//generate salt
+                            		bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+                            			if(err) callback(err);
+                            			else{
+                            				//hash password
+                            				bcrypt.hash(user.password, salt, null, function(err, hash){
+                            					if(err) callback(err);
+                            					else{
+                            						//set password to hash
+                            						user.password = hash;
+                            						//insert the user
+                            						the_collection.insert(user, function(){
+                            							callback(null, user);
+                            						});
+                            					}
+                            				});
+                            			}
+                            		});
+                            	}
+                            	else{
+                            		callback("Username Taken", null);
+                            	}
+                            	
+                            }
 
-              }	
-        });
-};
-
+                          });
+                }
+            });
+}
+               
 //Function to authenticate user
 UserDriver.prototype.loginUser = function(collectionName, user, callback) {
 	this.getCollection(collectionName, function(error, the_collection) {

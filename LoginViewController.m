@@ -13,7 +13,8 @@
 @end
 
 static NSString* const kBaseURL = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/";
-static NSString* const kRequests = @"login";
+static NSString* const kLoginRequests = @"login";
+static NSString* const kRegisterRequests = @"register";
 
 @implementation LoginViewController
 
@@ -33,7 +34,7 @@ static NSString* const kRequests = @"login";
     loginInfo[@"username"] = [self.txtUsername text];
     loginInfo[@"password"] = [self.txtPassword text];
     
-    NSString *requestString = [kBaseURL stringByAppendingPathComponent:kRequests];
+    NSString *requestString = [kBaseURL stringByAppendingPathComponent:kLoginRequests];
     NSURL *url = [NSURL URLWithString:requestString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
@@ -122,6 +123,95 @@ static NSString* const kRequests = @"login";
 
 //Send register information to server
 - (IBAction)registerPressed:(id)sender {
+    
+    NSMutableDictionary *registerInfo = [[NSMutableDictionary alloc] init];
+    registerInfo[@"username"] = [self.txtUsername text];
+    registerInfo[@"password"] = [self.txtPassword text];
+    
+    NSString *requestString = [kBaseURL stringByAppendingPathComponent:kRegisterRequests];
+    NSURL *url = [NSURL URLWithString:requestString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    request.HTTPMethod = @"POST";
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:registerInfo options:0 error:NULL];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            long status = [httpResponse statusCode];
+            
+            //If register error
+            if(status >= 400)
+            {
+                //Show alert with error
+                NSString *registerError = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Register Failed"
+                                                  message:registerError
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* cancelButton = [UIAlertAction
+                                                   actionWithTitle:@"Okay"
+                                                   style:UIAlertActionStyleCancel
+                                                   handler:nil];
+                    
+                    [alert addAction:cancelButton];
+                    
+                    [self presentViewController:alert animated:YES completion:^{
+                        [self.txtUsername setText:@""];
+                        [self.txtPassword setText:@""];
+                    }];
+                    
+                });
+                
+                
+                
+            }
+            
+            //else register success
+            else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Register Success"
+                                                  message:[NSString stringWithFormat:@"%@ now registered!", [self.txtUsername text]]
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* cancelButton = [UIAlertAction
+                                                   actionWithTitle:@"Okay"
+                                                   style:UIAlertActionStyleCancel
+                                                   handler:nil];
+                    
+                    [alert addAction:cancelButton];
+                    
+                    [self presentViewController:alert animated:YES completion:^{
+                       [self dismissViewControllerAnimated:YES completion:nil];
+                    }];
+                    
+
+                });
+                
+            }
+            
+            
+        }
+    }];
+    
+    [dataTask resume];
 }
 
 /*

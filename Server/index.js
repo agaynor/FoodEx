@@ -88,6 +88,21 @@ app.post('/login', function(req, res)
 	});
 });
 
+app.post('/register', function(req, res){
+
+	userDriver.save('users', req.body, function(error, obj)
+	{
+		if(error)
+		{
+			res.send(409, error);
+		}
+		else{
+			req.session.user = obj;
+			res.send(200, "Register Success");
+		}
+	});
+});
+
 //Tests whether user is logged in, only used for testing
 app.get('/isLoggedIn', function(req, res)
 {
