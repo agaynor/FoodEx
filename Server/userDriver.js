@@ -22,24 +22,24 @@ UserDriver.prototype.save = function(collectionName, user, callback) {
                 if(error) callback(error);
                 else{
                 	//generate salt to be used to encrypt with pass
-			bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
-				if(err) callback(err);
-				else {
+					bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+					if(err) callback(err);
+					else {
 					//use bcrypt to hash password with salt
-					bcrypt.hash(user.password, salt,null ,function(err, hash){
-						if(err) callback(err);
-						else{
-							//insert user/hashpass into collection
-							user.password = hash;
-							the_collection.insert(user, function(){
-								callback(null, user);
-							});	
-						}
-					});
-				}
-			});
+						bcrypt.hash(user.password, salt,null ,function(err, hash){
+							if(err) callback(err);
+							else{
+								//insert user/hashpass into collection
+								user.password = hash;
+								the_collection.insert(user, function(){
+									callback(null, user);
+								});	
+							}
+						});
+					}
+				});
 
-                }	
+              }	
         });
 };
 

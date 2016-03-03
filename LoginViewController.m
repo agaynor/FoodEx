@@ -59,23 +59,31 @@ static NSString* const kRequests = @"login";
             {
                 //Show alert with error
                 NSString *loginError = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                UIAlertController * alert=   [UIAlertController
-                                              alertControllerWithTitle:@"Login Failed"
-                                              message:loginError
-                                              preferredStyle:UIAlertControllerStyleAlert];
                 
-                UIAlertAction* cancelButton = [UIAlertAction
-                                            actionWithTitle:@"Okay"
-                                            style:UIAlertActionStyleCancel
-                                            handler:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    
+                    UIAlertController * alert=   [UIAlertController
+                                                  alertControllerWithTitle:@"Login Failed"
+                                                  message:loginError
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* cancelButton = [UIAlertAction
+                                                   actionWithTitle:@"Okay"
+                                                   style:UIAlertActionStyleCancel
+                                                   handler:nil];
+                    
+                    [alert addAction:cancelButton];
+                    
+                    [self presentViewController:alert animated:YES completion:^{
+                        [self.txtUsername setText:@""];
+                        [self.txtPassword setText:@""];
+                    }];
+                    
+                });
+  
                 
-                [alert addAction:cancelButton];
-                
-                //Clear fields to try again
-                [self presentViewController:alert animated:YES completion:^{
-                    [self.txtUsername setText:@""];
-                    [self.txtPassword setText:@""];
-                }];
+
             }
             
             //else login success
