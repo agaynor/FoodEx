@@ -16,12 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self setTitle:@"New Item"];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)quantityChanged:(id)sender {
+    [self.lblQuantity setText:[NSString stringWithFormat:@"%d",
+                          [[NSNumber numberWithInt:[(UIStepper *)sender value]] intValue]]];
+}
+
+- (IBAction)addItemPressed:(id)sender {
+    //TODO: TAKE STEPS TO ADD ITEM
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

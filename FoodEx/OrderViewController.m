@@ -17,7 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.tabBarController.tabBar setHidden:NO];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,7 +34,6 @@
 }
 
 - (IBAction)placeOrderPressed:(id)sender {
-    [self.tabBarController hidesBottomBarWhenPushed];
     [self.navigationController pushViewController:[[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:nil ] animated:YES];
     NSLog(@"here");
 }

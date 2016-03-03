@@ -78,7 +78,7 @@ app.post('/login', function(req, res)
 	userDriver.loginUser('users', req.body, function(error, obj){
 		if(error) {
 			//Error could be username taken, incorrect password, or db errors
-			res.send(400, error);
+			res.send(401, error);
 		}
 		else {
 			//Set the session user to the returned object and send a success back to client

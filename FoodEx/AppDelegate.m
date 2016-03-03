@@ -60,10 +60,10 @@
     [requests queryUndeliveredRequests];
      */
     
-    
     /*
+    
     NSMutableDictionary *loginInfo = [[NSMutableDictionary alloc] init];
-    loginInfo[@"username"] = @"adam";
+    loginInfo[@"username"] = @"ada";
     loginInfo[@"password"] = @"adampass";
     
     NSString *requestString = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/login";
@@ -83,7 +83,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
-            
+            //401 for user not logged in
             NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             
             NSURL *url = [NSURL URLWithString:@"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/logout"];
@@ -109,6 +109,7 @@
                     
                     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
                         if (error == nil) {
+                          
                             NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                             
                             
@@ -152,7 +153,7 @@
     UITabBarController *tab = [[UITabBarController alloc]init];
     
     
-    orderController.tabBarItem.title = @"My Orders";
+    orderNav.tabBarItem.title = @"My Orders";
     deliverController.tabBarItem.title = @"Deliveries";
     profileController.tabBarItem.title = @"Profile";
     
@@ -160,7 +161,7 @@
     
     self.window.rootViewController = tab;
     
-    //[tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
+    [tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
     
     
 

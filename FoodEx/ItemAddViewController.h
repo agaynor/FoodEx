@@ -10,4 +10,7 @@
 
 @interface ItemAddViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *lblQuantity;
+
+
 @end

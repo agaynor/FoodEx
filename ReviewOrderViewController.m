@@ -1,36 +1,35 @@
 //
-//  CreateOrderViewController.m
+//  ReviewOrderViewController.m
 //  FoodEx
 //
-//  Created by Adam Gaynor on 3/1/16.
+//  Created by Adam Gaynor on 3/3/16.
 //  Copyright © 2016 FoodEx. All rights reserved.
 //
 
-#import "CreateOrderViewController.h"
-#import "OrderContentsViewController.h"
-@interface CreateOrderViewController ()
+#import "ReviewOrderViewController.h"
+
+@interface ReviewOrderViewController ()
 
 @end
 
-@implementation CreateOrderViewController
+@implementation ReviewOrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setTitle:@"Create Request"];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Request" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backButton;
-    [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:NO];
+    [self setTitle:@"Confirm Request"];
+    
     // Do any additional setup after loading the view from its nib.
+}
+
+- (IBAction)confirmOrderPressed:(id)sender {
+    //ACTUALLY SUBMIT THE ORDER
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)addItemsPressed:(id)sender {
-    [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];
 }
 
 /*

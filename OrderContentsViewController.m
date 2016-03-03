@@ -7,7 +7,8 @@
 //
 
 #import "OrderContentsViewController.h"
-
+#import "ItemAddViewController.h"
+#import "ReviewOrderViewController.h"
 @interface OrderContentsViewController ()
 
 @end
@@ -15,9 +16,26 @@
 @implementation OrderContentsViewController
 
 - (void)viewDidLoad {
+ 
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setTitle:@"Add Items"];
+    [self.navigationController setNavigationBarHidden:NO];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addItem:)];
     
+    self.navigationItem.rightBarButtonItem = addButton;
+   
+    
+}
+
+-(IBAction)addItem:(id)sender
+{
+    [self.navigationController pushViewController:[[ItemAddViewController alloc] initWithNibName:@"ItemAddViewController" bundle:nil] animated:YES];
+}
+
+
+- (IBAction)placeOrderPressed:(id)sender {
+    //ACTUALLY SEND REQUEST HERE
+    [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

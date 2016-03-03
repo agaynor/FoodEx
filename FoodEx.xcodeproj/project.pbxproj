@@ -16,6 +16,8 @@
 		4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB911C839D0200B2C5B7 /* LaunchScreen.storyboard */; };
 		4415EB9E1C839D0300B2C5B7 /* FoodExTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB9D1C839D0300B2C5B7 /* FoodExTests.m */; };
 		4415EBA91C839D0300B2C5B7 /* FoodExUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */; };
+		444D55161C8817AE002EBE49 /* ReviewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D55141C8817AE002EBE49 /* ReviewOrderViewController.m */; settings = {ASSET_TAGS = (); }; };
+		444D55171C8817AE002EBE49 /* ReviewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444D55151C8817AE002EBE49 /* ReviewOrderViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; };
 		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; };
 		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; };
@@ -73,6 +75,9 @@
 		4415EBA41C839D0300B2C5B7 /* FoodExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EBA81C839D0300B2C5B7 /* FoodExUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodExUITests.m; sourceTree = "<group>"; };
 		4415EBAA1C839D0300B2C5B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		444D55131C8817AE002EBE49 /* ReviewOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewOrderViewController.h; path = ../ReviewOrderViewController.h; sourceTree = "<group>"; };
+		444D55141C8817AE002EBE49 /* ReviewOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewOrderViewController.m; path = ../ReviewOrderViewController.m; sourceTree = "<group>"; };
+		444D55151C8817AE002EBE49 /* ReviewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewOrderViewController.xib; path = ../ReviewOrderViewController.xib; sourceTree = "<group>"; };
 		446588B31C87563E002CA7ED /* OrderContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderContentsViewController.h; path = ../OrderContentsViewController.h; sourceTree = "<group>"; };
 		446588B41C87563E002CA7ED /* OrderContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderContentsViewController.m; path = ../OrderContentsViewController.m; sourceTree = "<group>"; };
 		446588B51C87563E002CA7ED /* OrderContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderContentsViewController.xib; path = ../OrderContentsViewController.xib; sourceTree = "<group>"; };
@@ -181,6 +186,9 @@
 				449CD65B1C864F4D00325DAA /* OrderViewController.h */,
 				449CD65C1C864F4D00325DAA /* OrderViewController.m */,
 				449CD65D1C864F4D00325DAA /* OrderViewController.xib */,
+				444D55131C8817AE002EBE49 /* ReviewOrderViewController.h */,
+				444D55141C8817AE002EBE49 /* ReviewOrderViewController.m */,
+				444D55151C8817AE002EBE49 /* ReviewOrderViewController.xib */,
 				033807DE1C876D380045D5BB /* ItemAddViewController.h */,
 				033807DF1C876D380045D5BB /* ItemAddViewController.m */,
 				033807E01C876D380045D5BB /* ItemAddViewController.xib */,
@@ -348,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */,
+				444D55171C8817AE002EBE49 /* ReviewOrderViewController.xib in Resources */,
 				449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */,
 				449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */,
 				033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */,
@@ -382,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */,
+				444D55161C8817AE002EBE49 /* ReviewOrderViewController.m in Sources */,
 				44D3D7EF1C83B80D00098C57 /* Item.m in Sources */,
 				449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */,
 				44D3D7E61C83B36200098C57 /* User.m in Sources */,
