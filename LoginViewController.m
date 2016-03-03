@@ -199,7 +199,7 @@ static NSString* const kRegisterRequests = @"register";
                     [alert addAction:cancelButton];
                     
                     [self presentViewController:alert animated:YES completion:^{
-                       [self dismissViewControllerAnimated:YES completion:nil];
+                       [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
                     }];
                     
 
