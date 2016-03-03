@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "GlobalData.h"
 @interface LoginViewController ()
 
 @end

@@ -8,7 +8,7 @@
 
 #import "OrderViewController.h"
 #import "CreateOrderViewController.h"
-
+#import "GlobalData.h"
 @interface OrderViewController ()
 
 @end
@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.navigationController setNavigationBarHidden:YES];
     // Do any additional setup after loading the view from its nib.
 }
@@ -25,7 +26,6 @@
 {
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +35,6 @@
 
 - (IBAction)placeOrderPressed:(id)sender {
     [self.navigationController pushViewController:[[CreateOrderViewController alloc] initWithNibName:@"CreateOrderViewController" bundle:nil ] animated:YES];
-    NSLog(@"here");
 }
 
 /*
