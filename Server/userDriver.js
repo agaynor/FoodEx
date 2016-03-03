@@ -23,7 +23,7 @@ UserDriver.prototype.save = function(collectionName, user, callback) {
                 if(error) callback(error);
                 else{
            			//see if user already exists
-                	the_collection.find({"user":user.username}).toArray(function(error, results) {
+                	the_collection.find({"username":user.username}).toArray(function(error, results) {
                          	if(error) callback(error);
                             else
                             {	
