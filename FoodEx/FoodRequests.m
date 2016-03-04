@@ -28,7 +28,6 @@ static NSString* const kRequests = @"requests";
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray
 {
     for(NSDictionary *item in requests){
-        NSLog(@"%@", item[@"order"][@"items"][0][@"name"]);
         FoodRequest *request = [[FoodRequest alloc] initWithDictionary:item];
         [destinationArray addObject:request];
     }

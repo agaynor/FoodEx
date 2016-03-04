@@ -193,11 +193,17 @@ app.post('/:collection', function(req, res) {
 	//Get the body of the request and collection to be saved into
 	var object = req.body;
 	var collection = req.params.collection;
-	//Save the object to the collection and send the doc back when completed
-	collectionDriver.save(collection, object, function(err, docs) {
-		if(err){res.send(400, err);}
-		else { res.send(201, docs); } 
-	});
+
+	if(req.session && req.session.user)
+	{
+		object.buyer_id = req.session.user._id;
+		//Save the object to the collection and send the doc back when completed
+		collectionDriver.save(collection, object, function(err, docs) {
+			if(err){res.send(400, err);}
+			else { res.send(201, docs); } 
+		});
+	}
+	
 });
 
 //Route to REPLACE (PUT) an object with a given id in a collection

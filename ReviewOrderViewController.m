@@ -7,7 +7,7 @@
 //
 
 #import "ReviewOrderViewController.h"
-
+#import "GlobalData.h"
 @interface ReviewOrderViewController ()
 
 @end
@@ -24,6 +24,8 @@
 
 - (IBAction)confirmOrderPressed:(id)sender {
     //ACTUALLY SUBMIT THE ORDER
+    GlobalData *myData = [GlobalData sharedInstance];
+    [myData.myOrders persist:myData.currentFoodRequest];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

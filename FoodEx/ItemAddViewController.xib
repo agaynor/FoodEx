@@ -7,6 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemAddViewController">
             <connections>
                 <outlet property="lblQuantity" destination="aZc-kf-aWU" id="cCU-vX-q0n"/>
+                <outlet property="stepperQuantity" destination="APk-Bg-HeA" id="SLt-Qb-wdE"/>
+                <outlet property="txtComments" destination="du4-k2-QEc" id="Dy1-tB-Sct"/>
+                <outlet property="txtName" destination="Ubw-iR-eWr" id="kVi-SJ-YTA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-lP-Chm">
-                    <rect key="frame" x="239" y="467" width="123" height="44"/>
+                    <rect key="frame" x="239" y="531" width="123" height="44"/>
                     <color key="backgroundColor" red="1" green="0.033109554419999999" blue="0.040283076549999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="123" id="Pc0-G5-zvm"/>
@@ -32,7 +32,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Eb5-lP-Chm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Nsw-jO-bmz"/>
-                <constraint firstAttribute="bottom" secondItem="Eb5-lP-Chm" secondAttribute="bottom" constant="89" id="SFD-fo-wDI"/>
+                <constraint firstAttribute="bottom" secondItem="Eb5-lP-Chm" secondAttribute="bottom" constant="25" id="SFD-fo-wDI"/>
             </constraints>
         </view>
     </objects>

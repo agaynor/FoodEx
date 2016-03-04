@@ -2,12 +2,12 @@
 //  ItemAddViewController.m
 //  FoodEx
 //
-//  Created by Joshua Landman on 3/2/16.
 //  Copyright © 2016 FoodEx. All rights reserved.
 //
 
 #import "ItemAddViewController.h"
-
+#import "GlobalData.h"
+#import "Item.h"
 @interface ItemAddViewController ()
 
 @end
@@ -33,6 +33,15 @@
 
 - (IBAction)addItemPressed:(id)sender {
     //TODO: TAKE STEPS TO ADD ITEM
+    GlobalData *myData = [GlobalData sharedInstance];
+    Item *newItem = [[Item alloc] init];
+    [newItem setName:[self.txtName text]];
+    double quantity = [self.stepperQuantity value];
+    
+    [newItem setQuantity:[NSNumber numberWithInt:quantity]];
+    
+    [[[myData currentFoodRequest] order] addItem:newItem];
+    //NEED TO FIGURE OUT ITEM EDITING...MAYBE DON'T ALLOW EDITS, JUST DELETES
     [self.navigationController popViewControllerAnimated:YES];
 }
 

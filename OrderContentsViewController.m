@@ -34,7 +34,7 @@
 
 
 - (IBAction)placeOrderPressed:(id)sender {
-    //ACTUALLY SEND REQUEST HERE
+
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 

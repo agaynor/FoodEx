@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateOrderViewController">
             <connections>
+                <outlet property="datePickupTime" destination="dXE-d2-aq8" id="Rea-fb-ch8"/>
+                <outlet property="txtDiningArea" destination="ILg-QD-IfX" id="lkn-h8-P3M"/>
+                <outlet property="txtPickupLocation" destination="yyY-Us-MXc" id="SuM-Jy-5rp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

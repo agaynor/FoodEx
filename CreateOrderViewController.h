@@ -10,4 +10,11 @@
 
 @interface CreateOrderViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePickupTime;
+
+@property (weak, nonatomic) IBOutlet UITextField *txtDiningArea;
+
+@property (weak, nonatomic) IBOutlet UITextField *txtPickupLocation;
+
+
 @end

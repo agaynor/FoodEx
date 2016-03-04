@@ -8,6 +8,8 @@
 
 #import "CreateOrderViewController.h"
 #import "OrderContentsViewController.h"
+#import "GlobalData.h"
+#import "Order.h"
 @interface CreateOrderViewController ()
 
 @end
@@ -22,6 +24,11 @@
     [self.tabBarController.tabBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:NO];
     // Do any additional setup after loading the view from its nib.
+    GlobalData *myData = [GlobalData sharedInstance];
+    [myData setCurrentFoodRequest:[[FoodRequest alloc] init]];
+    Order *currentOrder = [[Order alloc] init];
+    [[myData currentFoodRequest] setOrder:currentOrder];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,6 +37,14 @@
 }
 
 - (IBAction)addItemsPressed:(id)sender {
+    
+    GlobalData *myData = [GlobalData sharedInstance];
+    [[myData currentFoodRequest] setPickup_at:[self.datePickupTime date]];
+    [[myData currentFoodRequest] setPickup_location:[self.txtPickupLocation text]];
+    Order *currentOrder = [myData currentFoodRequest].order;
+    [currentOrder setDining_location:[self.txtDiningArea text]];
+    
+    
     [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];
 }
 
