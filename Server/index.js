@@ -206,6 +206,31 @@ app.post('/:collection', function(req, res) {
 	
 });
 
+
+app.put('/:collection/:entity/deliveryAccept', function(req, res) {
+	//Parameters of request (objectid to update and collection)
+	var params = req.params;
+	var entity = params.entity;
+	var collection = params.collection;
+	var object = req.body;
+	if(entity){
+		//Update the collection with the request body for the entity objectid
+		if(req.session && req.session.user)
+		{
+			object.deliverer_id = req.session.user._id;
+			collectionDriver.update(collection, object, entity, function(error, objs) {
+			if(error) { res.send(400, error); }
+			else { res.send(200, objs); }
+			});
+		}
+		
+	}
+	else {
+		var error = { "message" : "Cannot PUT a whole collection" };
+		res.send(400, error);
+	}
+});
+
 //Route to REPLACE (PUT) an object with a given id in a collection
 app.put('/:collection/:entity', function(req, res) {
 	//Parameters of request (objectid to update and collection)
@@ -224,6 +249,9 @@ app.put('/:collection/:entity', function(req, res) {
 		res.send(400, error);
 	}
 });
+
+
+
 
 //Route to DELETE an object with a given id from a collection
 app.delete('/:collection/:entity', function(req, res) {

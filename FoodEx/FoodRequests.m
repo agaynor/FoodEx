@@ -11,7 +11,7 @@
 
 static NSString* const kBaseURL = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/";
 static NSString* const kRequests = @"requests";
-
+static NSString* const kDeliveryAccept = @"deliveryAccept";
 
 @implementation FoodRequests
 
@@ -61,7 +61,7 @@ static NSString* const kRequests = @"requests";
     
 }
 
--(void) persist:(FoodRequest *)foodRequest {
+-(void) persist:(FoodRequest *)foodRequest andIsDeliveryAccept:(BOOL)deliveryAccept {
     if(!foodRequest || foodRequest == nil){
         return;
     }
@@ -69,8 +69,14 @@ static NSString* const kRequests = @"requests";
     
     NSString *requestString = [kBaseURL stringByAppendingPathComponent:kRequests];
     
+    
     BOOL isExistingLocation = foodRequest._id != nil;
-    NSURL *url = isExistingLocation ? [NSURL URLWithString:[requestString stringByAppendingPathComponent:foodRequest._id]] : [NSURL URLWithString:requestString];
+    
+    requestString = isExistingLocation ? [requestString stringByAppendingPathComponent:foodRequest._id] : requestString;
+    
+    requestString = (deliveryAccept && isExistingLocation) ? [requestString stringByAppendingPathComponent:kDeliveryAccept] : requestString;
+    
+    NSURL *url = [NSURL URLWithString:requestString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = isExistingLocation ? @"PUT" : @"POST";

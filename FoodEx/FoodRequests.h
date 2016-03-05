@@ -14,7 +14,7 @@
 
 
 -(void) import;
--(void) persist:(FoodRequest *)request;
+-(void) persist:(FoodRequest *)foodRequest andIsDeliveryAccept:(BOOL)deliveryAccept;
 -(void) addRequest:(FoodRequest *)request;
 -(void) runQuery:(NSString *)queryString;
 -(void) queryUndeliveredRequests;

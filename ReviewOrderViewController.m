@@ -25,7 +25,7 @@
 - (IBAction)confirmOrderPressed:(id)sender {
     //ACTUALLY SUBMIT THE ORDER
     GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myOrders persist:myData.currentFoodRequest];
+    [myData.myOrders persist:myData.currentFoodRequest andIsDeliveryAccept:NO];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
