@@ -168,7 +168,6 @@ function returnCollectionResults(req, res){
 			//Pass back received objects as json type
 			else{
 				res.set('Content-Type', 'application/json');
-				console.log(objs);
 				res.send(200, objs);
 			}
 		}

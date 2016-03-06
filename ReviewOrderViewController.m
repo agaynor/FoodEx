@@ -29,6 +29,8 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
     self.lblPickupTime.text = [dateFormatter stringFromDate:reviewRequest.pickup_at];
     
+    [self.tabBarController.tabBar setHidden:YES];
+
     
     if(reviewRequest.buyer_name)
     {

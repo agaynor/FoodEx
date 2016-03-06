@@ -75,6 +75,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
         if (error == nil) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            [self.requests removeAllObjects];
             [self parseAndAddLocations:responseArray toArray:self.requests]; //7
         }
     }];

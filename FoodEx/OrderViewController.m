@@ -9,6 +9,7 @@
 #import "OrderViewController.h"
 #import "CreateOrderViewController.h"
 #import "GlobalData.h"
+#import "ReviewOrderViewController.h"
 @interface OrderViewController ()
 
 @end
@@ -18,7 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.tblMyOrders.dataSource = self;
+    self.tblMyOrders.delegate = self;
     [self.navigationController setNavigationBarHidden:YES];
     // Do any additional setup after loading the view from its nib.
 }
@@ -64,7 +66,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:MyIdentifier];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     
     
     // Here we use the provided setImageWithURL: method to load the web image
@@ -81,6 +83,14 @@
     cell.detailTextLabel.text = detailTextString;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    myData.currentFoodRequest = [myData.myOrders.requests objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 
 
