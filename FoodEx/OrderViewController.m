@@ -28,6 +28,7 @@
     [[[GlobalData sharedInstance] myOrders] importMyOrders];
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
+    [self.tblMyOrders reloadData];
 }
 
 

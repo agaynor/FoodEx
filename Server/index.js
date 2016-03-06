@@ -129,7 +129,7 @@ app.get('/:collection/myOrders', function(req, res, next){
 	//The request parameters
 	var params = req.params;
 	if(req.session && req.session.user){
-		collectionDriver.query(req.params.collection, {"_id": req.session.user._id }  , returnCollectionResults(req,res));
+		collectionDriver.query(req.params.collection, {"buyer_id": req.session.user._id }  , returnCollectionResults(req,res));
 
 	}
 
