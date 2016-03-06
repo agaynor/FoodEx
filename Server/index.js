@@ -254,7 +254,7 @@ app.put('/:collection/:entity', function(req, res) {
 
 
 //Route to DELETE an object with a given id from a collection
-app.delete('/:collection/:entity', function(req, res) {
+app.delete('/:collection/:entity/:deleteID', function(req, res) {
 	//Gets the parameters from the request (objectid to delete and collection)
 	var params = req.params;
 	var entity = params.entity;

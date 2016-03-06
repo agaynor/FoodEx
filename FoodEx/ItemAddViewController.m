@@ -39,7 +39,7 @@
     double quantity = [self.stepperQuantity value];
     
     [newItem setQuantity:[NSNumber numberWithInt:quantity]];
-    
+    [newItem setComment:[self.txtComments text]];
     [[[myData currentFoodRequest] order] addItem:newItem];
     //NEED TO FIGURE OUT ITEM EDITING...MAYBE DON'T ALLOW EDITS, JUST DELETES
     [self.navigationController popViewControllerAnimated:YES];

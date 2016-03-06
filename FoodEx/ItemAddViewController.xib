@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="lblQuantity" destination="aZc-kf-aWU" id="cCU-vX-q0n"/>
                 <outlet property="stepperQuantity" destination="APk-Bg-HeA" id="SLt-Qb-wdE"/>
-                <outlet property="txtComments" destination="du4-k2-QEc" id="Dy1-tB-Sct"/>
+                <outlet property="txtComments" destination="du4-k2-QEc" id="Va6-Sa-Qng"/>
                 <outlet property="txtName" destination="Ubw-iR-eWr" id="kVi-SJ-YTA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,13 +44,13 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="APk-Bg-HeA">
+                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="APk-Bg-HeA">
                     <rect key="frame" x="469" y="203" width="94" height="29"/>
                     <connections>
                         <action selector="quantityChanged:" destination="-1" eventType="valueChanged" id="J2g-Lb-c2l"/>
                     </connections>
                 </stepper>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-kf-aWU">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-kf-aWU">
                     <rect key="frame" x="419" y="206" width="42" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="42" id="tbo-CV-q07"/>
