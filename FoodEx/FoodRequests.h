@@ -18,7 +18,7 @@
 -(void) addRequest:(FoodRequest *)request;
 -(void) runQuery:(NSString *)queryString;
 -(void) queryUndeliveredRequests;
-
+-(void) importMyOrders;
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
 
 //Implement later with location services

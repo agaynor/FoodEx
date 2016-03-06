@@ -89,6 +89,8 @@ static NSString* const kRegisterRequests = @"register";
             
             //else login success
             else{
+                GlobalData *myData = [GlobalData sharedInstance];
+                myData.myUsername = [self.txtUsername text];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             }
@@ -184,7 +186,8 @@ static NSString* const kRegisterRequests = @"register";
             //else register success
             else{
                 
-                
+                GlobalData *myData = [GlobalData sharedInstance];
+                myData.myUsername = [self.txtUsername text];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     

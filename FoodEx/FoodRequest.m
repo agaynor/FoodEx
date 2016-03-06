@@ -84,6 +84,8 @@
         _pickup_location = dictionary[@"pickup_location"];
         _buyer_id = dictionary[@"buyer_id"];
         _deliverer_id = dictionary[@"deliverer_id"];
+        _buyer_name = dictionary[@"buyer_name"];
+        _deliverer_name = dictionary[@"deliverer_name"];
         _order = [[Order alloc] initWithDictionary:dictionary[@"order"]];
     }
     return self;
@@ -100,6 +102,8 @@
     safeSet(jsonable, @"pickup_location", self.pickup_location);
     safeSet(jsonable, @"buyer_id", self.buyer_id);
     safeSet(jsonable, @"deliverer_id", self.deliverer_id);
+    safeSet(jsonable, @"buyer_name", self.buyer_name);
+    safeSet(jsonable, @"deliverer_name", self.deliverer_name);
     safeSet(jsonable, @"order", [self.order toDictionary]);
     
     return jsonable;

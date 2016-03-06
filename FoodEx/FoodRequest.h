@@ -19,6 +19,8 @@
 @property(nonatomic, copy) NSString *pickup_location;
 @property(nonatomic, copy) NSString *buyer_id;
 @property(nonatomic, copy) NSString *deliverer_id;
+@property(nonatomic, copy) NSString *buyer_name;
+@property(nonatomic, copy) NSString *deliverer_name;
 @property(nonatomic, retain) Order *order;
 
 #pragma mark - JSON conversion

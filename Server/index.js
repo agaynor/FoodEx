@@ -124,7 +124,15 @@ app.get('/logout', function(req, res)
 	res.send(200, "logged out");
 });
 
-//Route for recieving a GET request for any collection (other than files since those were received above)
+
+app.get('/:collection/myOrders', function(req, res, next){
+	//The request parameters
+	var params = req.params;
+
+	collectionDriver.query(req.params.collection, {"_id": req.session.user._id}  , returnCollectionResults(req,res));
+
+});
+//Route for recieving a GET request for any collection (other than files since those were recved above)
 app.get('/:collection', function(req, res, next) {
 	//The request parameters
 	var params = req.params;
@@ -197,6 +205,7 @@ app.post('/:collection', function(req, res) {
 	if(req.session && req.session.user)
 	{
 		object.buyer_id = req.session.user._id;
+		object.buyer_name = req.session.user.username;
 		//Save the object to the collection and send the doc back when completed
 		collectionDriver.save(collection, object, function(err, docs) {
 			if(err){res.send(400, err);}
@@ -218,6 +227,7 @@ app.put('/:collection/:entity/deliveryAccept', function(req, res) {
 		if(req.session && req.session.user)
 		{
 			object.deliverer_id = req.session.user._id;
+			object.deliverer_name = req.session.user.username;
 			collectionDriver.update(collection, object, entity, function(error, objs) {
 			if(error) { res.send(400, error); }
 			else { res.send(200, objs); }

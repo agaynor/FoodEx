@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrderViewController : UIViewController
+@interface OrderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-//@property (nonatomic, retain)
+@property (weak, nonatomic) IBOutlet UITableView *tblMyOrders;
+
 @end

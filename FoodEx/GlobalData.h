@@ -15,6 +15,7 @@
 @property (nonatomic, strong) FoodRequests *myOrders;
 @property (nonatomic, strong) FoodRequests *myDeliveries;
 @property (nonatomic, strong) FoodRequests *unclaimedDeliveries;
+@property (nonatomic, strong) NSString *myUsername;
 
 +(id)sharedInstance;
 
