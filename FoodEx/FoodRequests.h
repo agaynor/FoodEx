@@ -20,6 +20,7 @@
 -(void) queryUndeliveredRequests;
 -(void) importMyOrders;
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
+-(void)deleteRequest:(FoodRequest *)foodRequest;
 
 //Implement later with location services
 //-(void) queryRegion:(MKCoordinateRegion)region;

@@ -271,7 +271,9 @@ app.delete('/:collection/:entity/:deleteID', function(req, res) {
 	var params = req.params;
 	var entity = params.entity;
 	var collection = params.collection;
-	if(entity){
+	var deleteOrdererId = params.deleteID;
+
+	if(entity && req.session && req.session.user && deleteOrdererId == req.session.user._id){
 		//Calls collectionDriver's delete function and sends response with deleted object
 		collectionDriver.delete(collection, entity, function(error, objs) {
 			if(error) { res.send(400, error); }

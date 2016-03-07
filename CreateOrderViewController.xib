@@ -32,7 +32,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6c-F4-k8Q">
-                    <rect key="frame" x="12" y="166" width="126.5" height="20.5"/>
+                    <rect key="frame" x="12" y="166" width="127" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="126.5" id="lKv-ph-wSP"/>
                     </constraints>
@@ -63,7 +63,7 @@
                     </date>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIP-RT-HDM">
-                    <rect key="frame" x="251" y="405" width="99" height="20.5"/>
+                    <rect key="frame" x="251" y="405" width="99" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

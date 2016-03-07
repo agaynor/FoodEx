@@ -11,6 +11,7 @@
 #import "FoodRequest.h"
 @interface ReviewOrderViewController ()
 
+
 @end
 
 @implementation ReviewOrderViewController
@@ -31,11 +32,28 @@
     
     [self.tabBarController.tabBar setHidden:YES];
 
-    
+    //Review request has been previously submitted
     if(reviewRequest.buyer_name)
     {
         self.lblOrderer.text = reviewRequest.buyer_name;
+        //If the current logged in user submitted this request and it has not yet been picked up
+        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        {
+            //then we want to provide the option to delete the request
+            [self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
+        }
+        //If the request has been picked up
+        else if([reviewRequest.buyer_name isEqualToString:myData.myUsername])
+        {
+            [self.btnAction setEnabled:NO];
+            [self.btnAction setTitle:@"Request Claimed" forState:UIControlStateDisabled];
+        }
+        //If the request is not ours
+        else{
+            [self.btnAction setTitle:@"Claim Delivery" forState:UIControlStateNormal];
+        }
     }
+    //If the review request has not been previously submitted
     else{
         self.lblOrderer.text = myData.myUsername;
     }
@@ -97,7 +115,26 @@
 - (IBAction)confirmOrderPressed:(id)sender {
     //ACTUALLY SUBMIT THE ORDER
     GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myOrders persist:myData.currentFoodRequest andIsDeliveryAccept:NO];
+    FoodRequest *reviewRequest = myData.currentFoodRequest;
+
+    //Review request has been previously submitted
+    if(reviewRequest.buyer_name)
+    {
+        //If the current logged in user submitted this request and it has not yet been picked up
+        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        {
+            [myData.myOrders deleteRequest:reviewRequest];
+        }
+        //If the request is not ours
+        else{
+            [myData.unclaimedDeliveries persist:reviewRequest andIsDeliveryAccept:YES];
+        }
+    }
+    //If the review request has not been previously submitted
+    else{
+         [myData.myOrders persist:reviewRequest andIsDeliveryAccept:NO];
+    }
+
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -145,8 +145,12 @@
     
     
     UINavigationController *orderNav = [[UINavigationController alloc] init];
+    UINavigationController *deliveryNav = [[UINavigationController alloc] init];
     
+    [deliveryNav pushViewController:deliverController animated:NO];
     [orderNav pushViewController:orderController animated:NO];
+    
+    [deliverController.navigationController setNavigationBarHidden:YES];
     [orderController.navigationController setNavigationBarHidden:YES];
     
     
@@ -154,10 +158,10 @@
     
     
     orderNav.tabBarItem.title = @"My Orders";
-    deliverController.tabBarItem.title = @"Deliveries";
+    deliveryNav.tabBarItem.title = @"Deliveries";
     profileController.tabBarItem.title = @"Profile";
     
-    tab.viewControllers = [[NSArray alloc] initWithObjects:orderNav, deliverController, profileController, nil];
+    tab.viewControllers = [[NSArray alloc] initWithObjects:orderNav, deliveryNav, profileController, nil];
     
     self.window.rootViewController = tab;
     

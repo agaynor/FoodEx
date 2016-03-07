@@ -35,6 +35,23 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
+- (void)parseAndRemoveLocations:(FoodRequest *)removeRequest fromArray:(NSMutableArray*)destinationArray
+{
+    FoodRequest *requestToRemove = nil;
+    for(FoodRequest *request in destinationArray)
+    {
+        if([request._id isEqualToString:removeRequest._id])
+        {
+            requestToRemove = request;
+        }
+    }
+    
+    if(requestToRemove)
+    {
+        [destinationArray removeObject:requestToRemove];
+    }
+}
+
 -(void) addRequest:(FoodRequest *)request{
     [self.requests addObject:request];
 }
@@ -84,6 +101,30 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
+-(void)deleteRequest:(FoodRequest *)foodRequest
+{
+    NSURL *url = [NSURL URLWithString:[[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:foodRequest._id] stringByAppendingPathComponent:foodRequest.buyer_id]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"DELETE";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+        if (error == nil) {
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            if([responseArray count] > 0){
+                FoodRequest *requestToRemove = [[FoodRequest alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+                [self parseAndRemoveLocations:requestToRemove fromArray:self.requests]; //7
+            }
+            
+        }
+    }];
+    
+    [dataTask resume];
+    
+}
 
 -(void) persist:(FoodRequest *)foodRequest andIsDeliveryAccept:(BOOL)deliveryAccept {
     if(!foodRequest || foodRequest == nil){
