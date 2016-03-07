@@ -43,7 +43,7 @@
             [self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
         }
         //If the request has been picked up
-        else if([reviewRequest.buyer_name isEqualToString:myData.myUsername])
+        else if(reviewRequest.deliverer_id)
         {
             [self.btnAction setEnabled:NO];
             [self.btnAction setTitle:@"Request Claimed" forState:UIControlStateDisabled];
