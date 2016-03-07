@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DeliveryViewController : UIViewController
+@interface DeliveryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tblDeliveries;
 
 @end

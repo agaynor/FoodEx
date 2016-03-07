@@ -12,6 +12,7 @@
 static NSString* const kBaseURL = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/";
 static NSString* const kRequests = @"requests";
 static NSString* const kMyOrders = @"myOrders";
+static NSString* const kMyDeliveries = @"myDeliveries";
 static NSString* const kDeliveryAccept = @"deliveryAccept";
 
 @implementation FoodRequests
@@ -100,6 +101,31 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     [dataTask resume];
     
 }
+
+-(void) importMyDeliveries {
+    
+    NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyDeliveries]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"GET";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+        if (error == nil) {
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            [self.requests removeAllObjects];
+            [self parseAndAddLocations:responseArray toArray:self.requests]; //7
+        }
+    }];
+    
+    [dataTask resume];
+    
+}
+
+
+
 
 -(void)deleteRequest:(FoodRequest *)foodRequest
 {

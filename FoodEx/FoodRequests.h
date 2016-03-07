@@ -19,6 +19,7 @@
 -(void) runQuery:(NSString *)queryString;
 -(void) queryUndeliveredRequests;
 -(void) importMyOrders;
+-(void) importMyDeliveries;
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
 -(void)deleteRequest:(FoodRequest *)foodRequest;
 

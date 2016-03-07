@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryViewController">
             <connections>
+                <outlet property="tblDeliveries" destination="1Cl-iX-2Ew" id="1Fs-W3-4os"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +14,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Cl-iX-2Ew">
+                    <rect key="frame" x="0.0" y="26" width="600" height="520"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="cbt-Lo-4QV"/>
+                <constraint firstAttribute="trailing" secondItem="1Cl-iX-2Ew" secondAttribute="trailing" id="mhf-nP-3NP"/>
+                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x50-td-pde"/>
+                <constraint firstAttribute="bottom" secondItem="1Cl-iX-2Ew" secondAttribute="bottom" constant="54" id="z0p-jK-AVA"/>
+            </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>
     </objects>

@@ -44,7 +44,7 @@
     Order *currentOrder = [myData currentFoodRequest].order;
     [currentOrder setDining_location:[self.txtDiningArea text]];
     
-    
+    NSLog(@"here");
     [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];
 }
 

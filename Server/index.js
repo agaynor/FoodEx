@@ -134,6 +134,16 @@ app.get('/:collection/myOrders', function(req, res, next){
 	}
 
 });
+
+app.get('/:collection/myDeliveries', function(req, res, next){
+	//The request parameters
+	var params = req.params;
+	if(req.session && req.session.user){
+		collectionDriver.query(req.params.collection, {"deliverer_id": req.session.user._id }  , returnCollectionResults(req,res));
+
+	}
+
+});
 //Route for recieving a GET request for any collection (other than files since those were recved above)
 app.get('/:collection', function(req, res, next) {
 	//The request parameters
