@@ -23,9 +23,17 @@
     GlobalData *myData = [GlobalData sharedInstance];
     [myData.myDeliveries importMyDeliveries];
     [myData.unclaimedDeliveries queryUndeliveredRequests];
+    [self.tblDeliveries reloadData];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    [myData.myDeliveries importMyDeliveries];
+    [myData.unclaimedDeliveries queryUndeliveredRequests];
+    [self.tblDeliveries reloadData];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

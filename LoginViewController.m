@@ -91,6 +91,7 @@ static NSString* const kRegisterRequests = @"register";
             else{
                 GlobalData *myData = [GlobalData sharedInstance];
                 myData.myUsername = [self.txtUsername text];
+                
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             }
