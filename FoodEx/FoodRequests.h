@@ -13,13 +13,14 @@
 @property (nonatomic, strong) NSMutableArray* requests;
 
 
--(void) import;
--(void) persist:(FoodRequest *)foodRequest andIsDeliveryAccept:(BOOL)deliveryAccept;
+-(void) importToTableView:(UITableView *)myTable;
+-(void) persist:(FoodRequest *)foodRequest withDeliveryAcceptTo:(FoodRequests *)myDeliveries;
+-(void) persist:(FoodRequest *)foodRequest;
 -(void) addRequest:(FoodRequest *)request;
--(void) runQuery:(NSString *)queryString;
--(void) queryUndeliveredRequests;
--(void) importMyOrders;
--(void) importMyDeliveries;
+-(void) runQuery:(NSString *)queryString toTableView:(UITableView *)myTable;
+-(void) queryUndeliveredRequestsToTableView:(UITableView *)myTable;
+-(void) importMyOrdersToTableView:(UITableView *)myTable;
+-(void) importMyDeliveriesToTableView:(UITableView *)myTable;
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
 -(void)deleteRequest:(FoodRequest *)foodRequest;
 

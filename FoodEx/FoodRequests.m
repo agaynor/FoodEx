@@ -59,7 +59,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
 
 
 
--(void) import {
+-(void) importToTableView:(UITableView *)myTable {
     
     NSURL *url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kRequests]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -73,6 +73,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
         if (error == nil) {
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
             [self parseAndAddLocations:responseArray toArray:self.requests]; //7
+            [myTable reloadData];
         }
     }];
     
@@ -80,7 +81,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
--(void) importMyOrders {
+-(void) importMyOrdersToTableView:(UITableView *)myTable {
     
     NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyOrders]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -95,6 +96,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
             [self.requests removeAllObjects];
             [self parseAndAddLocations:responseArray toArray:self.requests]; //7
+            [myTable reloadData];
         }
     }];
     
@@ -102,7 +104,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
--(void) importMyDeliveries {
+-(void) importMyDeliveriesToTableView:(UITableView *)myTable {
     
     NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyDeliveries]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -117,6 +119,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
             [self.requests removeAllObjects];
             [self parseAndAddLocations:responseArray toArray:self.requests]; //7
+            [myTable reloadData];
         }
     }];
     
@@ -152,7 +155,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
--(void) persist:(FoodRequest *)foodRequest andIsDeliveryAccept:(BOOL)deliveryAccept {
+-(void) persist:(FoodRequest *)foodRequest {
     if(!foodRequest || foodRequest == nil){
         return;
     }
@@ -165,7 +168,6 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
     requestString = isExistingLocation ? [requestString stringByAppendingPathComponent:foodRequest._id] : requestString;
     
-    requestString = (deliveryAccept && isExistingLocation) ? [requestString stringByAppendingPathComponent:kDeliveryAccept] : requestString;
     
     NSURL *url = [NSURL URLWithString:requestString];
     
@@ -191,10 +193,48 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
 }
 
 
+-(void) persist:(FoodRequest *)foodRequest withDeliveryAcceptTo:(FoodRequests *)myDeliveries{
+    if(!foodRequest || foodRequest == nil){
+        return;
+    }
+    
+    
+    NSString *requestString = [[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:foodRequest._id] stringByAppendingPathComponent:kDeliveryAccept];
+    
+    
+  
+    
+    NSURL *url = [NSURL URLWithString:requestString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"PUT";
+    
+    NSData* data = [NSJSONSerialization dataWithJSONObject:[foodRequest toDictionary] options:0 error:NULL];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            
+                FoodRequest *request = [[FoodRequest alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+                [self parseAndRemoveLocations:request fromArray:self.requests];
+                [myDeliveries addRequest:request];
+        }
+    }];
+    [dataTask resume];
+}
 
 
 
--(void) runQuery:(NSString *)queryString{
+
+
+-(void) runQuery:(NSString *)queryString toTableView:(UITableView *) myTable{
     NSString *urlStr = [[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingString:queryString];
     NSURL *url = [NSURL URLWithString:urlStr];
     
@@ -211,6 +251,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
             NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
             NSLog(@"received %lu items", (unsigned long)responseArray.count);
             [self parseAndAddLocations:responseArray toArray:self.requests];
+            [myTable reloadData];
         }
     }];
     
@@ -219,7 +260,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
 
 
 
--(void) queryUndeliveredRequests {
+-(void) queryUndeliveredRequestsToTableView:(UITableView *)myTable {
     NSString *queryParam = [NSString stringWithFormat:@"{\"$exists\":false}"];
     NSString *doesntExist = [NSString stringWithFormat:@"{\"deliverer_id\":%@}", queryParam];
     NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
@@ -228,7 +269,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
                                                                                              (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
                                                                                              kCFStringEncodingUTF8));
     NSString *query = [NSString stringWithFormat:@"?query=%@", escQuery];
-    [self runQuery:query];
+    [self runQuery:query toTableView: myTable];
 
 }
 

@@ -18,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [[[GlobalData sharedInstance] myOrders] importMyOrdersToTableView:self.tblMyOrders];
+
     self.tblMyOrders.dataSource = self;
     self.tblMyOrders.delegate = self;
     [self.navigationController setNavigationBarHidden:YES];
@@ -27,7 +28,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [[[GlobalData sharedInstance] myOrders] importMyOrders];
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
     [self.tblMyOrders reloadData];

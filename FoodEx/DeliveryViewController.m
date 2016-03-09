@@ -21,17 +21,15 @@
     self.tblDeliveries.dataSource = self;
     
     GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myDeliveries importMyDeliveries];
-    [myData.unclaimedDeliveries queryUndeliveredRequests];
+    [myData.myDeliveries importMyDeliveriesToTableView:self.tblDeliveries];
+    [myData.unclaimedDeliveries queryUndeliveredRequestsToTableView:self.tblDeliveries];
     [self.tblDeliveries reloadData];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myDeliveries importMyDeliveries];
-    [myData.unclaimedDeliveries queryUndeliveredRequests];
+    [self.tabBarController.tabBar setHidden:NO];
     [self.tblDeliveries reloadData];
 }
 

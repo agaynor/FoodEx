@@ -127,12 +127,12 @@
         }
         //If the request is not ours
         else{
-            [myData.unclaimedDeliveries persist:reviewRequest andIsDeliveryAccept:YES];
+            [myData.unclaimedDeliveries persist:reviewRequest withDeliveryAcceptTo:myData.myDeliveries];
         }
     }
     //If the review request has not been previously submitted
     else{
-         [myData.myOrders persist:reviewRequest andIsDeliveryAccept:NO];
+         [myData.myOrders persist:reviewRequest];
     }
 
     [self.navigationController popToRootViewControllerAnimated:YES];
