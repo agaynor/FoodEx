@@ -272,7 +272,25 @@ app.put('/:collection/:entity', function(req, res) {
 	}
 });
 
+//Route to DELETE an object with a given id from a collection
+app.delete('/:collection/:entity', function(req, res) {
+	//Gets the parameters from the request (objectid to delete and collection)
+	var params = req.params;
+	var entity = params.entity;
+	var collection = params.collection;
 
+	if(entity){
+		//Calls collectionDriver's delete function and sends response with deleted object
+		collectionDriver.delete(collection, entity, function(error, objs) {
+			if(error) { res.send(400, error); }
+			else{ res.send(200, objs); }
+		});
+	}
+	else {
+		var error = {"message":"cannot DELETE a whole collection"};
+		res.send(400, error);
+	}
+});
 
 
 //Route to DELETE an object with a given id from a collection
