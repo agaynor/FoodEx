@@ -21,9 +21,21 @@
     self.tblDeliveries.dataSource = self;
     
     GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myDeliveries importMyDeliveriesToTableView:self.tblDeliveries];
-    [myData.unclaimedDeliveries queryUndeliveredRequestsToTableView:self.tblDeliveries];
-    [self.tblDeliveries reloadData];
+    [myData.myDeliveries importMyDeliveries:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblDeliveries reloadData];
+            
+        });
+    }];
+    [myData.unclaimedDeliveries queryUndeliveredRequests:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblDeliveries reloadData];
+            
+        });
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateNotification:) name:@"UpdateMyDeliveries" object:nil];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -31,6 +43,14 @@
 {
     [self.tabBarController.tabBar setHidden:NO];
     [self.tblDeliveries reloadData];
+}
+
+-(void)receiveUpdateNotification:(NSNotification *)notification{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tblDeliveries reloadData];
+    
+    });
+   
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -110,7 +130,7 @@
     {
         myData.currentFoodRequest = [myData.unclaimedDeliveries.requests objectAtIndex:indexPath.row];
     }
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:NULL];
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 

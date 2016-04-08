@@ -15,6 +15,12 @@
 @end
 
 @implementation CreateOrderViewController
+{
+    BOOL didLocateUser;
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,8 +34,87 @@
     [myData setCurrentFoodRequest:[[FoodRequest alloc] init]];
     Order *currentOrder = [[Order alloc] init];
     [[myData currentFoodRequest] setOrder:currentOrder];
+    
+    
+    
+    //setup map information
+    self.mapView.delegate = self;
+    
+    self.mapView.showsUserLocation = YES;
+    self.mapView.rotateEnabled = NO;
+    self.mapView.pitchEnabled = NO;
+    self.bounds = MGLCoordinateBoundsMake(CLLocationCoordinate2DMake(38.637206, -90.319410),CLLocationCoordinate2DMake(38.659962, -90.297445));
+    
+    self.mapView.visibleCoordinateBounds = self.bounds;
+    if(!self.pinImage.image)
+    {
+        self.pinImage.image = [UIImage imageNamed:@"pin.png"];
+    }
+    
+    self.mapView.minimumZoomLevel = self.mapView.zoomLevel;
+    
+    
+    
+    didLocateUser = NO;
+
 
 }
+
+-(void)mapView:(MGLMapView *)mapView didUpdateUserLocation:(MGLUserLocation *)userLocation
+{
+    
+    if(!didLocateUser && [self point:self.mapView.userLocation.coordinate inCoordinateBounds:self.bounds])
+    {
+        self.mapView.centerCoordinate = self.mapView.userLocation.coordinate;
+        [self.mapView setZoomLevel:self.mapView.zoomLevel+3.5 animated:NO];
+    }
+   
+    didLocateUser = YES;
+     self.mapView.showsUserLocation = NO;
+}
+
+
+-(BOOL)point:(CLLocationCoordinate2D) pt inCoordinateBounds:(MGLCoordinateBounds)bound{
+    if(pt.latitude > bound.sw.latitude && pt.latitude < bound.ne.latitude)
+    {
+        
+        if(pt.longitude > bound.sw.longitude && pt.longitude < bound.ne.longitude)
+        {
+            return YES;
+        }
+        else{
+            return NO;
+        }
+        
+    }
+    else{
+        return NO;
+        
+    }
+    
+}
+-(void)mapViewRegionIsChanging:(MGLMapView *)mapView
+{
+    
+    if(self.mapView.centerCoordinate.latitude > self.bounds.ne.latitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.bounds.ne.latitude, self.mapView.centerCoordinate.longitude)];
+    }
+    if(self.mapView.centerCoordinate.longitude > self.bounds.ne.longitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.bounds.ne.longitude)];
+    }
+    if(self.mapView.centerCoordinate.latitude < self.bounds.sw.latitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.bounds.sw.latitude, self.mapView.centerCoordinate.longitude)];
+        
+    }
+    if(self.mapView.centerCoordinate.longitude < self.bounds.sw.longitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.bounds.sw.longitude)];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -40,11 +125,11 @@
     
     GlobalData *myData = [GlobalData sharedInstance];
     [[myData currentFoodRequest] setPickup_at:[self.datePickupTime date]];
-    [[myData currentFoodRequest] setPickup_location:[self.txtPickupLocation text]];
+    [[myData currentFoodRequest] setPickup_point:self.mapView.centerCoordinate];
     Order *currentOrder = [myData currentFoodRequest].order;
     [currentOrder setDining_location:[self.txtDiningArea text]];
     
-    NSLog(@"here");
+    
     [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];
 }
 

@@ -21,12 +21,14 @@
 @property(nonatomic, copy) NSString *deliverer_id;
 @property(nonatomic, copy) NSString *buyer_name;
 @property(nonatomic, copy) NSString *deliverer_name;
+@property(nonatomic) CLLocationCoordinate2D pickup_point;
 @property(nonatomic, retain) Order *order;
 
 #pragma mark - JSON conversion
 
 -(instancetype) initWithDictionary:(NSDictionary *)dictionary;
 -(NSDictionary *)toDictionary;
+
 
 
 //Location stuff commented out for later

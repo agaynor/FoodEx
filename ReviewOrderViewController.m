@@ -8,6 +8,8 @@
 
 #import "ReviewOrderViewController.h"
 #import "GlobalData.h"
+#import "OrderViewController.h"
+#import "DeliveryViewController.h"
 #import "FoodRequest.h"
 @interface ReviewOrderViewController ()
 
@@ -123,19 +125,26 @@
         //If the current logged in user submitted this request and it has not yet been picked up
         if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
         {
-            [myData.myOrders deleteRequest:reviewRequest];
+            [myData.myOrders deleteRequest:reviewRequest andCompletion:^(BOOL completion){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
+            }];
         }
         //If the request is not ours
         else{
-            [myData.unclaimedDeliveries persist:reviewRequest withDeliveryAcceptTo:myData.myDeliveries];
+            [myData.unclaimedDeliveries persist:reviewRequest withDeliveryAcceptTo:myData.myDeliveries andCompletion:^(BOOL completion){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyDeliveries" object:self];
+            }];
         }
     }
     //If the review request has not been previously submitted
     else{
-         [myData.myOrders persist:reviewRequest];
+        [myData.myOrders persist:reviewRequest andCompletion:^(BOOL completion){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
+        }];
     }
-
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {

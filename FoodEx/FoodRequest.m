@@ -87,6 +87,8 @@
         _buyer_name = dictionary[@"buyer_name"];
         _deliverer_name = dictionary[@"deliverer_name"];
         _order = [[Order alloc] initWithDictionary:dictionary[@"order"]];
+        _pickup_point = CLLocationCoordinate2DMake([dictionary[@"pickup_point"][@"coordinates"][1] floatValue], [dictionary[@"pickup_point"][@"coordinates"][0] floatValue]);
+        
     }
     return self;
 }
@@ -105,7 +107,9 @@
     safeSet(jsonable, @"buyer_name", self.buyer_name);
     safeSet(jsonable, @"deliverer_name", self.deliverer_name);
     safeSet(jsonable, @"order", [self.order toDictionary]);
+    NSDictionary *loc = @{@"type":@"Point", @"coordinates" : @[@(self.pickup_point.longitude), @(self.pickup_point.latitude)] };
     
+    safeSet(jsonable, @"pickup_point", loc);
     return jsonable;
 }
 

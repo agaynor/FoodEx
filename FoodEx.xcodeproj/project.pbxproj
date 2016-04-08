@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		033807E11C876D380045D5BB /* ItemAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 033807DF1C876D380045D5BB /* ItemAddViewController.m */; };
 		033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033807E01C876D380045D5BB /* ItemAddViewController.xib */; };
+		44071DE71CB466130046EEBD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44071DE61CB466130046EEBD /* CoreLocation.framework */; };
 		4415EB821C839D0200B2C5B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB811C839D0200B2C5B7 /* main.m */; };
 		4415EB851C839D0200B2C5B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415EB841C839D0200B2C5B7 /* AppDelegate.m */; };
 		4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4415EB8C1C839D0200B2C5B7 /* Main.storyboard */; };
@@ -21,6 +22,9 @@
 		444D551A1C88EE03002EBE49 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D55191C88EE03002EBE49 /* GlobalData.m */; settings = {ASSET_TAGS = (); }; };
 		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; };
 		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; };
+		44696AC61CB6F85B0019758E /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44696AC51CB6F85B0019758E /* Mapbox.framework */; };
+		44696AC71CB6F85C0019758E /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44696AC51CB6F85B0019758E /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44696ACA1CB6FB4B0019758E /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 44696AC91CB6FB4B0019758E /* pin.png */; settings = {ASSET_TAGS = (); }; };
 		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; };
 		449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD65D1C864F4D00325DAA /* OrderViewController.xib */; };
 		449CD6631C864F6800325DAA /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6611C864F6800325DAA /* DeliveryViewController.m */; };
@@ -58,10 +62,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		44696AC81CB6F85C0019758E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44696AC71CB6F85C0019758E /* Mapbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		033807DE1C876D380045D5BB /* ItemAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemAddViewController.h; sourceTree = "<group>"; };
 		033807DF1C876D380045D5BB /* ItemAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemAddViewController.m; sourceTree = "<group>"; };
 		033807E01C876D380045D5BB /* ItemAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemAddViewController.xib; sourceTree = "<group>"; };
+		44071DE61CB466130046EEBD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4415EB7D1C839D0200B2C5B7 /* FoodEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4415EB811C839D0200B2C5B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4415EB831C839D0200B2C5B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +103,9 @@
 		446588B31C87563E002CA7ED /* OrderContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderContentsViewController.h; path = ../OrderContentsViewController.h; sourceTree = "<group>"; };
 		446588B41C87563E002CA7ED /* OrderContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderContentsViewController.m; path = ../OrderContentsViewController.m; sourceTree = "<group>"; };
 		446588B51C87563E002CA7ED /* OrderContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderContentsViewController.xib; path = ../OrderContentsViewController.xib; sourceTree = "<group>"; };
+		44696AC31CB6F8460019758E /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../../../../Downloads/mapbox-ios-sdk-3.2.0-dynamic/dynamic/Mapbox.framework"; sourceTree = "<group>"; };
+		44696AC51CB6F85B0019758E /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		44696AC91CB6FB4B0019758E /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		449CD65B1C864F4D00325DAA /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		449CD65C1C864F4D00325DAA /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		449CD65D1C864F4D00325DAA /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
@@ -119,9 +141,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44071DE71CB466130046EEBD /* CoreLocation.framework in Frameworks */,
 				44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */,
 				44D3D7F31C83B9DD00098C57 /* MapKit.framework in Frameworks */,
 				44D3D7F11C83B9D300098C57 /* Foundation.framework in Frameworks */,
+				44696AC61CB6F85B0019758E /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +169,8 @@
 		4415EB741C839D0200B2C5B7 = {
 			isa = PBXGroup;
 			children = (
+				44696AC91CB6FB4B0019758E /* pin.png */,
+				44696AC51CB6F85B0019758E /* Mapbox.framework */,
 				4415EB7F1C839D0200B2C5B7 /* FoodEx */,
 				4415EB9C1C839D0300B2C5B7 /* FoodExTests */,
 				4415EBA71C839D0300B2C5B7 /* FoodExUITests */,
@@ -250,6 +276,8 @@
 		44D3D7F61C83B9E900098C57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44696AC31CB6F8460019758E /* Mapbox.framework */,
+				44071DE61CB466130046EEBD /* CoreLocation.framework */,
 				44D3D7F41C83B9E500098C57 /* UIKit.framework */,
 				44D3D7F21C83B9DD00098C57 /* MapKit.framework */,
 				44D3D7F01C83B9D300098C57 /* Foundation.framework */,
@@ -267,6 +295,7 @@
 				4415EB791C839D0200B2C5B7 /* Sources */,
 				4415EB7A1C839D0200B2C5B7 /* Frameworks */,
 				4415EB7B1C839D0200B2C5B7 /* Resources */,
+				44696AC81CB6F85C0019758E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -369,6 +398,7 @@
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
 				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
+				44696ACA1CB6FB4B0019758E /* pin.png in Resources */,
 				4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */,
 				449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */,
 			);
@@ -549,6 +579,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FoodEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = agaynor.FoodEx;
@@ -560,6 +594,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = FoodEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = agaynor.FoodEx;

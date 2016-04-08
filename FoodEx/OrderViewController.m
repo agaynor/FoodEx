@@ -18,11 +18,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[[GlobalData sharedInstance] myOrders] importMyOrdersToTableView:self.tblMyOrders];
-
+  /*  [[[GlobalData sharedInstance] myOrders] importMyOrders:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblMyOrders reloadData];
+            
+        });
+    }];
+*/
     self.tblMyOrders.dataSource = self;
     self.tblMyOrders.delegate = self;
     [self.navigationController setNavigationBarHidden:YES];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateNotification:) name:@"UpdateMyOrders" object:nil];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -30,10 +39,15 @@
 {
     [self.navigationController setNavigationBarHidden:YES];
     [self.tabBarController.tabBar setHidden:NO];
-    [self.tblMyOrders reloadData];
 }
 
 
+-(void)receiveUpdateNotification:(NSNotification *) notification{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tblMyOrders reloadData];
+        
+    });
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -89,7 +103,7 @@
 {
     GlobalData *myData = [GlobalData sharedInstance];
     myData.currentFoodRequest = [myData.myOrders.requests objectAtIndex:indexPath.row];
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:NULL];
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 

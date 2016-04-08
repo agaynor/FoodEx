@@ -16,6 +16,7 @@
 #import "DeliveryViewController.h"
 #import "ProfileViewController.h"
 #import "LoginViewController.h"
+#import "GlobalData.h"
 
 @interface AppDelegate ()
 
@@ -181,6 +182,22 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSURL *url = [NSURL URLWithString:@"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/logout"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"GET";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+        if (error == nil) {
+            NSLog(@"logged out");
+        }
+    }];
+    [dataTask resume];
+    GlobalData *myData = [GlobalData sharedInstance];
+    [myData.myOrders.requests removeAllObjects];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -193,6 +210,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
 @end

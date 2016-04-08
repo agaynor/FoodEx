@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateOrderViewController : UIViewController
+
+@import Mapbox;
+
+@interface CreateOrderViewController : UIViewController <MGLMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePickupTime;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtDiningArea;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtPickupLocation;
+@property (weak, nonatomic) IBOutlet MGLMapView *mapView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *pinImage;
+
+@property (nonatomic) MGLCoordinateBounds bounds;
 
 @end
