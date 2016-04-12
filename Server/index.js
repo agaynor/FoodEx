@@ -131,7 +131,7 @@ app.get('/:collection/myOrders', function(req, res, next){
 	var query = req.query.query;
 
 	if(req.session && req.session.user){
-		collectionDriver.query(req.params.collection, {"buyer_id": req.session.user._id } , returnCollectionResults(req,res));
+		collectionDriver.query(req.params.collection, {$and : [{"buyer_id": req.session.user._id }, query] } , returnCollectionResults(req,res));
 
 	}
 
@@ -142,7 +142,7 @@ app.get('/:collection/myDeliveries', function(req, res, next){
 	var params = req.params;
 	var query = req.query.query;
 	if(req.session && req.session.user){
-		collectionDriver.query(req.params.collection, {"$and" : [{"deliverer_id": req.session.user._id }, query]}, returnCollectionResults(req,res));
+		collectionDriver.query(req.params.collection, {$and : [{"deliverer_id": req.session.user._id }, query]}, returnCollectionResults(req,res));
 
 	}
 
