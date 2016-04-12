@@ -131,7 +131,8 @@ app.get('/:collection/myOrders', function(req, res, next){
 	var query = req.query.query;
 
 	if(req.session && req.session.user){
-		collectionDriver.query(req.params.collection, {$and : [{"buyer_id": req.session.user._id }, {"deliverer_id": {"$ne": "adam"}}] } , returnCollectionResults(req,res));
+		console.log(query);
+		collectionDriver.query(req.params.collection, {$and : [{"buyer_id": req.session.user._id }, {"deliverer_id": {"$eq": "adam"}}] } , returnCollectionResults(req,res));
 
 	}
 
