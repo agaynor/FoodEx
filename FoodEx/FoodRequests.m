@@ -98,15 +98,18 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     NSString *queryParam;
     NSString *fullQuery;
     if(future){
-        queryParam = [NSString stringWithFormat:@"{$gt:\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        queryParam = [NSString stringWithFormat:@"{\"$gt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
         
     }
     else{
-        queryParam = [NSString stringWithFormat:@"{$lt:\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        queryParam = [NSString stringWithFormat:@"{\"$lt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
         
     }
     
     fullQuery = [NSString stringWithFormat:@"{\"pickup_at\":%@}", queryParam];
+    
+    fullQuery = @"";
+    NSLog(@"%@", fullQuery);
     NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                                                (CFStringRef) fullQuery,
                                                                                                NULL,
