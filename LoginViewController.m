@@ -91,7 +91,7 @@ static NSString* const kRegisterRequests = @"register";
             else{
                 GlobalData *myData = [GlobalData sharedInstance];
                 myData.myUsername = [self.txtUsername text];
-                [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
+                [myData.myOrders importMyOrders:NO andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];
                 [self dismissViewControllerAnimated:YES completion:nil];

@@ -128,6 +128,8 @@ app.get('/logout', function(req, res)
 app.get('/:collection/myOrders', function(req, res, next){
 	//The request parameters
 	var params = req.params;
+	var query = req.query.query;
+
 	if(req.session && req.session.user){
 		collectionDriver.query(req.params.collection, {"$and" : [{"buyer_id": req.session.user._id }, query] } , returnCollectionResults(req,res));
 
