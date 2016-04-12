@@ -108,7 +108,7 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
     fullQuery = [NSString stringWithFormat:@"{\"pickup_at\":%@}", queryParam];
     
-    fullQuery = @"";
+  
     NSLog(@"%@", fullQuery);
     NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                                                (CFStringRef) fullQuery,
