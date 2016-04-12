@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@import Mapbox;
+
 @interface ReviewOrderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDiningArea;
@@ -26,5 +28,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAction;
 
+@property (weak, nonatomic) IBOutlet MGLMapView *mapView;
 
 @end

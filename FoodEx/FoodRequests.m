@@ -90,9 +90,34 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
--(void) importMyOrders: (void (^)(BOOL completion))completionBlock{
+-(void) importMyOrders:(BOOL)future andCompletion: (void (^)(BOOL completion))completionBlock{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
     
-    NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyOrders]];
+    
+    NSString *queryParam;
+    NSString *fullQuery;
+    if(future){
+        queryParam = [NSString stringWithFormat:@"{\"$gt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        
+    }
+    else{
+        queryParam = [NSString stringWithFormat:@"{\"$lt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        
+    }
+    
+    fullQuery = [NSString stringWithFormat:@"{\"pickup_at\":%@}", queryParam];
+    NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                               (CFStringRef) fullQuery,
+                                                                                               NULL,
+                                                                                               (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
+                                                                                               kCFStringEncodingUTF8));
+    NSString *query = [NSString stringWithFormat:@"?query=%@", escQuery];
+    
+   
+    
+    NSURL *url = [NSURL URLWithString:[[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyOrders] stringByAppendingString:query]];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];

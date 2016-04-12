@@ -12,4 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblItems;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtDiningArea;
 @end

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Mapbox;
 
-@interface DeliveryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DeliveryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblDeliveries;
+
+@property (weak, nonatomic) IBOutlet MGLMapView *mapView;
+@property (nonatomic) MGLCoordinateBounds bounds;
+
 
 @end

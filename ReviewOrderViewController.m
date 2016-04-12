@@ -73,6 +73,21 @@
     self.tblItems.dataSource = self;
     
     
+
+    
+    self.mapView.rotateEnabled = NO;
+    self.mapView.pitchEnabled = NO;
+    self.mapView.scrollEnabled = NO;
+    self.mapView.zoomEnabled = NO;
+    
+    self.mapView.zoomLevel = 18;
+
+    MGLPointAnnotation *orderLocation = [[MGLPointAnnotation alloc] init];
+    orderLocation.coordinate = reviewRequest.pickup_point;
+    [self.mapView addAnnotation:orderLocation];
+    self.mapView.centerCoordinate = orderLocation.coordinate;
+
+    
     // Do any additional setup after loading the view from its nib.
 }
 

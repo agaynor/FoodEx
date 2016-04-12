@@ -14,11 +14,35 @@
 @end
 
 @implementation DeliveryViewController
+{
+    BOOL didLocateUser;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tblDeliveries.hidden = YES;
+    self.mapView.hidden = NO;
+    
+    
     self.tblDeliveries.delegate = self;
     self.tblDeliveries.dataSource = self;
+    
+    
+    //setup map information
+    self.mapView.delegate = self;
+    
+    self.mapView.showsUserLocation = YES;
+    self.mapView.rotateEnabled = NO;
+    self.mapView.pitchEnabled = NO;
+    self.bounds = MGLCoordinateBoundsMake(CLLocationCoordinate2DMake(38.637206, -90.319410),CLLocationCoordinate2DMake(38.659962, -90.297445));
+    
+    
+    self.mapView.visibleCoordinateBounds = self.bounds;
+    
+    self.mapView.minimumZoomLevel = self.mapView.zoomLevel;
+    didLocateUser = NO;
+
+    
     
     GlobalData *myData = [GlobalData sharedInstance];
     [myData.myDeliveries importMyDeliveries:^(BOOL completion){
@@ -41,6 +65,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.navigationBar.hidden = YES;
     [self.tabBarController.tabBar setHidden:NO];
     [self.tblDeliveries reloadData];
 }
@@ -52,6 +77,80 @@
     });
    
 }
+
+
+- (IBAction)displayFormatChange:(id)sender {
+    UISegmentedControl *viewChanger = ((UISegmentedControl *) sender);
+    
+    if(viewChanger.selectedSegmentIndex == 0)
+    {
+        self.mapView.hidden = NO;
+        self.tblDeliveries.hidden = YES;
+    }
+    else
+    {
+        self.mapView.hidden = YES;
+        self.tblDeliveries.hidden = NO;
+    }
+}
+
+
+-(void)mapView:(MGLMapView *)mapView didUpdateUserLocation:(MGLUserLocation *)userLocation
+{
+    
+    if(!didLocateUser && [self point:self.mapView.userLocation.coordinate inCoordinateBounds:self.bounds])
+    {
+        self.mapView.centerCoordinate = self.mapView.userLocation.coordinate;
+        [self.mapView setZoomLevel:self.mapView.zoomLevel+3 animated:NO];
+    }
+    
+    didLocateUser = YES;
+   
+}
+
+
+-(BOOL)point:(CLLocationCoordinate2D) pt inCoordinateBounds:(MGLCoordinateBounds)bound{
+    if(pt.latitude > bound.sw.latitude && pt.latitude < bound.ne.latitude)
+    {
+        
+        if(pt.longitude > bound.sw.longitude && pt.longitude < bound.ne.longitude)
+        {
+            return YES;
+        }
+        else{
+            return NO;
+        }
+        
+    }
+    else{
+        return NO;
+        
+    }
+    
+}
+-(void)mapViewRegionIsChanging:(MGLMapView *)mapView
+{
+    
+    if(self.mapView.centerCoordinate.latitude > self.bounds.ne.latitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.bounds.ne.latitude, self.mapView.centerCoordinate.longitude)];
+    }
+    if(self.mapView.centerCoordinate.longitude > self.bounds.ne.longitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.bounds.ne.longitude)];
+    }
+    if(self.mapView.centerCoordinate.latitude < self.bounds.sw.latitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.bounds.sw.latitude, self.mapView.centerCoordinate.longitude)];
+        
+    }
+    if(self.mapView.centerCoordinate.longitude < self.bounds.sw.longitude)
+    {
+        [self.mapView setCenterCoordinate:CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.bounds.sw.longitude)];
+    }
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -131,8 +230,18 @@
         myData.currentFoodRequest = [myData.unclaimedDeliveries.requests objectAtIndex:indexPath.row];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NULL];
+    self.navigationController.navigationBar.hidden = NO;
+
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
+
+
+- (IBAction)deliveryTimeChanged:(id)sender {
+    
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

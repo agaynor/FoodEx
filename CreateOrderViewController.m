@@ -126,8 +126,7 @@
     GlobalData *myData = [GlobalData sharedInstance];
     [[myData currentFoodRequest] setPickup_at:[self.datePickupTime date]];
     [[myData currentFoodRequest] setPickup_point:self.mapView.centerCoordinate];
-    Order *currentOrder = [myData currentFoodRequest].order;
-    [currentOrder setDining_location:[self.txtDiningArea text]];
+    [[myData currentFoodRequest] setPickup_location:[self.txtPickupInfo text]];
     
     
     [self.navigationController pushViewController:[[OrderContentsViewController alloc] initWithNibName:@"OrderContentsViewController" bundle:nil] animated:YES];

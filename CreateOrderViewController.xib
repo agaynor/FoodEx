@@ -9,7 +9,7 @@
                 <outlet property="datePickupTime" destination="dXE-d2-aq8" id="Rea-fb-ch8"/>
                 <outlet property="mapView" destination="gMD-Cp-jeS" id="pxW-3R-fO3"/>
                 <outlet property="pinImage" destination="Bgh-jP-C0W" id="Gi4-uG-QYU"/>
-                <outlet property="txtDiningArea" destination="ILg-QD-IfX" id="lkn-h8-P3M"/>
+                <outlet property="txtPickupInfo" destination="ILg-QD-IfX" id="sf6-jG-9ve"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,11 +56,14 @@
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMU-SO-hwG">
                     <rect key="frame" x="12" y="427.5" width="89.5" height="20.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="89.5" id="Nug-9I-FoV"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-QD-IfX">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional (Floor, Room, etc) " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ILg-QD-IfX">
                     <rect key="frame" x="109" y="422.5" width="479" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryViewController">
             <connections>
+                <outlet property="mapView" destination="cjq-RW-Vhz" id="G9r-M4-XpP"/>
                 <outlet property="tblDeliveries" destination="1Cl-iX-2Ew" id="1Fs-W3-4os"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -15,17 +16,56 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ANp-D3-X70">
+                    <rect key="frame" x="12" y="25" width="576" height="29"/>
+                    <segments>
+                        <segment title="Map"/>
+                        <segment title="List"/>
+                    </segments>
+                    <connections>
+                        <action selector="displayFormatChange:" destination="-1" eventType="valueChanged" id="Rnn-RJ-33E"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-RW-Vhz" customClass="MGLMapView">
+                    <rect key="frame" x="12" y="58" width="576" height="417"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v8"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="dFm-ah-J3C">
+                    <rect key="frame" x="12" y="487" width="576" height="51"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="AUM-HH-Ku7"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="482185302.18320203">
+                        <!--2016-04-12 20:21:42 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="deliveryTimeChanged:" destination="-1" eventType="valueChanged" id="yve-8t-5kb"/>
+                    </connections>
+                </datePicker>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Cl-iX-2Ew">
-                    <rect key="frame" x="0.0" y="26" width="600" height="520"/>
+                    <rect key="frame" x="0.0" y="65" width="600" height="410"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="cbt-Lo-4QV"/>
-                <constraint firstAttribute="trailing" secondItem="1Cl-iX-2Ew" secondAttribute="trailing" id="mhf-nP-3NP"/>
-                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x50-td-pde"/>
-                <constraint firstAttribute="bottom" secondItem="1Cl-iX-2Ew" secondAttribute="bottom" constant="54" id="z0p-jK-AVA"/>
+                <constraint firstAttribute="trailing" secondItem="cjq-RW-Vhz" secondAttribute="trailing" constant="12" id="6xh-aX-TfQ"/>
+                <constraint firstItem="dFm-ah-J3C" firstAttribute="top" secondItem="1Cl-iX-2Ew" secondAttribute="bottom" constant="12" id="Cko-oP-ixm"/>
+                <constraint firstItem="dFm-ah-J3C" firstAttribute="top" secondItem="cjq-RW-Vhz" secondAttribute="bottom" constant="12" id="F7d-8j-etE"/>
+                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JWj-2Z-xWy"/>
+                <constraint firstAttribute="bottom" secondItem="dFm-ah-J3C" secondAttribute="bottom" constant="62" id="Mmf-Fe-Mz0"/>
+                <constraint firstItem="dFm-ah-J3C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="QG4-pR-Ybu"/>
+                <constraint firstItem="1Cl-iX-2Ew" firstAttribute="top" secondItem="ANp-D3-X70" secondAttribute="bottom" constant="12" id="Qih-G8-SmB"/>
+                <constraint firstItem="ANp-D3-X70" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="WAO-qG-SQb"/>
+                <constraint firstItem="cjq-RW-Vhz" firstAttribute="top" secondItem="ANp-D3-X70" secondAttribute="bottom" constant="5" id="XWf-Zr-Bju"/>
+                <constraint firstItem="cjq-RW-Vhz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="ZHT-p5-atH"/>
+                <constraint firstItem="ANp-D3-X70" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="aST-GY-Efj"/>
+                <constraint firstAttribute="trailing" secondItem="dFm-ah-J3C" secondAttribute="trailing" constant="12" id="f5Y-My-OcK"/>
+                <constraint firstAttribute="trailing" secondItem="1Cl-iX-2Ew" secondAttribute="trailing" id="s99-ny-qW1"/>
+                <constraint firstAttribute="trailing" secondItem="ANp-D3-X70" secondAttribute="trailing" constant="12" id="zm3-P3-Vm7"/>
             </constraints>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>

@@ -44,7 +44,11 @@
 
 
 - (IBAction)placeOrderPressed:(id)sender {
-
+    GlobalData *myData = [GlobalData sharedInstance];
+    Order *currentOrder = [myData currentFoodRequest].order;
+    [currentOrder setDining_location:[self.txtDiningArea text]];
+    
+    
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 

@@ -43,6 +43,7 @@
 		44D3D7F31C83B9DD00098C57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F21C83B9DD00098C57 /* MapKit.framework */; };
 		44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F41C83B9E500098C57 /* UIKit.framework */; };
 		44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7F81C83BC2000098C57 /* FoodRequests.m */; };
+		44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 44E4064C1CB842B10088F6D0 /* campus.gpx */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		44D3D7F41C83B9E500098C57 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		44D3D7F71C83BC2000098C57 /* FoodRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequests.h; sourceTree = "<group>"; };
 		44D3D7F81C83BC2000098C57 /* FoodRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodRequests.m; sourceTree = "<group>"; };
+		44E4064C1CB842B10088F6D0 /* campus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = campus.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		4415EB741C839D0200B2C5B7 = {
 			isa = PBXGroup;
 			children = (
+				44E4064C1CB842B10088F6D0 /* campus.gpx */,
 				44696AC91CB6FB4B0019758E /* pin.png */,
 				44696AC51CB6F85B0019758E /* Mapbox.framework */,
 				4415EB7F1C839D0200B2C5B7 /* FoodEx */,
@@ -395,6 +398,7 @@
 				449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */,
 				033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */,
 				4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */,
+				44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
 				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
