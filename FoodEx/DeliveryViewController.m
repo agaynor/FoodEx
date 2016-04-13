@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     self.tblDeliveries.hidden = YES;
     self.mapView.hidden = NO;
     
@@ -27,6 +29,7 @@
     self.tblDeliveries.delegate = self;
     self.tblDeliveries.dataSource = self;
     
+    [self.datePicker setMinimumDate:[NSDate date]];
     
     //setup map information
     self.mapView.delegate = self;
@@ -45,13 +48,13 @@
     
     
     GlobalData *myData = [GlobalData sharedInstance];
-    [myData.myDeliveries importMyDeliveries:^(BOOL completion){
+    [myData.myDeliveries importMyDeliveries:YES andCompletion:^(BOOL completion){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tblDeliveries reloadData];
             
         });
     }];
-    [myData.unclaimedDeliveries queryUndeliveredRequests:^(BOOL completion){
+    [myData.unclaimedDeliveries queryUndeliveredRequestsWithTime:[NSDate date] andCompletion:^(BOOL completion){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tblDeliveries reloadData];
             
@@ -237,7 +240,14 @@
 
 
 - (IBAction)deliveryTimeChanged:(id)sender {
-    
+    GlobalData *myData = [GlobalData sharedInstance];
+    UIDatePicker *selectedDate = (UIDatePicker *)sender;
+    [myData.unclaimedDeliveries queryUndeliveredRequestsWithTime:[selectedDate date] andCompletion:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblDeliveries reloadData];
+        });
+    }
+     ];
 }
 
 

@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet MGLMapView *mapView;
 @property (nonatomic) MGLCoordinateBounds bounds;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 
 @end

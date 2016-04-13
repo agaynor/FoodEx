@@ -160,7 +160,7 @@ app.get('/:collection', function(req, res, next) {
 		//Parse the query into JSON
 		query = JSON.parse(query);
 		//Use collectionDriver to query the collection using specified query and handle result in returnCollectionResults
-		collectionDriver.query(req.params.collection, query, returnCollectionResults(req,res));
+		collectionDriver.query(req.params.collection, {$and : [{"buyer_id": {$ne:req.session.user._id} }, query]}, returnCollectionResults(req,res));
 	}
 	//If no query was passed
 	else{

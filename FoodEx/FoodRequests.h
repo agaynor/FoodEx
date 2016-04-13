@@ -18,10 +18,10 @@
 -(void) persist:(FoodRequest *)foodRequest andCompletion:(void (^)(BOOL completion))completionBlock;
 -(void) addRequest:(FoodRequest *)request;
 -(void) runQuery:(NSString *)queryString andCompletion:(void (^)(BOOL completion))completionBlock;
--(void) queryUndeliveredRequests: (void (^)(BOOL completion))completionBlock;
+-(void) queryUndeliveredRequestsWithTime:(NSDate *)date andCompletion:(void (^)(BOOL completion))completionBlock;
 
 -(void) importMyOrders:(BOOL)future andCompletion: (void (^)(BOOL completion))completionBlock;
--(void) importMyDeliveries: (void (^)(BOOL completion))completionBlock;
+-(void) importMyDeliveries:(BOOL)future andCompletion: (void (^)(BOOL completion))completionBlock;
 - (void)parseAndAddLocations:(NSArray*)requests toArray:(NSMutableArray*)destinationArray;
 -(void)deleteRequest:(FoodRequest *)foodRequest andCompletion: (void (^)(BOOL completion))completionBlock;
 

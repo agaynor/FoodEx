@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryViewController">
             <connections>
+                <outlet property="datePicker" destination="dFm-ah-J3C" id="ag1-yu-5X9"/>
                 <outlet property="mapView" destination="cjq-RW-Vhz" id="G9r-M4-XpP"/>
                 <outlet property="tblDeliveries" destination="1Cl-iX-2Ew" id="1Fs-W3-4os"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

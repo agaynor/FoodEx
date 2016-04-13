@@ -146,9 +146,37 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
 }
 
--(void) importMyDeliveries: (void (^)(BOOL completion))completionBlock{
+-(void) importMyDeliveries:(BOOL)future andCompletion: (void (^)(BOOL completion))completionBlock{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
     
-    NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyDeliveries]];
+    
+    NSString *queryParam;
+    NSString *fullQuery;
+    if(future){
+        queryParam = [NSString stringWithFormat:@"{\"$gt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        
+    }
+    else{
+        queryParam = [NSString stringWithFormat:@"{\"$lt\":\"%@\"}", [dateFormat stringFromDate:[NSDate date]]];
+        
+    }
+    
+    fullQuery = [NSString stringWithFormat:@"{\"pickup_at\":%@}", queryParam];
+    
+    
+    NSLog(@"%@", fullQuery);
+    NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                               (CFStringRef) fullQuery,
+                                                                                               NULL,
+                                                                                               (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
+                                                                                               kCFStringEncodingUTF8));
+    NSString *query = [NSString stringWithFormat:@"?query=%@", escQuery];
+    
+    
+    
+
+    NSURL *url = [NSURL URLWithString:[[[kBaseURL stringByAppendingPathComponent:kRequests] stringByAppendingPathComponent:kMyDeliveries] stringByAppendingString:query]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -325,11 +353,41 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
 
 
 
--(void) queryUndeliveredRequests:(void (^)(BOOL completion))completionBlock{
+-(void) queryUndeliveredRequestsWithTime:(NSDate *)date andCompletion:(void (^)(BOOL completion))completionBlock{
     NSString *queryParam = [NSString stringWithFormat:@"{\"$exists\":false}"];
-    NSString *doesntExist = [NSString stringWithFormat:@"{\"deliverer_id\":%@}", queryParam];
+    NSString *doesntExist = [NSString stringWithFormat:@"{\"deliverer_id\":%@,", queryParam];
+    
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setMinute:-30];
+    NSDate *halfHourAgo = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
+    
+    [dateComponents setMinute:30];
+    NSDate *halfHourFromNow = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:date options:0];
+    
+    NSDate *earliestTime = [halfHourAgo laterDate:[NSDate date]];
+    
+    
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
+    
+    
+    
+    NSString *queryTimeParam;
+    NSString *fullTimeQuery;
+  
+    queryTimeParam = [NSString stringWithFormat:@"{\"$lt\":\"%@\", \"$gt\":\"%@\"}", [dateFormat stringFromDate:halfHourFromNow], [dateFormat stringFromDate:earliestTime]];
+        
+   
+    fullTimeQuery = [NSString stringWithFormat:@"\"pickup_at\":%@}", queryTimeParam];
+    NSString *fullQuery = [doesntExist stringByAppendingString:fullTimeQuery];
+    
+    
+    
+    NSLog(@"%@", fullQuery);
+    
     NSString* escQuery = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                             (CFStringRef) doesntExist,
+                                                                                             (CFStringRef) fullQuery,
                                                                                              NULL,
                                                                                              (CFStringRef) @"!*();':@&=+$,/?%#[]{}",
                                                                                              kCFStringEncodingUTF8));
