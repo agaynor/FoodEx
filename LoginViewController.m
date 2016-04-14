@@ -93,6 +93,7 @@ static NSString* const kRegisterRequests = @"register";
                 
                 GlobalData *myData = [GlobalData sharedInstance];
                 myData.myUser = [[User alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+                NSLog(@"%@", [responseArray objectAtIndex:0][@"username"]);
                 [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];
