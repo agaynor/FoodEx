@@ -39,7 +39,7 @@
     {
         self.lblOrderer.text = reviewRequest.buyer_name;
         //If the current logged in user submitted this request and it has not yet been picked up
-        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        if([reviewRequest.buyer_name isEqualToString:myData.myUser.username] && !reviewRequest.deliverer_id)
         {
             //then we want to provide the option to delete the request
             [self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
@@ -57,7 +57,7 @@
     }
     //If the review request has not been previously submitted
     else{
-        self.lblOrderer.text = myData.myUsername;
+        self.lblOrderer.text = myData.myUser.username;
     }
     
     
@@ -138,7 +138,7 @@
     if(reviewRequest.buyer_name)
     {
         //If the current logged in user submitted this request and it has not yet been picked up
-        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        if([reviewRequest.buyer_name isEqualToString:myData.myUser.username] && !reviewRequest.deliverer_id)
         {
             [myData.myOrders deleteRequest:reviewRequest andCompletion:^(BOOL completion){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];

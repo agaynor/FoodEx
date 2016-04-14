@@ -89,8 +89,10 @@ static NSString* const kRegisterRequests = @"register";
             
             //else login success
             else{
+                NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+                
                 GlobalData *myData = [GlobalData sharedInstance];
-                myData.myUsername = [self.txtUsername text];
+                myData.myUser = [[User alloc] initWithDictionary:[responseArray objectAtIndex:0]];
                 [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];
@@ -189,8 +191,6 @@ static NSString* const kRegisterRequests = @"register";
             //else register success
             else{
                 
-                GlobalData *myData = [GlobalData sharedInstance];
-                myData.myUsername = [self.txtUsername text];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     

@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "FoodRequest.h"
 #import "FoodRequests.h"
+#import "User.h"
 @interface GlobalData : NSObject
 
 @property (nonatomic, strong) FoodRequest *currentFoodRequest;
 @property (nonatomic, strong) FoodRequests *myOrders;
 @property (nonatomic, strong) FoodRequests *myDeliveries;
 @property (nonatomic, strong) FoodRequests *unclaimedDeliveries;
-@property (nonatomic, strong) NSString *myUsername;
-
+//@property (nonatomic, strong) NSString *myUsername;
+@property (nonatomic, strong) User *myUser;
 +(id)sharedInstance;
 
 @end
