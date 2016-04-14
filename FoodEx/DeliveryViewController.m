@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.myDeliveryAnnotations = [[NSMutableArray alloc] init];
+    self.undeliveredAnnotations = [[NSMutableArray alloc] init];
     
     self.tblDeliveries.hidden = YES;
     self.mapView.hidden = NO;
@@ -31,9 +33,9 @@
     
     [self.datePicker setMinimumDate:[NSDate date]];
     
+
     //setup map information
     self.mapView.delegate = self;
-    
     self.mapView.showsUserLocation = YES;
     self.mapView.rotateEnabled = NO;
     self.mapView.pitchEnabled = NO;
@@ -52,12 +54,41 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tblDeliveries reloadData];
             
+            [self.mapView removeAnnotations:self.myDeliveryAnnotations];
+            [self.myDeliveryAnnotations removeAllObjects];
+            for(FoodRequest *request in myData.myDeliveries.requests)
+            {
+                MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+                annotation.coordinate = request.pickup_point;
+                annotation.title = request.order.dining_location;
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"HH:mm"];
+                annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
+                
+                [self.mapView addAnnotation:annotation];
+                [self.myDeliveryAnnotations addObject:annotation];
+            }
         });
     }];
     [myData.unclaimedDeliveries queryUndeliveredRequestsWithTime:[NSDate date] andCompletion:^(BOOL completion){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tblDeliveries reloadData];
             
+            
+            [self.mapView removeAnnotations:self.undeliveredAnnotations];
+            [self.undeliveredAnnotations removeAllObjects];
+            for(FoodRequest *request in myData.unclaimedDeliveries.requests)
+            {
+                MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+                annotation.coordinate = request.pickup_point;
+                annotation.title = request.order.dining_location;
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"HH:mm"];
+                annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
+                
+                [self.mapView addAnnotation:annotation];
+                [self.undeliveredAnnotations addObject:annotation];
+            }
         });
     }];
     
@@ -76,7 +107,39 @@
 -(void)receiveUpdateNotification:(NSNotification *)notification{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tblDeliveries reloadData];
-    
+        GlobalData *myData = [GlobalData sharedInstance];
+        
+        
+        [self.mapView removeAnnotations:self.myDeliveryAnnotations];
+        [self.myDeliveryAnnotations removeAllObjects];
+        for(FoodRequest *request in myData.myDeliveries.requests)
+        {
+            MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+            annotation.coordinate = request.pickup_point;
+            annotation.title = request.order.dining_location;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm"];
+            annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
+            
+            [self.mapView addAnnotation:annotation];
+            [self.myDeliveryAnnotations addObject:annotation];
+        }
+
+        [self.mapView removeAnnotations:self.undeliveredAnnotations];
+        [self.undeliveredAnnotations removeAllObjects];
+        for(FoodRequest *request in myData.unclaimedDeliveries.requests)
+        {
+            MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+            annotation.coordinate = request.pickup_point;
+            annotation.title = request.order.dining_location;
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"HH:mm"];
+            annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
+            
+            [self.mapView addAnnotation:annotation];
+            [self.undeliveredAnnotations addObject:annotation];
+        }
+
     });
    
 }
@@ -95,6 +158,44 @@
         self.mapView.hidden = YES;
         self.tblDeliveries.hidden = NO;
     }
+}
+
+- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation
+{
+    return true;
+}
+
+- (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
+{
+    
+    return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+}
+
+- (void)mapView:(MGLMapView *)mapView annotation:(id<MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    // hide the callout view
+    [self.mapView deselectAnnotation:annotation animated:NO];
+    if([self.myDeliveryAnnotations containsObject:annotation])
+    {
+        unsigned long index = [self.myDeliveryAnnotations indexOfObject:annotation];
+        myData.currentFoodRequest = [myData.myDeliveries.requests objectAtIndex:index];
+        self.navigationController.navigationBar.hidden = NO;
+        
+        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
+        
+    }
+    else if([self.undeliveredAnnotations containsObject:annotation])
+    {
+        unsigned long index = [self.undeliveredAnnotations indexOfObject:annotation];
+        myData.currentFoodRequest = [myData.unclaimedDeliveries.requests objectAtIndex:index];
+        self.navigationController.navigationBar.hidden = NO;
+        
+        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
+        
+    }
+    
+
 }
 
 
@@ -245,6 +346,23 @@
     [myData.unclaimedDeliveries queryUndeliveredRequestsWithTime:[selectedDate date] andCompletion:^(BOOL completion){
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tblDeliveries reloadData];
+            
+            
+            [self.mapView removeAnnotations:self.undeliveredAnnotations];
+            [self.undeliveredAnnotations removeAllObjects];
+            for(FoodRequest *request in myData.unclaimedDeliveries.requests)
+            {
+                MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
+                annotation.coordinate = request.pickup_point;
+                annotation.title = request.order.dining_location;
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"HH:mm"];
+                annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
+                
+                [self.mapView addAnnotation:annotation];
+                [self.undeliveredAnnotations addObject:annotation];
+            }
+
         });
     }
      ];

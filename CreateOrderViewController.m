@@ -35,6 +35,7 @@
     Order *currentOrder = [[Order alloc] init];
     [[myData currentFoodRequest] setOrder:currentOrder];
     
+    [self.datePickupTime setMinimumDate:[NSDate date]];
     
     
     //setup map information

@@ -17,5 +17,10 @@
 @property (nonatomic) MGLCoordinateBounds bounds;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
+@property (strong, nonatomic) NSMutableArray *myDeliveryAnnotations;
+
+@property (strong, nonatomic) NSMutableArray *undeliveredAnnotations;
+
+
 
 @end
