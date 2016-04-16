@@ -90,7 +90,7 @@ FileDriver.prototype.handleUploadRequest = function(userid, req, res) {
 	var ext = ctype.substr(ctype.indexOf('/')+1);
 	if(ext) {ext = '.' + ext;} else{ext = '';}
 	//Create a new file entry in the database with specified extension and content-type
-	this.getNewFileId({'_id':userid, 'content-type':ctype, 'ext':ext}, function(err,id){
+	this.getNewFileId({'_id':ObjectID(userid), 'content-type':ctype, 'ext':ext}, function(err,id){
 		if(err){res.send(400,err);}
 		else{
 			//Set filename to the fileid in the db and the extension appended
