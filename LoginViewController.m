@@ -16,6 +16,7 @@
 static NSString* const kBaseURL = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/";
 static NSString* const kLoginRequests = @"login";
 static NSString* const kRegisterRequests = @"register";
+static NSString* const kFiles = @"files";
 
 @implementation LoginViewController
 
@@ -92,10 +93,28 @@ static NSString* const kRegisterRequests = @"register";
             else{
                 NSDictionary* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
                 
-                NSLog(@"%@", responseArray[@"username"]);
                 GlobalData *myData = [GlobalData sharedInstance];
                 myData.myUser = [[User alloc] initWithDictionary:responseArray];
                 
+                NSURL *url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kFiles] stringByAppendingPathComponent:myData.myUser.imageId]];
+                
+                NSLog(@"%@", myData.myUser.imageId);
+                NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+                NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+                
+                NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url completionHandler:^(NSURL *fileLocation, NSURLResponse *response, NSError *error) {
+                    if (!error) {
+                        NSData* imageData = [NSData dataWithContentsOfURL:fileLocation];
+                        UIImage* image = [UIImage imageWithData:imageData];
+                        if (!image) {
+                            NSLog(@"unable to build image");
+                        }
+                        myData.myUser.image = image;
+                        NSLog(@"successfully got image");
+                    }
+                }];
+                
+                [task resume];
                 [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];

@@ -45,6 +45,7 @@ FileDriver.prototype.handleGet = function(req, res) {
 					//extract filename and type
 					var filename = fileId + thisFile.ext;
 					//All files kept in ./uploads
+					console.log("sending file "+filename);
 					var filePath = './uploads/' + filename;
 					//send file in the response
 					res.sendfile(filePath);

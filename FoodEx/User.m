@@ -21,7 +21,7 @@
         self.firstName = dictionary[@"first_name"];
         self.lastName = dictionary[@"last_name"];
         self.email = dictionary[@"email"];
-        self.imageId = dictionary[@"imageId"];
+        self.imageId = dictionary[@"_id"];
     }
     return self;
 }
@@ -33,7 +33,6 @@
     safeSet(jsonable, @"first_name", self.firstName);
     safeSet(jsonable, @"last_name", self.lastName);
     safeSet(jsonable, @"email", self.email);
-    safeSet(jsonable, @"imageId", self.imageId);
     return jsonable;
 }
 
