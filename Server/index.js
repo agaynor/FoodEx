@@ -62,7 +62,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //If post request is received with files extension
 app.post('/files', function(req,res) { 
 	//Pass the body of the request to the fileDriver to handle the upload
-	fileDriver.handleUploadRequest(req, res);
+	fileDriver.handleUploadRequest(req.session.user._id, req, res);
 });
 
 //If get request is received for a fileid
@@ -84,6 +84,7 @@ app.post('/login', function(req, res)
 			//Set the session user to the returned object and send a success back to client
 			console.log(obj);
 			req.session.user = obj;
+			obj.password = "";
 			res.send(200, obj);
 		}
 	});

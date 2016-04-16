@@ -44,6 +44,8 @@
 		44D3D7F51C83B9E500098C57 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3D7F41C83B9E500098C57 /* UIKit.framework */; };
 		44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7F81C83BC2000098C57 /* FoodRequests.m */; };
 		44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 44E4064C1CB842B10088F6D0 /* campus.gpx */; settings = {ASSET_TAGS = (); }; };
+		44E74A4C1CC03F4B00006CAC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E74A4A1CC03F4B00006CAC /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		44E74A4D1CC03F4B00006CAC /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E74A4B1CC03F4B00006CAC /* RegisterViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +138,9 @@
 		44D3D7F71C83BC2000098C57 /* FoodRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequests.h; sourceTree = "<group>"; };
 		44D3D7F81C83BC2000098C57 /* FoodRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodRequests.m; sourceTree = "<group>"; };
 		44E4064C1CB842B10088F6D0 /* campus.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = campus.gpx; sourceTree = "<group>"; };
+		44E74A491CC03F4B00006CAC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		44E74A4A1CC03F4B00006CAC /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		44E74A4B1CC03F4B00006CAC /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +232,9 @@
 				449CD6651C864F8400325DAA /* ProfileViewController.h */,
 				449CD6661C864F8400325DAA /* ProfileViewController.m */,
 				449CD6671C864F8400325DAA /* ProfileViewController.xib */,
+				44E74A491CC03F4B00006CAC /* RegisterViewController.h */,
+				44E74A4A1CC03F4B00006CAC /* RegisterViewController.m */,
+				44E74A4B1CC03F4B00006CAC /* RegisterViewController.xib */,
 			);
 			path = FoodEx;
 			sourceTree = "<group>";
@@ -401,6 +409,7 @@
 				44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
+				44E74A4D1CC03F4B00006CAC /* RegisterViewController.xib in Resources */,
 				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
 				44696ACA1CB6FB4B0019758E /* pin.png in Resources */,
 				4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */,
@@ -430,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */,
+				44E74A4C1CC03F4B00006CAC /* RegisterViewController.m in Sources */,
 				444D55161C8817AE002EBE49 /* ReviewOrderViewController.m in Sources */,
 				444D551A1C88EE03002EBE49 /* GlobalData.m in Sources */,
 				44D3D7EF1C83B80D00098C57 /* Item.m in Sources */,

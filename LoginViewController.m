@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "RegisterViewController.h"
 #import "GlobalData.h"
 @interface LoginViewController ()
 
@@ -89,11 +90,12 @@ static NSString* const kRegisterRequests = @"register";
             
             //else login success
             else{
-                NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+                NSDictionary* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
                 
+                NSLog(@"%@", responseArray[@"username"]);
                 GlobalData *myData = [GlobalData sharedInstance];
-                myData.myUser = [[User alloc] initWithDictionary:[responseArray objectAtIndex:0]];
-                NSLog(@"%@", [responseArray objectAtIndex:0][@"username"]);
+                myData.myUser = [[User alloc] initWithDictionary:responseArray];
+                
                 [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];
@@ -132,95 +134,7 @@ static NSString* const kRegisterRequests = @"register";
 //Send register information to server
 - (IBAction)registerPressed:(id)sender {
     
-    NSMutableDictionary *registerInfo = [[NSMutableDictionary alloc] init];
-    registerInfo[@"username"] = [self.txtUsername text];
-    registerInfo[@"password"] = [self.txtPassword text];
-    
-    NSString *requestString = [kBaseURL stringByAppendingPathComponent:kRegisterRequests];
-    NSURL *url = [NSURL URLWithString:requestString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    request.HTTPMethod = @"POST";
-    
-    NSData *data = [NSJSONSerialization dataWithJSONObject:registerInfo options:0 error:NULL];
-    
-    request.HTTPBody = data;
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (!error) {
-            
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            long status = [httpResponse statusCode];
-            
-            //If register error
-            if(status >= 400)
-            {
-                //Show alert with error
-                NSString *registerError = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    
-                    UIAlertController * alert=   [UIAlertController
-                                                  alertControllerWithTitle:@"Register Failed"
-                                                  message:registerError
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction* cancelButton = [UIAlertAction
-                                                   actionWithTitle:@"Okay"
-                                                   style:UIAlertActionStyleCancel
-                                                   handler:nil];
-                    
-                    [alert addAction:cancelButton];
-                    
-                    [self presentViewController:alert animated:YES completion:^{
-                        [self.txtUsername setText:@""];
-                        [self.txtPassword setText:@""];
-                    }];
-                    
-                });
-                
-                
-                
-            }
-            
-            //else register success
-            else{
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    
-                    UIAlertController * alert=   [UIAlertController
-                                                  alertControllerWithTitle:@"Register Success"
-                                                  message:[NSString stringWithFormat:@"%@ now registered!", [self.txtUsername text]]
-                                                  preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction* cancelButton = [UIAlertAction
-                                                   actionWithTitle:@"Okay"
-                                                   style:UIAlertActionStyleCancel
-                                                   handler:nil];
-                    
-                    [alert addAction:cancelButton];
-                    
-                    [self presentViewController:alert animated:YES completion:^{
-                       [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-                    }];
-                    
-
-                });
-                
-            }
-            
-            
-        }
-    }];
-    
-    [dataTask resume];
+    [self presentViewController:[[RegisterViewController alloc] initWithNibName:@"RegisterViewController" bundle:nil]  animated:YES completion:nil];
 }
 
 /*
