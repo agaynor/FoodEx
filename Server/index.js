@@ -265,11 +265,11 @@ app.put('/:collection/:entity/deliveryAccept', function(req, res) {
 
 					if(req.session.user._id == objs.deliverer_id)
 					{
-						objs[objectIndex].image_id = objs.buyer_id;
+						objs.image_id = objs.buyer_id;
 					}
 					else if(req.session.user._id == objs.buyer_id)
 					{
-						objs[objectIndex].image_id = objs.deliverer_id;
+						objs.image_id = objs.deliverer_id;
 					}
 
 
