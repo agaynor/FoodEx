@@ -110,7 +110,7 @@ static NSString* const kFiles = @"files";
                             NSLog(@"unable to build image");
                         }
                         myData.myUser.image = image;
-                        NSLog(@"successfully got image");
+                  
                     }
                 }];
                 

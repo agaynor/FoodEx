@@ -177,6 +177,21 @@ function returnCollectionResults(req, res){
 	return function(error, objs) {
 		if(error) {res.send(400, error);}
 		else {
+
+			for(objectIndex in objs)
+			{
+				if(objs[objectIndex].deliverer_id)
+				{
+					if(req.session.user._id == objs[objectIndex].deliverer_id)
+					{
+						objs[objectIndex].image_id = objs[objectIndex].buyer_id;
+					}
+					else if(req.session.user._id == objs[objectIndex].buyer_id)
+					{
+						objs[objectIndex].image_id = objs[objectIndex].deliverer_id;
+					}
+				}
+			}
 			//returns html table of collection if browser, otherwise json for iphone etc...
 			if(req.accepts('html')){
 				res.render('data', {objects: objs, collection: req.params.collection});

@@ -125,7 +125,8 @@ static NSString* const kFiles = @"files";
                 NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
                 NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
                 
-                NSData *bytes = UIImagePNGRepresentation(self.image);
+               // NSData *bytes = UIImagePNGRepresentation(self.image);
+                NSData *bytes = UIImageJPEGRepresentation(self.image, 0.5);
                 NSURLSessionUploadTask* task = [session uploadTaskWithRequest:request fromData:bytes completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
                     if (error == nil && [(NSHTTPURLResponse*)response statusCode] < 300) {
                        //image saved successfully

@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *profilePic;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblUsername;
+@property (weak, nonatomic) IBOutlet UILabel *lblLastName;
+@property (weak, nonatomic) IBOutlet UILabel *lblEmail;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblFirstName;
 @end
