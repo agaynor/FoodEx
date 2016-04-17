@@ -33,7 +33,7 @@ static NSString* const kFiles = @"files";
 //Send login information to server
 - (IBAction)loginPressed:(id)sender {
     NSMutableDictionary *loginInfo = [[NSMutableDictionary alloc] init];
-    loginInfo[@"username"] = [self.txtUsername text];
+    loginInfo[@"username"] = [[self.txtUsername text] lowercaseString];
     loginInfo[@"password"] = [self.txtPassword text];
     
     NSString *requestString = [kBaseURL stringByAppendingPathComponent:kLoginRequests];

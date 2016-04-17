@@ -10,4 +10,6 @@
 
 @interface ViewProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *profPic;
+
 @end

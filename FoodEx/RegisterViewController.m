@@ -55,7 +55,7 @@ static NSString* const kFiles = @"files";
     
     //then register user, save image using user
     NSMutableDictionary *registerInfo = [[NSMutableDictionary alloc] init];
-    registerInfo[@"username"] = [self.txtUsername text];
+    registerInfo[@"username"] = [[self.txtUsername text] lowercaseString];
     registerInfo[@"password"] = [self.txtPassword text];
     registerInfo[@"first_name"] = [self.txtFirstName text];
     registerInfo[@"last_name"] = [self.txtLastName text];

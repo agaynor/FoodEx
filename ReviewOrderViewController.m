@@ -11,6 +11,7 @@
 #import "OrderViewController.h"
 #import "DeliveryViewController.h"
 #import "FoodRequest.h"
+#import "ViewProfileViewController.h"
 @interface ReviewOrderViewController ()
 
 
@@ -74,7 +75,8 @@
     
     
 
-    
+    self.mapView.delegate = self;
+
     self.mapView.rotateEnabled = NO;
     self.mapView.pitchEnabled = NO;
     self.mapView.scrollEnabled = NO;
@@ -84,6 +86,7 @@
 
     MGLPointAnnotation *orderLocation = [[MGLPointAnnotation alloc] init];
     orderLocation.coordinate = reviewRequest.pickup_point;
+    orderLocation.title = @"View Profile";
     [self.mapView addAnnotation:orderLocation];
     self.mapView.centerCoordinate = orderLocation.coordinate;
 
@@ -165,47 +168,44 @@
 
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation
 {
-    return true;
+    GlobalData *myData = [GlobalData sharedInstance];
+    FoodRequest *reviewRequest = myData.currentFoodRequest;
+    if(reviewRequest.buyer_id)
+    {
+        NSLog(@"can show callout");
+        return true;
+    }
+    else
+    {
+         NSLog(@"can't show callout");
+        return false;
+    }
 }
 
 
 
 
-/*
+
 - (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
 {
-    
     return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 }
 
 - (void)mapView:(MGLMapView *)mapView annotation:(id<MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
 {
-    GlobalData *myData = [GlobalData sharedInstance];
+  
     // hide the callout view
     [self.mapView deselectAnnotation:annotation animated:NO];
-    if([self.myDeliveryAnnotations containsObject:annotation])
-    {
-        unsigned long index = [self.myDeliveryAnnotations indexOfObject:annotation];
-        myData.currentFoodRequest = [myData.myDeliveries.requests objectAtIndex:index];
-        self.navigationController.navigationBar.hidden = NO;
+    
+    self.navigationController.navigationBar.hidden = NO;
         
-        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
-        
-    }
-    else if([self.undeliveredAnnotations containsObject:annotation])
-    {
-        unsigned long index = [self.undeliveredAnnotations indexOfObject:annotation];
-        myData.currentFoodRequest = [myData.unclaimedDeliveries.requests objectAtIndex:index];
-        self.navigationController.navigationBar.hidden = NO;
-        
-        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
-        
-    }
+    [self.navigationController pushViewController:[[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil] animated:YES];
+    
     
     
 }
 
-*/
+
 
 
 - (void)didReceiveMemoryWarning {
