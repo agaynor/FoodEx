@@ -262,6 +262,20 @@ app.put('/:collection/:entity/deliveryAccept', function(req, res) {
 			object.deliverer_id = req.session.user._id;
 			object.deliverer_name = req.session.user.username;
 			collectionDriver.update(collection, object, entity, function(error, objs) {
+			for(objectIndex in objs)
+			{
+				if(objs[objectIndex].deliverer_id)
+				{
+					if(req.session.user._id == objs[objectIndex].deliverer_id)
+					{
+						objs[objectIndex].image_id = objs[objectIndex].buyer_id;
+					}
+					else if(req.session.user._id == objs[objectIndex].buyer_id)
+					{
+						objs[objectIndex].image_id = objs[objectIndex].deliverer_id;
+					}
+				}
+			}
 			if(error) { res.send(400, error); }
 			else { res.send(200, objs); }
 			});
