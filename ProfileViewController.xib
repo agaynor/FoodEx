@@ -10,6 +10,7 @@
                 <outlet property="lblLastName" destination="obX-06-ds0" id="XIB-iN-RSz"/>
                 <outlet property="lblUsername" destination="iaw-yN-jfA" id="Cnr-4u-cnv"/>
                 <outlet property="profilePic" destination="XMQ-8j-2Ns" id="psb-0F-Fp4"/>
+                <outlet property="tblPastTransactions" destination="CO7-ur-5Wd" id="cDi-uh-sW0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -8,7 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "GlobalData.h"
-
+#import "ReviewOrderViewController.h"
 @interface ProfileViewController ()
 
 @end
@@ -23,9 +23,34 @@ static NSString* const kFiles = @"files";
     
     GlobalData *myData = [GlobalData sharedInstance];
     [self.profilePic setImage:myData.myUser.image forState:UIControlStateNormal];
+    self.lblFirstName.text = myData.myUser.firstName;
+    self.lblLastName.text = myData.myUser.lastName;
+    self.lblUsername.text = myData.myUser.username;
+    
+    self.tblPastTransactions.delegate = self;
+    self.tblPastTransactions.dataSource = self;
+    
+    [myData.pastDeliveries importMyDeliveries:NO andCompletion:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblPastTransactions reloadData];
+            
+        });
+    }];
+    
+    [myData.pastOrders importMyOrders:NO andCompletion:^(BOOL completion){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tblPastTransactions reloadData];
+            
+        });
+    }];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -91,6 +116,95 @@ static NSString* const kFiles = @"files";
     [task resume];
     
 }
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;    //count of section
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    
+    if(section == 0)
+    {
+        return [myData.pastOrders.requests count];
+    }
+    else{
+         return [myData.pastDeliveries.requests count];
+    }
+   
+
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+    {
+        return @"Past Orders";
+    }
+    else{
+       return @"Past Deliveries";;
+    }}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *MyIdentifier = @"MyIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:MyIdentifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    
+    
+    // Here we use the provided setImageWithURL: method to load the web image
+    // Ensure you use a placeholder image otherwise cells will be initialized with no image
+    GlobalData *myData = [GlobalData sharedInstance];
+    FoodRequest *request;
+    if(indexPath.section == 0)
+    {
+        request = [myData.pastOrders.requests objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        request = [myData.pastDeliveries.requests objectAtIndex:indexPath.row];
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    
+    
+    NSString *textString = [NSString stringWithFormat:@"%@ at %@", request.pickup_location, [dateFormatter stringFromDate:request.pickup_at]];
+    cell.textLabel.text = textString;
+    NSString *detailTextString = [NSString stringWithFormat:@"From %@", request.order.dining_location];
+    cell.detailTextLabel.text = detailTextString;
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    if(indexPath.section == 0)
+    {
+        myData.currentFoodRequest = [myData.pastOrders.requests objectAtIndex:indexPath.row];
+
+    }
+    else{
+         myData.currentFoodRequest = [myData.pastDeliveries.requests objectAtIndex:indexPath.row];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NULL];
+    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
+}
+
 
 
 /*

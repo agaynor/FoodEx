@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
             <connections>
+                <outlet property="btnCancel" destination="BrG-Uu-eVu" id="md2-gP-M5i"/>
+                <outlet property="btnRegister" destination="cLg-qm-smN" id="0z5-6Q-NWC"/>
                 <outlet property="profilePic" destination="gvS-tm-078" id="WwL-Nk-Buh"/>
                 <outlet property="txtFirstName" destination="EE0-e0-yKN" id="hRV-4q-8lw"/>
                 <outlet property="txtLastName" destination="gxu-Oi-4tE" id="u1D-pF-zwR"/>

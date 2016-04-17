@@ -28,6 +28,8 @@
         self.myOrders = [[FoodRequests alloc] init];
         self.myDeliveries = [[FoodRequests alloc] init];
         self.unclaimedDeliveries = [[FoodRequests alloc] init];
+        self.pastDeliveries = [[FoodRequests alloc] init];
+        self.pastOrders = [[FoodRequests alloc] init];
         self.myUser = [[User alloc] init];
     }
     return self;

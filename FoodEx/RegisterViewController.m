@@ -59,7 +59,8 @@ static NSString* const kFiles = @"files";
     registerInfo[@"password"] = [self.txtPassword text];
     registerInfo[@"first_name"] = [self.txtFirstName text];
     registerInfo[@"last_name"] = [self.txtLastName text];
-    
+    self.btnCancel.enabled = NO;
+    self.btnRegister.enabled = NO;
     
     NSString *requestString = [kBaseURL stringByAppendingPathComponent:kRegisterRequests];
     NSURL *url = [NSURL URLWithString:requestString];
@@ -81,10 +82,12 @@ static NSString* const kFiles = @"files";
             
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             long status = [httpResponse statusCode];
-            
+
             //If register error
             if(status >= 400)
             {
+                self.btnCancel.enabled = YES;
+                self.btnRegister.enabled = YES;
                 //Show alert with error
                 NSString *registerError = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 

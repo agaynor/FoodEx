@@ -25,6 +25,8 @@
 @property (strong, nonatomic) UIImage *image;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *btnRegister;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancel;
 
 @property (nonatomic, assign) BOOL hasSelectedImage;
 @end
