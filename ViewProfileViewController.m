@@ -13,7 +13,7 @@
 @end
 static NSString* const kBaseURL = @"http://ec2-54-92-150-113.compute-1.amazonaws.com:8000/";
 static NSString* const kUsers = @"users";
-
+static NSString* const kFiles = @"files";
 @implementation ViewProfileViewController
 
 - (void)viewDidLoad {
@@ -40,13 +40,42 @@ static NSString* const kUsers = @"users";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
             NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            NSLog(@"%@",[responseDict description]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.lblUsername.text = responseDict[@"username"];
+                self.lblFirstName.text = responseDict[@"first_name"];
+                self.lblLastName.text = responseDict[@"last_name"];
+                
+            });
+
             
-            NSLog(@"%@", [responseDict description]);
-           
         }
     }];
     
     [dataTask resume];
+    
+    NSURL *fileurl = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kFiles] stringByAppendingPathComponent:myRequestInfo.image_id]];
+    
+    NSURLSessionConfiguration *config2 = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session2 = [NSURLSession sessionWithConfiguration:config2];
+    
+    NSURLSessionDownloadTask* task = [session2 downloadTaskWithURL:fileurl completionHandler:^(NSURL *fileLocation, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSData* imageData = [NSData dataWithContentsOfURL:fileLocation];
+            UIImage* image = [UIImage imageWithData:imageData];
+            if (!image) {
+                NSLog(@"unable to build image");
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+               
+                  self.profPic.image = image;
+            });
+          
+        }
+    }];
+    
+    [task resume];
+
 
     
     // Do any additional setup after loading the view from its nib.

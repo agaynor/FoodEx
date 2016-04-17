@@ -6,7 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewProfileViewController">
             <connections>
+                <outlet property="lblFirstName" destination="NlM-Xy-TRT" id="iDe-VV-s56"/>
+                <outlet property="lblLastName" destination="Ji0-Y2-krf" id="H8t-Vl-v7O"/>
+                <outlet property="lblUsername" destination="5Lp-J4-PuZ" id="fQH-YK-PQ1"/>
                 <outlet property="profPic" destination="ti0-rN-u2c" id="1kp-ZI-tAK"/>
+                <outlet property="tblReviews" destination="j9p-db-KRI" id="ZKx-Tb-e8c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

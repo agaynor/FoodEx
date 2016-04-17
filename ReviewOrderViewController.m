@@ -170,7 +170,7 @@
 {
     GlobalData *myData = [GlobalData sharedInstance];
     FoodRequest *reviewRequest = myData.currentFoodRequest;
-    if(reviewRequest.buyer_id)
+    if(reviewRequest.deliverer_id)
     {
         NSLog(@"can show callout");
         return true;

@@ -60,13 +60,13 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')));
 
 //If post request is received with files extension
-app.post('/files', function(req,res) { 
+app.post('/files', function(req,res) {
 	//Pass the body of the request to the fileDriver to handle the upload
 	fileDriver.handleUploadRequest(req.session.user._id, req, res);
 });
 
 //If get request is received for a fileid
-app.get('/files/:id', function(req, res) { 
+app.get('/files/:id', function(req, res) {
 	//Pass the request to the fileDriver to handle the download
 	fileDriver.handleGet(req,res);
 });
@@ -93,7 +93,7 @@ app.post('/login', function(req, res)
 app.post('/register', function(req, res){
 
 	userDriver.save('users', req.body, function(error, obj)
-	{ 
+	{
 		if(error)
 		{
 			res.send(409, error);
@@ -242,10 +242,10 @@ app.post('/:collection', function(req, res) {
 		//Save the object to the collection and send the doc back when completed
 		collectionDriver.save(collection, object, function(err, docs) {
 			if(err){res.send(400, err);}
-			else { res.send(201, docs); } 
+			else { res.send(201, docs); }
 		});
 	}
-	
+
 });
 
 
@@ -262,25 +262,22 @@ app.put('/:collection/:entity/deliveryAccept', function(req, res) {
 			object.deliverer_id = req.session.user._id;
 			object.deliverer_name = req.session.user.username;
 			collectionDriver.update(collection, object, entity, function(error, objs) {
-			for(objectIndex in objs)
-			{
-				if(objs[objectIndex].deliverer_id)
-				{
-					if(req.session.user._id == objs[objectIndex].deliverer_id)
+
+					if(req.session.user._id == objs.deliverer_id)
 					{
-						objs[objectIndex].image_id = objs[objectIndex].buyer_id;
+						objs[objectIndex].image_id = objs.buyer_id;
 					}
-					else if(req.session.user._id == objs[objectIndex].buyer_id)
+					else if(req.session.user._id == objs.buyer_id)
 					{
-						objs[objectIndex].image_id = objs[objectIndex].deliverer_id;
+						objs[objectIndex].image_id = objs.deliverer_id;
 					}
-				}
-			}
+
+
 			if(error) { res.send(400, error); }
 			else { res.send(200, objs); }
 			});
 		}
-		
+
 	}
 	else {
 		var error = { "message" : "Cannot PUT a whole collection" };
@@ -354,7 +351,7 @@ app.delete('/:collection/:entity/:deleteID', function(req, res) {
 app.use(function(req,res) {
    res.render('404', {url:req.url});
 });
- 
+
 //Create express server and listen for incoming requests
 http.createServer(app).listen(app.get('port'), function(){
    console.log('express server listening on port ' + app.get('port'))
