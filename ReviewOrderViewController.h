@@ -10,7 +10,7 @@
 
 @import Mapbox;
 
-@interface ReviewOrderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ReviewOrderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDiningArea;
 

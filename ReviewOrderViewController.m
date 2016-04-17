@@ -162,6 +162,52 @@
 
 }
 
+
+- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation
+{
+    return true;
+}
+
+
+
+
+/*
+- (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
+{
+    
+    return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+}
+
+- (void)mapView:(MGLMapView *)mapView annotation:(id<MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    // hide the callout view
+    [self.mapView deselectAnnotation:annotation animated:NO];
+    if([self.myDeliveryAnnotations containsObject:annotation])
+    {
+        unsigned long index = [self.myDeliveryAnnotations indexOfObject:annotation];
+        myData.currentFoodRequest = [myData.myDeliveries.requests objectAtIndex:index];
+        self.navigationController.navigationBar.hidden = NO;
+        
+        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
+        
+    }
+    else if([self.undeliveredAnnotations containsObject:annotation])
+    {
+        unsigned long index = [self.undeliveredAnnotations indexOfObject:annotation];
+        myData.currentFoodRequest = [myData.unclaimedDeliveries.requests objectAtIndex:index];
+        self.navigationController.navigationBar.hidden = NO;
+        
+        [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
+        
+    }
+    
+    
+}
+
+*/
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

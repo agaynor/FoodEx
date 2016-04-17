@@ -88,6 +88,10 @@
         _deliverer_name = dictionary[@"deliverer_name"];
         _order = [[Order alloc] initWithDictionary:dictionary[@"order"]];
         _pickup_point = CLLocationCoordinate2DMake([dictionary[@"pickup_point"][@"coordinates"][1] floatValue], [dictionary[@"pickup_point"][@"coordinates"][0] floatValue]);
+        if(dictionary[@"image_id"])
+        {
+            _image_id = dictionary[@"image_id"];
+        }
         
     }
     return self;
