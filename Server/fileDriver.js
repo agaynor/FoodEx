@@ -62,7 +62,7 @@ FileDriver.prototype.save = function(obj, callback) {
 		else{
 			//Set file created at date
 			obj.created_at = new Date();	
-			the_collection.insert(obj, function(){
+			the_collection.save(obj, function(){
 				callback(null, obj);
 			});
 		}
@@ -82,14 +82,14 @@ FileDriver.prototype.getNewFileId = function(newobj, callback) {
 };
 
 //Handles a fileupload from the server
-FileDriver.prototype.handleUploadRequest = function(req, res) {
+FileDriver.prototype.handleUploadRequest = function(userid, req, res) {
 	//Gets content-type of the file
 	var ctype = req.get('content-type');
 	//Get the extension of the file
 	var ext = ctype.substr(ctype.indexOf('/')+1);
 	if(ext) {ext = '.' + ext;} else{ext = '';}
 	//Create a new file entry in the database with specified extension and content-type
-	this.getNewFileId({'content-type':ctype, 'ext':ext}, function(err,id){
+	this.getNewFileId({'_id':ObjectID(userid), 'content-type':ctype, 'ext':ext}, function(err,id){
 		if(err){res.send(400,err);}
 		else{
 			//Set filename to the fileid in the db and the extension appended

@@ -22,6 +22,7 @@
 @property(nonatomic, copy) NSString *buyer_name;
 @property(nonatomic, copy) NSString *deliverer_name;
 @property(nonatomic) CLLocationCoordinate2D pickup_point;
+@property(nonatomic) NSString *image_id;
 @property(nonatomic, retain) Order *order;
 
 #pragma mark - JSON conversion

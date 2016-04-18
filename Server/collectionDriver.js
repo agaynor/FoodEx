@@ -39,7 +39,7 @@ CollectionDriver.prototype.get = function(collectionName, id, callback){
 			var checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
 			if(!checkForHexRegExp.test(id)) callback({error: "invalid id"});
 			//Finds the object with the given id, doc may be null if id doesn't exist
-			else the_collection.findOne({'_id':ObjectID(id)}, function(error, doc) {
+			else the_collection.findOne({'_id':ObjectId(id)}, function(error, doc) {
 				if(error) callback(error);
 				else callback(null, doc);
 			});
@@ -63,7 +63,7 @@ CollectionDriver.prototype.save = function(collectionName, obj, callback) {
 };
 
 
-//Updates an existing item in collection with given object id and updated object	
+//Updates an existing item in collection with given object id and updated object
 CollectionDriver.prototype.update = function(collectionName, obj, entityId, callback) {
 	this.getCollection(collectionName, function(error, the_collection) {
 		if(error) callback(error);
@@ -109,6 +109,5 @@ CollectionDriver.prototype.query = function(collectionName, query, callback){
 };
 
 
-//Exports the CollectionDriver so it can be used by main server code		
+//Exports the CollectionDriver so it can be used by main server code
 exports.CollectionDriver = CollectionDriver;
-	

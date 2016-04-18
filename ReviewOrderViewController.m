@@ -11,6 +11,7 @@
 #import "OrderViewController.h"
 #import "DeliveryViewController.h"
 #import "FoodRequest.h"
+#import "ViewProfileViewController.h"
 @interface ReviewOrderViewController ()
 
 
@@ -39,7 +40,12 @@
     {
         self.lblOrderer.text = reviewRequest.buyer_name;
         //If the current logged in user submitted this request and it has not yet been picked up
-        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        if(reviewRequest.pickup_at == [reviewRequest.pickup_at earlierDate:[NSDate date]])
+        {
+            [self.btnAction setEnabled:NO];
+            [self.btnAction setTitle:@"Past Request" forState:UIControlStateDisabled];
+        }
+        else if([reviewRequest.buyer_name isEqualToString:myData.myUser.username] && !reviewRequest.deliverer_id)
         {
             //then we want to provide the option to delete the request
             [self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
@@ -57,7 +63,7 @@
     }
     //If the review request has not been previously submitted
     else{
-        self.lblOrderer.text = myData.myUsername;
+        self.lblOrderer.text = myData.myUser.username;
     }
     
     
@@ -74,7 +80,8 @@
     
     
 
-    
+    self.mapView.delegate = self;
+
     self.mapView.rotateEnabled = NO;
     self.mapView.pitchEnabled = NO;
     self.mapView.scrollEnabled = NO;
@@ -84,6 +91,7 @@
 
     MGLPointAnnotation *orderLocation = [[MGLPointAnnotation alloc] init];
     orderLocation.coordinate = reviewRequest.pickup_point;
+    orderLocation.title = @"View Profile";
     [self.mapView addAnnotation:orderLocation];
     self.mapView.centerCoordinate = orderLocation.coordinate;
 
@@ -138,7 +146,7 @@
     if(reviewRequest.buyer_name)
     {
         //If the current logged in user submitted this request and it has not yet been picked up
-        if([reviewRequest.buyer_name isEqualToString:myData.myUsername] && !reviewRequest.deliverer_id)
+        if([reviewRequest.buyer_name isEqualToString:myData.myUser.username] && !reviewRequest.deliverer_id)
         {
             [myData.myOrders deleteRequest:reviewRequest andCompletion:^(BOOL completion){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
@@ -161,6 +169,49 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 
 }
+
+
+- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id<MGLAnnotation>)annotation
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    FoodRequest *reviewRequest = myData.currentFoodRequest;
+    if(reviewRequest.deliverer_id)
+    {
+        NSLog(@"can show callout");
+        return true;
+    }
+    else
+    {
+         NSLog(@"can't show callout");
+        return false;
+    }
+}
+
+
+
+
+
+- (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
+{
+    return [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+}
+
+- (void)mapView:(MGLMapView *)mapView annotation:(id<MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
+{
+  
+    // hide the callout view
+    [self.mapView deselectAnnotation:annotation animated:NO];
+    
+    self.navigationController.navigationBar.hidden = NO;
+        
+    [self.navigationController pushViewController:[[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil] animated:YES];
+    
+    
+    
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

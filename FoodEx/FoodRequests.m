@@ -31,10 +31,13 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
 {
     for(NSDictionary *item in requests){
         FoodRequest *request = [[FoodRequest alloc] initWithDictionary:item];
-        if(item[@"pickup_point"])
+        if(item[@"image_id"])
         {
-            NSLog(@"%f %f", [item[@"pickup_point"][@"coordinates"][1] floatValue], [item[@"pickup_point"][@"coordinates"][0] floatValue]);
-            NSLog(@"%f %f", request.pickup_point.latitude, request.pickup_point.longitude);
+            NSLog(@"%@", item[@"image_id"]);
+            
+        }
+        else{
+            NSLog(@"No Image Set");
         }
         
         [destinationArray addObject:request];
