@@ -27,6 +27,12 @@
 		44696ACA1CB6FB4B0019758E /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 44696AC91CB6FB4B0019758E /* pin.png */; settings = {ASSET_TAGS = (); }; };
 		446FA7FD1CC41A6F006CCE81 /* ViewProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446FA7FB1CC41A6F006CCE81 /* ViewProfileViewController.m */; settings = {ASSET_TAGS = (); }; };
 		446FA7FE1CC41A6F006CCE81 /* ViewProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446FA7FC1CC41A6F006CCE81 /* ViewProfileViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		44849D671CCD8589008020A1 /* cancelbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D651CCD8589008020A1 /* cancelbutton.png */; settings = {ASSET_TAGS = (); }; };
+		44849D681CCD8589008020A1 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D661CCD8589008020A1 /* register.png */; settings = {ASSET_TAGS = (); }; };
+		44849D6A1CCDDEF1008020A1 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D691CCDDEF1008020A1 /* placeholder.png */; settings = {ASSET_TAGS = (); }; };
+		44849D6C1CCDE025008020A1 /* smokepin.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D6B1CCDE025008020A1 /* smokepin.png */; settings = {ASSET_TAGS = (); }; };
+		44849D701CCDE1A8008020A1 /* pindouble.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D6F1CCDE1A8008020A1 /* pindouble.png */; settings = {ASSET_TAGS = (); }; };
+		44849D781CCE6EC3008020A1 /* smallpin-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 44849D771CCE6EC3008020A1 /* smallpin-01.png */; settings = {ASSET_TAGS = (); }; };
 		449CD65E1C864F4D00325DAA /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD65C1C864F4D00325DAA /* OrderViewController.m */; };
 		449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD65D1C864F4D00325DAA /* OrderViewController.xib */; };
 		449CD6631C864F6800325DAA /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD6611C864F6800325DAA /* DeliveryViewController.m */; };
@@ -35,8 +41,14 @@
 		449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD6671C864F8400325DAA /* ProfileViewController.xib */; };
 		449CD6701C86583000325DAA /* CreateOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449CD66E1C86583000325DAA /* CreateOrderViewController.m */; };
 		449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449CD66F1C86583000325DAA /* CreateOrderViewController.xib */; };
+		44A671BD1CCD7BEA00102CB2 /* foodexlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 44A671BC1CCD7BEA00102CB2 /* foodexlogo.png */; settings = {ASSET_TAGS = (); }; };
+		44A671C11CCD7F1800102CB2 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 44A671C01CCD7F1800102CB2 /* loginbutton.png */; settings = {ASSET_TAGS = (); }; };
+		44BAB8371CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png in Resources */ = {isa = PBXBuildFile; fileRef = 44BAB8361CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png */; settings = {ASSET_TAGS = (); }; };
 		44BDFDBC1C86A5900004D74F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BDFDBA1C86A5900004D74F /* LoginViewController.m */; };
 		44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44BDFDBB1C86A5900004D74F /* LoginViewController.xib */; };
+		44BF8D841CC7DBB000570C7A /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BF8D831CC7DBB000570C7A /* Menu.m */; settings = {ASSET_TAGS = (); }; };
+		44BF8D871CC7DCA100570C7A /* DiningLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BF8D861CC7DCA100570C7A /* DiningLocation.m */; settings = {ASSET_TAGS = (); }; };
+		44BF8D8A1CC7DCAF00570C7A /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BF8D891CC7DCAF00570C7A /* MenuItem.m */; settings = {ASSET_TAGS = (); }; };
 		44D3D7E61C83B36200098C57 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E51C83B36200098C57 /* User.m */; };
 		44D3D7E91C83B3D100098C57 /* FoodRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7E81C83B3D100098C57 /* FoodRequest.m */; };
 		44D3D7EC1C83B80200098C57 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D3D7EB1C83B80200098C57 /* Order.m */; };
@@ -114,6 +126,12 @@
 		446FA7FA1CC41A6F006CCE81 /* ViewProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewProfileViewController.h; path = ../ViewProfileViewController.h; sourceTree = "<group>"; };
 		446FA7FB1CC41A6F006CCE81 /* ViewProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewProfileViewController.m; path = ../ViewProfileViewController.m; sourceTree = "<group>"; };
 		446FA7FC1CC41A6F006CCE81 /* ViewProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewProfileViewController.xib; path = ../ViewProfileViewController.xib; sourceTree = "<group>"; };
+		44849D651CCD8589008020A1 /* cancelbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelbutton.png; sourceTree = "<group>"; };
+		44849D661CCD8589008020A1 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
+		44849D691CCDDEF1008020A1 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		44849D6B1CCDE025008020A1 /* smokepin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smokepin.png; sourceTree = "<group>"; };
+		44849D6F1CCDE1A8008020A1 /* pindouble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pindouble.png; sourceTree = "<group>"; };
+		44849D771CCE6EC3008020A1 /* smallpin-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallpin-01.png"; sourceTree = "<group>"; };
 		449CD65B1C864F4D00325DAA /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		449CD65C1C864F4D00325DAA /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		449CD65D1C864F4D00325DAA /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
@@ -126,9 +144,18 @@
 		449CD66D1C86583000325DAA /* CreateOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateOrderViewController.h; path = ../CreateOrderViewController.h; sourceTree = "<group>"; };
 		449CD66E1C86583000325DAA /* CreateOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateOrderViewController.m; path = ../CreateOrderViewController.m; sourceTree = "<group>"; };
 		449CD66F1C86583000325DAA /* CreateOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateOrderViewController.xib; path = ../CreateOrderViewController.xib; sourceTree = "<group>"; };
+		44A671BC1CCD7BEA00102CB2 /* foodexlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodexlogo.png; sourceTree = "<group>"; };
+		44A671C01CCD7F1800102CB2 /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
+		44BAB8361CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4543990-company-business-logo-design-vector-coffee-cup.png"; sourceTree = "<group>"; };
 		44BDFDB91C86A5900004D74F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
 		44BDFDBA1C86A5900004D74F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
 		44BDFDBB1C86A5900004D74F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ../LoginViewController.xib; sourceTree = "<group>"; };
+		44BF8D821CC7DBB000570C7A /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		44BF8D831CC7DBB000570C7A /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		44BF8D851CC7DCA100570C7A /* DiningLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiningLocation.h; path = ../DiningLocation.h; sourceTree = "<group>"; };
+		44BF8D861CC7DCA100570C7A /* DiningLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiningLocation.m; path = ../DiningLocation.m; sourceTree = "<group>"; };
+		44BF8D881CC7DCAF00570C7A /* MenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		44BF8D891CC7DCAF00570C7A /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		44D3D7E41C83B36200098C57 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		44D3D7E51C83B36200098C57 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		44D3D7E71C83B3D100098C57 /* FoodRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodRequest.h; sourceTree = "<group>"; };
@@ -181,6 +208,15 @@
 		4415EB741C839D0200B2C5B7 = {
 			isa = PBXGroup;
 			children = (
+				44849D771CCE6EC3008020A1 /* smallpin-01.png */,
+				44849D6F1CCDE1A8008020A1 /* pindouble.png */,
+				44849D6B1CCDE025008020A1 /* smokepin.png */,
+				44849D691CCDDEF1008020A1 /* placeholder.png */,
+				44849D651CCD8589008020A1 /* cancelbutton.png */,
+				44849D661CCD8589008020A1 /* register.png */,
+				44A671C01CCD7F1800102CB2 /* loginbutton.png */,
+				44A671BC1CCD7BEA00102CB2 /* foodexlogo.png */,
+				44BAB8361CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png */,
 				44E4064C1CB842B10088F6D0 /* campus.gpx */,
 				44696AC91CB6FB4B0019758E /* pin.png */,
 				44696AC51CB6F85B0019758E /* Mapbox.framework */,
@@ -276,6 +312,8 @@
 		44D3D7E01C83B23200098C57 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				44BF8D851CC7DCA100570C7A /* DiningLocation.h */,
+				44BF8D861CC7DCA100570C7A /* DiningLocation.m */,
 				44D3D7E41C83B36200098C57 /* User.h */,
 				44D3D7E51C83B36200098C57 /* User.m */,
 				44D3D7E71C83B3D100098C57 /* FoodRequest.h */,
@@ -288,6 +326,10 @@
 				44D3D7F81C83BC2000098C57 /* FoodRequests.m */,
 				444D55181C88EE03002EBE49 /* GlobalData.h */,
 				444D55191C88EE03002EBE49 /* GlobalData.m */,
+				44BF8D821CC7DBB000570C7A /* Menu.h */,
+				44BF8D831CC7DBB000570C7A /* Menu.m */,
+				44BF8D881CC7DCAF00570C7A /* MenuItem.h */,
+				44BF8D891CC7DCAF00570C7A /* MenuItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -412,17 +454,26 @@
 				444D55171C8817AE002EBE49 /* ReviewOrderViewController.xib in Resources */,
 				449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */,
 				449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */,
+				44849D6A1CCDDEF1008020A1 /* placeholder.png in Resources */,
 				033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */,
 				4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */,
+				44A671BD1CCD7BEA00102CB2 /* foodexlogo.png in Resources */,
+				44849D781CCE6EC3008020A1 /* smallpin-01.png in Resources */,
 				44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */,
 				446FA7FE1CC41A6F006CCE81 /* ViewProfileViewController.xib in Resources */,
+				44849D701CCDE1A8008020A1 /* pindouble.png in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
+				44A671C11CCD7F1800102CB2 /* loginbutton.png in Resources */,
+				44849D681CCD8589008020A1 /* register.png in Resources */,
+				44849D671CCD8589008020A1 /* cancelbutton.png in Resources */,
 				44E74A4D1CC03F4B00006CAC /* RegisterViewController.xib in Resources */,
+				44BAB8371CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png in Resources */,
 				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
 				44696ACA1CB6FB4B0019758E /* pin.png in Resources */,
 				4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */,
 				449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */,
+				44849D6C1CCDE025008020A1 /* smokepin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +500,8 @@
 			files = (
 				446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */,
 				44E74A4C1CC03F4B00006CAC /* RegisterViewController.m in Sources */,
+				44BF8D841CC7DBB000570C7A /* Menu.m in Sources */,
+				44BF8D8A1CC7DCAF00570C7A /* MenuItem.m in Sources */,
 				444D55161C8817AE002EBE49 /* ReviewOrderViewController.m in Sources */,
 				444D551A1C88EE03002EBE49 /* GlobalData.m in Sources */,
 				44D3D7EF1C83B80D00098C57 /* Item.m in Sources */,
@@ -463,6 +516,7 @@
 				44BDFDBC1C86A5900004D74F /* LoginViewController.m in Sources */,
 				449CD6681C864F8400325DAA /* ProfileViewController.m in Sources */,
 				033807E11C876D380045D5BB /* ItemAddViewController.m in Sources */,
+				44BF8D871CC7DCA100570C7A /* DiningLocation.m in Sources */,
 				449CD6701C86583000325DAA /* CreateOrderViewController.m in Sources */,
 				44D3D7F91C83BC2000098C57 /* FoodRequests.m in Sources */,
 			);

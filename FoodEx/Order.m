@@ -17,6 +17,7 @@
     self = [super init];
     if (self) {
         _items = [[NSMutableArray alloc] init];
+        _otherLocations = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -40,6 +41,11 @@
         }
         
         _price_total = dictionary[@"price_total"];
+        _otherLocations = [[NSMutableArray alloc] init];
+        for(NSString *locationName in dictionary[@"other_locations"])
+        {
+            [_otherLocations addObject:locationName];
+        }
     }
     return self;
 }
@@ -55,9 +61,10 @@
         [itemArray addObject:[item toDictionary]];
     }
     
+    
     safeSet(jsonable, @"items", itemArray);
     safeSet(jsonable, @"price_total", _price_total);
-    
+    safeSet(jsonable, @"other_locations", _otherLocations);
     return jsonable;
 
 }

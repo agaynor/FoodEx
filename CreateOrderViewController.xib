@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateOrderViewController">
@@ -47,11 +48,11 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/mapbox/streets-v8"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bgh-jP-C0W">
-                    <rect key="frame" x="267" y="217.5" width="67" height="67"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pindouble.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bgh-jP-C0W">
+                    <rect key="frame" x="275.5" y="201" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="67" placeholder="YES" id="L8M-gJ-eYN"/>
-                        <constraint firstAttribute="height" constant="67" id="MCI-XV-hsn"/>
+                        <constraint firstAttribute="width" constant="50" placeholder="YES" id="L8M-gJ-eYN"/>
+                        <constraint firstAttribute="height" constant="50" id="MCI-XV-hsn"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMU-SO-hwG">
@@ -94,7 +95,7 @@
                 <constraint firstItem="dXE-d2-aq8" firstAttribute="leading" secondItem="GIP-RT-HDM" secondAttribute="leading" id="FfV-Kf-aPy"/>
                 <constraint firstItem="L6c-F4-k8Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="H7W-Mz-ssX"/>
                 <constraint firstItem="L6c-F4-k8Q" firstAttribute="leading" secondItem="zMU-SO-hwG" secondAttribute="leading" id="L0W-7L-zRw"/>
-                <constraint firstItem="Bgh-jP-C0W" firstAttribute="centerY" secondItem="gMD-Cp-jeS" secondAttribute="centerY" id="QTo-09-G9L"/>
+                <constraint firstItem="Bgh-jP-C0W" firstAttribute="bottom" secondItem="gMD-Cp-jeS" secondAttribute="centerY" id="QTo-09-G9L"/>
                 <constraint firstAttribute="bottom" secondItem="KBI-9b-Mtc" secondAttribute="bottom" constant="20" id="R9z-jt-LZr"/>
                 <constraint firstAttribute="trailing" secondItem="ILg-QD-IfX" secondAttribute="trailing" constant="12" id="S3G-XA-eDX"/>
                 <constraint firstItem="dXE-d2-aq8" firstAttribute="top" secondItem="GIP-RT-HDM" secondAttribute="bottom" constant="5" id="VkB-Nf-xA5"/>
@@ -112,4 +113,7 @@
             <nil key="simulatedBottomBarMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="pindouble.png" width="157" height="477"/>
+    </resources>
 </document>

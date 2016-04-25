@@ -10,6 +10,7 @@
 #import "FoodRequest.h"
 #import "FoodRequests.h"
 #import "User.h"
+#import "Menu.h"
 @interface GlobalData : NSObject
 
 @property (nonatomic, strong) FoodRequest *currentFoodRequest;
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) FoodRequests *unclaimedDeliveries;
 @property (nonatomic, strong) FoodRequests *pastOrders;
 @property (nonatomic, strong) FoodRequests *pastDeliveries;
+@property (nonatomic, strong) Menu *menu;
 //@property (nonatomic, strong) NSString *myUsername;
 @property (nonatomic, strong) User *myUser;
 +(id)sharedInstance;

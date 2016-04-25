@@ -27,11 +27,30 @@
     GlobalData *myData = [GlobalData sharedInstance];
     FoodRequest *reviewRequest = myData.currentFoodRequest;
     
-    self.lblDiningArea.text = reviewRequest.order.dining_location;
+    NSString *textString = reviewRequest.order.dining_location;
+    for(int i = 0; i < [reviewRequest.order.otherLocations count]; ++i)
+    {
+        if(i == [reviewRequest.order.otherLocations count] - 1)
+        {
+            if([reviewRequest.order.otherLocations count]>1){
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@", or %@", [reviewRequest.order.otherLocations objectAtIndex:i]]];
+            }
+            else{
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@" or %@", [reviewRequest.order.otherLocations objectAtIndex:i]]];
+            }
+        }
+        else{
+            textString = [textString stringByAppendingString:[NSString stringWithFormat:@", %@", [reviewRequest.order.otherLocations objectAtIndex:i]]];
+        }
+    }
+    self.lblDiningArea.text = textString;
     self.lblPickupLocation.text = reviewRequest.pickup_location;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    [dateFormatter setDateFormat:@"EEEE',' M/dd 'at' h:mm a"];
     self.lblPickupTime.text = [dateFormatter stringFromDate:reviewRequest.pickup_at];
+    
+    self.lblTotalPrice.text =  [NSString stringWithFormat:@"$%.2f", [reviewRequest.order.price_total doubleValue]];
+
     
     [self.tabBarController.tabBar setHidden:YES];
 
@@ -91,8 +110,7 @@
 
     MGLPointAnnotation *orderLocation = [[MGLPointAnnotation alloc] init];
     orderLocation.coordinate = reviewRequest.pickup_point;
-    orderLocation.title = @"View Profile";
-    [self.mapView addAnnotation:orderLocation];
+    orderLocation.title = @"View Profile";    [self.mapView addAnnotation:orderLocation];
     self.mapView.centerCoordinate = orderLocation.coordinate;
 
     
@@ -119,7 +137,7 @@
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:MyIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -131,7 +149,11 @@
     Item *item = [myData.currentFoodRequest.order.items objectAtIndex:indexPath.row];
     NSString *textString = [NSString stringWithFormat:@"%@ %@", item.quantity, item.name];
     cell.textLabel.text = textString;
-    cell.detailTextLabel.text = item.comment;
+    
+    double totalPrice = [item.unit_price doubleValue] * [item.quantity intValue];
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%.2f", totalPrice];
+
     
     return cell;
 }
@@ -208,6 +230,33 @@
     
     
     
+}
+
+- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id <MGLAnnotation>)annotation
+{
+    // Try to reuse the existing ‘pisa’ annotation image, if it exists
+    MGLAnnotationImage *annotationImage = [mapView dequeueReusableAnnotationImageWithIdentifier:@"smoke"];
+    
+    // If the ‘pisa’ annotation image hasn‘t been set yet, initialize it here
+    if ( ! annotationImage)
+    {
+        // Leaning Tower of Pisa by Stefan Spieler from the Noun Project
+        UIImage *image = [UIImage imageNamed:@"smallpin-01.png"];
+        
+        // The anchor point of an annotation is currently always the center. To
+        // shift the anchor point to the bottom of the annotation, the image
+        // asset includes transparent bottom padding equal to the original image
+        // height.
+        //
+        // To make this padding non-interactive, we create another image object
+        // with a custom alignment rect that excludes the padding.
+        image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, image.size.height/2, 0)];
+        
+        // Initialize the ‘pisa’ annotation image with the UIImage we just loaded
+        annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"smoke"];
+    }
+    
+    return annotationImage;
 }
 
 

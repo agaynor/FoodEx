@@ -59,6 +59,8 @@ static NSString* const kFiles = @"files";
     registerInfo[@"password"] = [self.txtPassword text];
     registerInfo[@"first_name"] = [self.txtFirstName text];
     registerInfo[@"last_name"] = [self.txtLastName text];
+   
+    if(self.hasSelectedImage){
     self.btnCancel.enabled = NO;
     self.btnRegister.enabled = NO;
     
@@ -173,10 +175,28 @@ static NSString* const kFiles = @"files";
     }];
     
     [dataTask resume];
+    }
+    
+    else{
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Profile Picture"
+                                      message:[NSString stringWithFormat:@"Please select a profile picture before registering!"]
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* cancelButton = [UIAlertAction
+                                       actionWithTitle:@"Okay"
+                                       style:UIAlertActionStyleCancel
+                                       handler:nil];
+        
+        [alert addAction:cancelButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
 
+    }
 }
 
 - (IBAction)cancelPressed:(id)sender {
+     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 

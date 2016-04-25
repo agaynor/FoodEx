@@ -11,6 +11,7 @@
 #import "ReviewOrderViewController.h"
 #import "GlobalData.h"
 #import "Item.h"
+#import "DiningLocation.h"
 @interface OrderContentsViewController ()
 
 @end
@@ -27,14 +28,29 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.tblItems.delegate = self;
     self.tblItems.dataSource = self;
-   
+    self.pickerDiningArea.delegate = self;
+    self.pickerDiningArea.dataSource = self;
+    self.lblTotalPrice.text =  @"Total Price: $0.00";
     self.tblItems.allowsMultipleSelectionDuringEditing = NO;
+    
+    GlobalData *myData = [GlobalData sharedInstance];
+    Order *currentOrder = [myData currentFoodRequest].order;
+    DiningLocation *loc = [myData.menu.menu objectAtIndex:0];
+    
+    [currentOrder setDining_location:loc.locationName];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    GlobalData *myData = [GlobalData sharedInstance];
+    if([myData.currentFoodRequest.order.items count] != 0)
+    {
+        [self.pickerDiningArea setUserInteractionEnabled:NO];
+    }
     [self.tblItems reloadData];
+    self.lblTotalPrice.text =  [NSString stringWithFormat:@"Total Price: $%.2f", [myData.currentFoodRequest.order.price_total doubleValue]];
+
 }
 
 -(IBAction)addItem:(id)sender
@@ -42,13 +58,47 @@
     [self.navigationController pushViewController:[[ItemAddViewController alloc] initWithNibName:@"ItemAddViewController" bundle:nil] animated:YES];
 }
 
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    return [myData.menu.menu count];
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    GlobalData *myData = [GlobalData sharedInstance];
+    DiningLocation *loc = [myData.menu.menu objectAtIndex:row];
+    
+    return loc.locationName;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    GlobalData *myData = [GlobalData sharedInstance];
+    Order *currentOrder = [myData currentFoodRequest].order;
+    DiningLocation *loc = [myData.menu.menu objectAtIndex:row];
+
+    [currentOrder setDining_location:loc.locationName];
+    
+}
 
 - (IBAction)placeOrderPressed:(id)sender {
     GlobalData *myData = [GlobalData sharedInstance];
     Order *currentOrder = [myData currentFoodRequest].order;
-    [currentOrder setDining_location:[self.txtDiningArea text]];
+    NSArray *initialItemArray = ((Item *)[currentOrder.items objectAtIndex:0]).menuItem.otherLocations;
     
-    
+    NSMutableSet *intersection = [NSMutableSet setWithArray:initialItemArray];
+    for(Item *item in currentOrder.items)
+    {
+        [intersection intersectSet:[NSSet setWithArray:item.menuItem.otherLocations]];
+    }
+    currentOrder.otherLocations = [NSMutableArray arrayWithArray:[intersection allObjects]];
+    NSLog(@"%@", [currentOrder.otherLocations description]);
     [self.navigationController pushViewController:[[ReviewOrderViewController alloc] initWithNibName:@"ReviewOrderViewController" bundle:nil] animated:YES];
 }
 
@@ -65,6 +115,7 @@
     return [myData.currentFoodRequest.order.items count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -74,7 +125,7 @@
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                        reuseIdentifier:MyIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -86,7 +137,10 @@
     Item *item = [myData.currentFoodRequest.order.items objectAtIndex:indexPath.row];
     NSString *textString = [NSString stringWithFormat:@"%@ %@", item.quantity, item.name];
     cell.textLabel.text = textString;
-    cell.detailTextLabel.text = item.comment;
+    
+    double totalPrice = [item.unit_price doubleValue] * [item.quantity intValue];
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%.2f", totalPrice];
 
     return cell;
 }
@@ -102,7 +156,23 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         //add code here for when you hit delete
         GlobalData *myData = [GlobalData sharedInstance];
+        
+        Item *removeItem = [myData.currentFoodRequest.order.items objectAtIndex:indexPath.row];
+        
+        double totalPrice = [removeItem.unit_price doubleValue] * [removeItem.quantity intValue];
+        
+        myData.currentFoodRequest.order.price_total = [NSNumber numberWithDouble:[myData.currentFoodRequest.order.price_total doubleValue]- totalPrice];
+        
+        self.lblTotalPrice.text =  [NSString stringWithFormat:@"Total Price: $%.2f", [myData.currentFoodRequest.order.price_total doubleValue]];
+
         [myData.currentFoodRequest.order.items removeObjectAtIndex:indexPath.row];
+        if([myData.currentFoodRequest.order.items count] == 0)
+        {
+            [self.pickerDiningArea setUserInteractionEnabled:YES];
+        }
+        
+        
+        
         [tableView reloadData];
     }
 }

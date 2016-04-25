@@ -61,8 +61,12 @@
                 MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
                 annotation.coordinate = request.pickup_point;
                 annotation.title = request.order.dining_location;
+                if([request.order.otherLocations count] > 0)
+                {
+                    annotation.title = [annotation.title stringByAppendingString:@", Or..."];
+                }
                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"HH:mm"];
+                [dateFormatter setDateFormat:@"h:mm a"];
                 annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
                 
                 [self.mapView addAnnotation:annotation];
@@ -82,8 +86,12 @@
                 MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
                 annotation.coordinate = request.pickup_point;
                 annotation.title = request.order.dining_location;
+                if([request.order.otherLocations count] > 0)
+                {
+                    annotation.title = [annotation.title stringByAppendingString:@", Or..."];
+                }
                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"HH:mm"];
+                [dateFormatter setDateFormat:@"h:mm a"];
                 annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
                 
                 [self.mapView addAnnotation:annotation];
@@ -117,8 +125,12 @@
             MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
             annotation.coordinate = request.pickup_point;
             annotation.title = request.order.dining_location;
+            if([request.order.otherLocations count] > 0)
+            {
+                annotation.title = [annotation.title stringByAppendingString:@", Or..."];
+            }
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"HH:mm"];
+            [dateFormatter setDateFormat:@"h:mm a"];
             annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
             
             [self.mapView addAnnotation:annotation];
@@ -132,8 +144,12 @@
             MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
             annotation.coordinate = request.pickup_point;
             annotation.title = request.order.dining_location;
+            if([request.order.otherLocations count] > 0)
+            {
+                annotation.title = [annotation.title stringByAppendingString:@", Or..."];
+            }
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"HH:mm"];
+            [dateFormatter setDateFormat:@"h:mm a"];
             annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
             
             [self.mapView addAnnotation:annotation];
@@ -304,7 +320,7 @@
     GlobalData *myData = [GlobalData sharedInstance];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    [dateFormatter setDateFormat:@"EEEE',' M/dd 'at' h:mm a"];
     FoodRequest *request = nil;
     if(indexPath.section == 0)
     {
@@ -314,9 +330,28 @@
     {
         request = [myData.unclaimedDeliveries.requests objectAtIndex:indexPath.row];
     }
-    NSString *textString = [NSString stringWithFormat:@"%@ at %@", request.pickup_location, [dateFormatter stringFromDate:request.pickup_at]];
+    
+    NSString *textString = request.order.dining_location;
+    for(int i = 0; i < [request.order.otherLocations count]; ++i)
+    {
+        if(i == [request.order.otherLocations count] - 1)
+        {
+            if([request.order.otherLocations count]>1){
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@", or %@", [request.order.otherLocations objectAtIndex:i]]];
+            }
+            else{
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@" or %@", [request.order.otherLocations objectAtIndex:i]]];
+            }
+        }
+        else{
+            textString = [textString stringByAppendingString:[NSString stringWithFormat:@", %@", [request.order.otherLocations objectAtIndex:i]]];
+        }
+    }
+    
+    
     cell.textLabel.text = textString;
-    NSString *detailTextString = [NSString stringWithFormat:@"From %@", request.order.dining_location];
+    NSString *detailTextString = [dateFormatter stringFromDate:request.pickup_at];
+    
     cell.detailTextLabel.text = detailTextString;
     
     return cell;
@@ -355,8 +390,12 @@
                 MGLPointAnnotation *annotation = [[MGLPointAnnotation alloc] init];
                 annotation.coordinate = request.pickup_point;
                 annotation.title = request.order.dining_location;
+                if([request.order.otherLocations count] > 0)
+                {
+                    annotation.title = [annotation.title stringByAppendingString:@", Or..."];
+                }
                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"HH:mm"];
+                [dateFormatter setDateFormat:@"h:mm a"];
                 annotation.subtitle = [dateFormatter stringFromDate:request.pickup_at];
                 
                 [self.mapView addAnnotation:annotation];
@@ -368,7 +407,32 @@
      ];
 }
 
-
+- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id <MGLAnnotation>)annotation
+{
+    // Try to reuse the existing ‘pisa’ annotation image, if it exists
+    MGLAnnotationImage *annotationImage = [mapView dequeueReusableAnnotationImageWithIdentifier:@"smoke"];
+    
+    // If the ‘pisa’ annotation image hasn‘t been set yet, initialize it here
+    if ( ! annotationImage)
+    {
+        // Leaning Tower of Pisa by Stefan Spieler from the Noun Project
+        UIImage *image = [UIImage imageNamed:@"smallpin-01.png"];
+        
+        // The anchor point of an annotation is currently always the center. To
+        // shift the anchor point to the bottom of the annotation, the image
+        // asset includes transparent bottom padding equal to the original image
+        // height.
+        //
+        // To make this padding non-interactive, we create another image object
+        // with a custom alignment rect that excludes the padding.
+        image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        
+        // Initialize the ‘pisa’ annotation image with the UIImage we just loaded
+        annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"smoke"];
+    }
+    
+    return annotationImage;
+}
 
 
 - (void)didReceiveMemoryWarning {

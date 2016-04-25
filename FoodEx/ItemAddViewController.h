@@ -7,15 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ItemAddViewController : UIViewController
+#import "DiningLocation.h"
+#import "MenuItem.h"
+@interface ItemAddViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblQuantity;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtName;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerItemName;
+
+
 @property (weak, nonatomic) IBOutlet UIStepper *stepperQuantity;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtComments;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtComments;
+@property (strong, nonatomic) DiningLocation *currentLocation;
+@property (strong, nonatomic) MenuItem *selectedItem;
+@property (weak, nonatomic) IBOutlet UILabel *lblUnitPrice;
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
 
 @end

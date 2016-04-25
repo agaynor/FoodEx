@@ -31,6 +31,7 @@
         self.pastDeliveries = [[FoodRequests alloc] init];
         self.pastOrders = [[FoodRequests alloc] init];
         self.myUser = [[User alloc] init];
+        self.menu = [[Menu alloc] init];
     }
     return self;
 }

@@ -22,6 +22,7 @@ static NSString* const kFiles = @"files";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.btnLogin setImage:[UIImage imageNamed:@"loginbutton.png"] forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -118,6 +119,7 @@ static NSString* const kFiles = @"files";
                 [myData.myOrders importMyOrders:YES andCompletion:^(BOOL completion){
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateMyOrders" object:self];
                 }];
+                [myData.menu loadMenu];
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             }

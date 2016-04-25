@@ -14,7 +14,7 @@
 @property(nonatomic, copy) NSString *dining_location;
 @property(nonatomic, copy) NSMutableArray *items;
 @property(nonatomic, copy) NSNumber *price_total;
-
+@property(nonatomic, copy) NSMutableArray *otherLocations;
 
 -(void)addItem:(Item *)item;
 -(NSDictionary *)toDictionary;

@@ -88,12 +88,30 @@
     GlobalData *myData = [GlobalData sharedInstance];
     FoodRequest *request = [myData.myOrders.requests objectAtIndex:indexPath.row];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    [dateFormatter setDateFormat:@"EEEE',' M/dd 'at' h:mm a"];
 
     
-    NSString *textString = [NSString stringWithFormat:@"%@ at %@", request.pickup_location, [dateFormatter stringFromDate:request.pickup_at]];
+    NSString *textString = request.order.dining_location;
+    for(int i = 0; i < [request.order.otherLocations count]; ++i)
+    {
+        if(i == [request.order.otherLocations count] - 1)
+        {
+            if([request.order.otherLocations count]>1){
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@", or %@", [request.order.otherLocations objectAtIndex:i]]];
+            }
+            else{
+                textString = [textString stringByAppendingString:[NSString stringWithFormat:@" or %@", [request.order.otherLocations objectAtIndex:i]]];
+            }
+        }
+        else{
+              textString = [textString stringByAppendingString:[NSString stringWithFormat:@", %@", [request.order.otherLocations objectAtIndex:i]]];
+        }
+    }
+    
+
     cell.textLabel.text = textString;
-    NSString *detailTextString = [NSString stringWithFormat:@"From %@", request.order.dining_location];
+    NSString *detailTextString = [dateFormatter stringFromDate:request.pickup_at];
+    
     cell.detailTextLabel.text = detailTextString;
     
     return cell;

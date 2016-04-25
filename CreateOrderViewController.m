@@ -49,7 +49,7 @@
     self.mapView.visibleCoordinateBounds = self.bounds;
     if(!self.pinImage.image)
     {
-        self.pinImage.image = [UIImage imageNamed:@"pin.png"];
+        self.pinImage.image = [UIImage imageNamed:@"pindouble.png"];
     }
     
     self.mapView.minimumZoomLevel = self.mapView.zoomLevel;

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrderContentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OrderContentsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblItems;
 
-@property (weak, nonatomic) IBOutlet UITextField *txtDiningArea;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerDiningArea;
+@property (weak, nonatomic) IBOutlet UILabel *lblTotalPrice;
+
 @end
