@@ -24,6 +24,11 @@
 
 @implementation AppDelegate
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -169,7 +174,11 @@
     
     [tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
     
+    orderNav.navigationBar.barTintColor = UIColorFromRGB(0x0F517C);
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(0xb9b8b8), UITextAttributeTextColor, nil];
     
+    orderNav.navigationBar.tintColor = UIColorFromRGB(0xb9b8b8);
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
 
     
     return YES;

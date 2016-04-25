@@ -18,6 +18,12 @@
     BOOL didLocateUser;
 }
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -103,6 +109,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdateNotification:) name:@"UpdateMyDeliveries" object:nil];
 
     // Do any additional setup after loading the view from its nib.
+    self.tblDeliveries.backgroundColor = UIColorFromRGB(0x064065);
+    [self.datePicker setValue:UIColorFromRGB(0xb9b8b8) forKey:@"textColor"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -353,6 +361,13 @@
     NSString *detailTextString = [dateFormatter stringFromDate:request.pickup_at];
     
     cell.detailTextLabel.text = detailTextString;
+    
+    //edit layout and ui
+    cell.textLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.detailTextLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.backgroundColor = UIColorFromRGB(0x064065);
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Futura" size:14];
     
     return cell;
 }
