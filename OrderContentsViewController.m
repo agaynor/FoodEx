@@ -18,6 +18,12 @@
 
 @implementation OrderContentsViewController
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
 - (void)viewDidLoad {
  
     [super viewDidLoad];
@@ -38,7 +44,10 @@
     DiningLocation *loc = [myData.menu.menu objectAtIndex:0];
     
     [currentOrder setDining_location:loc.locationName];
-
+    
+    self.pickerDiningArea.backgroundColor = UIColorFromRGB(0x064065);
+    self.pickerDiningArea.tintColor = UIColorFromRGB(0xb9b8b8);
+    self.tblItems.backgroundColor = UIColorFromRGB(0x064065);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -84,6 +93,19 @@
     DiningLocation *loc = [myData.menu.menu objectAtIndex:row];
 
     [currentOrder setDining_location:loc.locationName];
+    
+}
+
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    GlobalData *myData = [GlobalData sharedInstance];
+    DiningLocation *loc = [myData.menu.menu objectAtIndex:row];
+    
+    NSString *title = loc.locationName;;
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xb9b8b8)}];
+    
+    return attString;
     
 }
 
@@ -142,6 +164,13 @@
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"$%.2f", totalPrice];
 
+    //edit layout and ui
+    cell.textLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.detailTextLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.backgroundColor = UIColorFromRGB(0x064065);
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Futura" size:14];
+    
     return cell;
 }
 

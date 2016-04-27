@@ -20,6 +20,12 @@
 		444D55161C8817AE002EBE49 /* ReviewOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D55141C8817AE002EBE49 /* ReviewOrderViewController.m */; settings = {ASSET_TAGS = (); }; };
 		444D55171C8817AE002EBE49 /* ReviewOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444D55151C8817AE002EBE49 /* ReviewOrderViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		444D551A1C88EE03002EBE49 /* GlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 444D55191C88EE03002EBE49 /* GlobalData.m */; settings = {ASSET_TAGS = (); }; };
+		4462FA101CCEC71200088F66 /* additemsbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA0F1CCEC71200088F66 /* additemsbutton.png */; settings = {ASSET_TAGS = (); }; };
+		4462FA121CCEC79600088F66 /* deleterequestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA111CCEC79600088F66 /* deleterequestbutton.png */; settings = {ASSET_TAGS = (); }; };
+		4462FA141CCEC7D900088F66 /* pastrequestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA131CCEC7D900088F66 /* pastrequestbutton.png */; settings = {ASSET_TAGS = (); }; };
+		4462FA161CCEC80600088F66 /* placeorderbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA151CCEC80600088F66 /* placeorderbutton.png */; settings = {ASSET_TAGS = (); }; };
+		4462FA181CCEC81300088F66 /* requestclaimedbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA171CCEC81300088F66 /* requestclaimedbutton.png */; settings = {ASSET_TAGS = (); }; };
+		4462FA1A1CCEC8A800088F66 /* confirmorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4462FA191CCEC8A800088F66 /* confirmorder.png */; settings = {ASSET_TAGS = (); }; };
 		446588B61C87563E002CA7ED /* OrderContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446588B41C87563E002CA7ED /* OrderContentsViewController.m */; };
 		446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 446588B51C87563E002CA7ED /* OrderContentsViewController.xib */; };
 		44696AC61CB6F85B0019758E /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44696AC51CB6F85B0019758E /* Mapbox.framework */; };
@@ -60,6 +66,8 @@
 		44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 44E4064C1CB842B10088F6D0 /* campus.gpx */; settings = {ASSET_TAGS = (); }; };
 		44E74A4C1CC03F4B00006CAC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E74A4A1CC03F4B00006CAC /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		44E74A4D1CC03F4B00006CAC /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44E74A4B1CC03F4B00006CAC /* RegisterViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		44EF5DD01CCED664004AFCE4 /* additem.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EF5DCF1CCED664004AFCE4 /* additem.png */; settings = {ASSET_TAGS = (); }; };
+		44EF5DD21CCED686004AFCE4 /* claimdelivery.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EF5DD11CCED686004AFCE4 /* claimdelivery.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +125,12 @@
 		444D55151C8817AE002EBE49 /* ReviewOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ReviewOrderViewController.xib; path = ../ReviewOrderViewController.xib; sourceTree = "<group>"; };
 		444D55181C88EE03002EBE49 /* GlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalData.h; sourceTree = "<group>"; };
 		444D55191C88EE03002EBE49 /* GlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalData.m; sourceTree = "<group>"; };
+		4462FA0F1CCEC71200088F66 /* additemsbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = additemsbutton.png; sourceTree = "<group>"; };
+		4462FA111CCEC79600088F66 /* deleterequestbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleterequestbutton.png; sourceTree = "<group>"; };
+		4462FA131CCEC7D900088F66 /* pastrequestbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pastrequestbutton.png; sourceTree = "<group>"; };
+		4462FA151CCEC80600088F66 /* placeorderbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeorderbutton.png; sourceTree = "<group>"; };
+		4462FA171CCEC81300088F66 /* requestclaimedbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = requestclaimedbutton.png; sourceTree = "<group>"; };
+		4462FA191CCEC8A800088F66 /* confirmorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confirmorder.png; sourceTree = "<group>"; };
 		446588B31C87563E002CA7ED /* OrderContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrderContentsViewController.h; path = ../OrderContentsViewController.h; sourceTree = "<group>"; };
 		446588B41C87563E002CA7ED /* OrderContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrderContentsViewController.m; path = ../OrderContentsViewController.m; sourceTree = "<group>"; };
 		446588B51C87563E002CA7ED /* OrderContentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OrderContentsViewController.xib; path = ../OrderContentsViewController.xib; sourceTree = "<group>"; };
@@ -173,6 +187,8 @@
 		44E74A491CC03F4B00006CAC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		44E74A4A1CC03F4B00006CAC /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		44E74A4B1CC03F4B00006CAC /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		44EF5DCF1CCED664004AFCE4 /* additem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = additem.png; sourceTree = "<group>"; };
+		44EF5DD11CCED686004AFCE4 /* claimdelivery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = claimdelivery.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +224,14 @@
 		4415EB741C839D0200B2C5B7 = {
 			isa = PBXGroup;
 			children = (
+				44EF5DD11CCED686004AFCE4 /* claimdelivery.png */,
+				44EF5DCF1CCED664004AFCE4 /* additem.png */,
+				4462FA191CCEC8A800088F66 /* confirmorder.png */,
+				4462FA171CCEC81300088F66 /* requestclaimedbutton.png */,
+				4462FA151CCEC80600088F66 /* placeorderbutton.png */,
+				4462FA131CCEC7D900088F66 /* pastrequestbutton.png */,
+				4462FA111CCEC79600088F66 /* deleterequestbutton.png */,
+				4462FA0F1CCEC71200088F66 /* additemsbutton.png */,
 				44849D771CCE6EC3008020A1 /* smallpin-01.png */,
 				44849D6F1CCDE1A8008020A1 /* pindouble.png */,
 				44849D6B1CCDE025008020A1 /* smokepin.png */,
@@ -451,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44BDFDBD1C86A5900004D74F /* LoginViewController.xib in Resources */,
+				44EF5DD01CCED664004AFCE4 /* additem.png in Resources */,
 				444D55171C8817AE002EBE49 /* ReviewOrderViewController.xib in Resources */,
 				449CD6711C86583000325DAA /* CreateOrderViewController.xib in Resources */,
 				449CD6691C864F8400325DAA /* ProfileViewController.xib in Resources */,
@@ -458,19 +483,26 @@
 				033807E21C876D380045D5BB /* ItemAddViewController.xib in Resources */,
 				4415EB931C839D0200B2C5B7 /* LaunchScreen.storyboard in Resources */,
 				44A671BD1CCD7BEA00102CB2 /* foodexlogo.png in Resources */,
+				4462FA121CCEC79600088F66 /* deleterequestbutton.png in Resources */,
+				4462FA101CCEC71200088F66 /* additemsbutton.png in Resources */,
 				44849D781CCE6EC3008020A1 /* smallpin-01.png in Resources */,
 				44E4064D1CB842B10088F6D0 /* campus.gpx in Resources */,
 				446FA7FE1CC41A6F006CCE81 /* ViewProfileViewController.xib in Resources */,
+				44EF5DD21CCED686004AFCE4 /* claimdelivery.png in Resources */,
+				4462FA1A1CCEC8A800088F66 /* confirmorder.png in Resources */,
 				44849D701CCDE1A8008020A1 /* pindouble.png in Resources */,
 				449CD6641C864F6800325DAA /* DeliveryViewController.xib in Resources */,
 				4415EB901C839D0200B2C5B7 /* Assets.xcassets in Resources */,
 				44A671C11CCD7F1800102CB2 /* loginbutton.png in Resources */,
 				44849D681CCD8589008020A1 /* register.png in Resources */,
+				4462FA181CCEC81300088F66 /* requestclaimedbutton.png in Resources */,
 				44849D671CCD8589008020A1 /* cancelbutton.png in Resources */,
 				44E74A4D1CC03F4B00006CAC /* RegisterViewController.xib in Resources */,
+				4462FA141CCEC7D900088F66 /* pastrequestbutton.png in Resources */,
 				44BAB8371CC5680000F3B142 /* 4543990-company-business-logo-design-vector-coffee-cup.png in Resources */,
 				446588B71C87563E002CA7ED /* OrderContentsViewController.xib in Resources */,
 				44696ACA1CB6FB4B0019758E /* pin.png in Resources */,
+				4462FA161CCEC80600088F66 /* placeorderbutton.png in Resources */,
 				4415EB8E1C839D0200B2C5B7 /* Main.storyboard in Resources */,
 				449CD65F1C864F4D00325DAA /* OrderViewController.xib in Resources */,
 				44849D6C1CCDE025008020A1 /* smokepin.png in Resources */,

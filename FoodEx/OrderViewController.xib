@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderViewController">
@@ -16,15 +16,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50K-gO-qET">
-                    <rect key="frame" x="232" y="484" width="137" height="51"/>
-                    <color key="backgroundColor" red="1" green="0.033109554423765952" blue="0.040283076551300701" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="175.5" y="490" width="250" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="137" id="4fy-pj-UQn"/>
-                        <constraint firstAttribute="height" constant="51" id="UAZ-C0-uge"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="aQr-KV-Es5"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="bld-ne-ndO"/>
+                        <constraint firstAttribute="width" constant="250" id="4fy-pj-UQn"/>
+                        <constraint firstAttribute="height" constant="45" id="bld-ne-ndO"/>
                     </constraints>
-                    <state key="normal" title="Place Order">
+                    <state key="normal" backgroundImage="placeorderbutton.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -32,7 +30,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9V7-Hr-Ppk">
-                    <rect key="frame" x="0.0" y="21" width="600" height="440"/>
+                    <rect key="frame" x="0.0" y="21" width="600" height="446"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
@@ -49,4 +47,7 @@
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="placeorderbutton.png" width="2040" height="360"/>
+    </resources>
 </document>

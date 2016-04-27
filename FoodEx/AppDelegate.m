@@ -175,12 +175,20 @@ alpha:1.0]
     [tab presentViewController:[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] animated:YES completion:nil];
     
     orderNav.navigationBar.barTintColor = UIColorFromRGB(0x0F517C);
-    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(0xb9b8b8), UITextAttributeTextColor, nil];
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(0xb9b8b8), UITextAttributeTextColor, [UIFont fontWithName:@"Futura"  size:20] ,NSFontAttributeName, nil];
     
     orderNav.navigationBar.tintColor = UIColorFromRGB(0xb9b8b8);
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
 
+    deliveryNav.navigationBar.barTintColor = UIColorFromRGB(0x0F517C);
+    deliveryNav.navigationBar.tintColor = UIColorFromRGB(0xb9b8b8);
+
+    profileNav.navigationBar.barTintColor = UIColorFromRGB(0x0F517C);
+    profileNav.navigationBar.tintColor = UIColorFromRGB(0xb9b8b8);
     
+    
+    
+
     return YES;
 }
 

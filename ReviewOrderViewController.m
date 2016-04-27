@@ -68,22 +68,26 @@ alpha:1.0]
         if(reviewRequest.pickup_at == [reviewRequest.pickup_at earlierDate:[NSDate date]])
         {
             [self.btnAction setEnabled:NO];
-            [self.btnAction setTitle:@"Past Request" forState:UIControlStateDisabled];
+            [self.btnAction setBackgroundImage:[UIImage imageNamed:@"pastrequestbutton.png"] forState:UIControlStateDisabled];
+            //[self.btnAction setTitle:@"Past Request" forState:UIControlStateDisabled];
         }
         else if([reviewRequest.buyer_name isEqualToString:myData.myUser.username] && !reviewRequest.deliverer_id)
         {
             //then we want to provide the option to delete the request
-            [self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
+            [self.btnAction setBackgroundImage:[UIImage imageNamed:@"deleterequestbutton.png"] forState:UIControlStateNormal];
+            //[self.btnAction setTitle:@"Delete Request" forState:UIControlStateNormal];
         }
         //If the request has been picked up
         else if(reviewRequest.deliverer_id)
         {
             [self.btnAction setEnabled:NO];
-            [self.btnAction setTitle:@"Request Claimed" forState:UIControlStateDisabled];
+            [self.btnAction setBackgroundImage:[UIImage imageNamed:@"requestclaimedbutton.png"] forState:UIControlStateDisabled];
+            //[self.btnAction setTitle:@"Request Claimed" forState:UIControlStateDisabled];
         }
         //If the request is not ours
         else{
-            [self.btnAction setTitle:@"Claim Delivery" forState:UIControlStateNormal];
+            [self.btnAction setBackgroundImage:[UIImage imageNamed:@"claimdelivery.png"] forState:UIControlStateNormal];
+            //[self.btnAction setTitle:@"Claim Delivery" forState:UIControlStateNormal];
         }
     }
     //If the review request has not been previously submitted
@@ -112,7 +116,7 @@ alpha:1.0]
     self.mapView.scrollEnabled = NO;
     self.mapView.zoomEnabled = NO;
     
-    self.mapView.zoomLevel = 18;
+    self.mapView.zoomLevel = 16;
 
     MGLPointAnnotation *orderLocation = [[MGLPointAnnotation alloc] init];
     orderLocation.coordinate = reviewRequest.pickup_point;
@@ -208,10 +212,18 @@ alpha:1.0]
 {
     GlobalData *myData = [GlobalData sharedInstance];
     FoodRequest *reviewRequest = myData.currentFoodRequest;
+    // hide the callout view
+
+
     if(reviewRequest.deliverer_id)
     {
         NSLog(@"can show callout");
-        return true;
+        self.navigationController.navigationBar.hidden = NO;
+        
+        [self.navigationController pushViewController:[[ViewProfileViewController alloc] initWithNibName:@"ViewProfileViewController" bundle:nil] animated:YES];
+        
+        
+        return false;
     }
     else
     {
@@ -222,7 +234,7 @@ alpha:1.0]
 
 
 
-
+/*
 
 - (UIView *)mapView:(MGLMapView *)mapView rightCalloutAccessoryViewForAnnotation:(id<MGLAnnotation>)annotation
 {
@@ -232,7 +244,7 @@ alpha:1.0]
 - (void)mapView:(MGLMapView *)mapView annotation:(id<MGLAnnotation>)annotation calloutAccessoryControlTapped:(UIControl *)control
 {
   
-    // hide the callout view
+
     [self.mapView deselectAnnotation:annotation animated:NO];
     
     self.navigationController.navigationBar.hidden = NO;
@@ -242,6 +254,8 @@ alpha:1.0]
     
     
 }
+
+ */
 
 - (MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id <MGLAnnotation>)annotation
 {
@@ -261,7 +275,7 @@ alpha:1.0]
         //
         // To make this padding non-interactive, we create another image object
         // with a custom alignment rect that excludes the padding.
-        image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, image.size.height/2, 0)];
+        image = [image imageWithAlignmentRectInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         
         // Initialize the ‘pisa’ annotation image with the UIImage we just loaded
         annotationImage = [MGLAnnotationImage annotationImageWithImage:image reuseIdentifier:@"smoke"];

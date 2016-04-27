@@ -18,6 +18,12 @@ static NSString* const kFiles = @"files";
 
 @implementation ProfileViewController
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,6 +50,7 @@ static NSString* const kFiles = @"files";
         });
     }];
     // Do any additional setup after loading the view from its nib.
+    self.tblPastTransactions.backgroundColor = UIColorFromRGB(0x064065);
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -204,6 +211,12 @@ static NSString* const kFiles = @"files";
     
     cell.detailTextLabel.text = detailTextString;
 
+    //edit layout and ui
+    cell.textLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.detailTextLabel.textColor = UIColorFromRGB(0xB9B8B8);
+    cell.backgroundColor = UIColorFromRGB(0x064065);
+    cell.textLabel.font = [UIFont fontWithName:@"Futura" size:18];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Futura" size:14];
     
     return cell;
 }
