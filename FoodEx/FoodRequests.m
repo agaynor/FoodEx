@@ -219,18 +219,18 @@ static NSString* const kDeliveryAccept = @"deliveryAccept";
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
         if (error == nil) {
-            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
-            if([responseArray count] > 0){
-                FoodRequest *requestToRemove = [[FoodRequest alloc] initWithDictionary:[responseArray objectAtIndex:0]];
-                [self parseAndRemoveLocations:requestToRemove fromArray:self.requests]; //7
+            NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            FoodRequest *requestToRemove = [[FoodRequest alloc] initWithDictionary:responseDict];
                 
-                if(completionBlock)
-                {
-                    completionBlock(YES);
-                }
+            [self parseAndRemoveLocations:requestToRemove fromArray:self.requests]; //7
+                
+            if(completionBlock)
+            {
+                completionBlock(YES);
             }
-            
         }
+            
+    
     }];
     
     [dataTask resume];
