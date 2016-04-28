@@ -86,7 +86,7 @@ CollectionDriver.prototype.delete = function(collectionName, entityId, callback)
 		if(error) callback(error);
 		else{
 			//Removes object with given id parameter
-			the_collection.findAndModify({{'_id':ObjectId(entityId)}, {"remove":true}, {"new":false}}, function(error,doc) {
+			the_collection.findAndModify({'_id':ObjectId(entityId)}, {"remove":true}, {"new":false}, function(error,doc) {
 				if(error) callback(error);
 				else callback(null, doc);
 			});
